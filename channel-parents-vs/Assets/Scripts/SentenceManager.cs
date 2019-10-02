@@ -23,7 +23,7 @@ public class SentenceManager : MonoBehaviour
         first = new Sentence("Press enter for the next line...", 0.0f);
         this.GetComponent<Text>().text = first.GetNext().GetText();
 
-        test1 = new Sentence("This is a very long sentence to demonstrate the existence of text wrapping in the current system", 0.01f);
+        test1 = new Sentence("This is a very long sentence to demonstrate the existence of text wrapping in the current system ", 0.01f);
         test2 = new Sentence("Is this?", 0.05f);
         sentences = new List<Sentence>();
         //Clever load up should be here
@@ -46,6 +46,7 @@ public class SentenceManager : MonoBehaviour
 
     }
 
+    //Need to check if the text won't fit the box
     IEnumerator DrawSentence(Sentence sentence)
     {
         Line current_line;

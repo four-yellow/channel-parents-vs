@@ -50,3 +50,6 @@ TagManager:
   - name: Player
     uniqueID: 4238987155
     locked: 0
+  - name: Fade Level
+    uniqueID: 3955042765
+    locked: 0
