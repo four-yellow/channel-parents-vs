@@ -7,10 +7,10 @@ using UnityEngine;
 
 public enum Flag { obeyed, playing0, playing1, playing2 , pull_slot_machine};
 
-public enum Speaker : int { the_void, player, clerk}
+public enum Speaker { child, parent };
 
 [System.Serializable]
-public struct Line
+public struct TextLine
 {
     public Flag[] required;
 
@@ -24,19 +24,20 @@ public struct Line
 [System.Serializable]
 public struct Choice {
 
-    public string choice;
-    public CurrentText dest;
+    public GameObject doorObject;
+    public string doorText;
+    public Level dest;
+    public TextLine[] closingDialogue;
     public Flag[] required;
     public Flag[] set_true;
     public Flag[] set_false;
 }
 
-[CreateAssetMenu(menuName = "Text")]
-public class CurrentText : ScriptableObject
+[CreateAssetMenu(menuName = "Level")]
+public class Level : ScriptableObject
 {
     public UnityEvent on_enter;
     public UnityEvent on_exit;
-    public Line[] spoken;
+    public TextLine[] openingDialogue;
     public Choice[] choices;
-
 } 

@@ -8,18 +8,14 @@ using UnityEngine.UI;
 public class DiagloueConfig : ScriptableObject
 {
     [SerializeField] public float inter_spoken_wait_time = .1f;
-    [SerializeField] public float time_between_spoken_and_choices = .2f;
-    [SerializeField] public float inter_choice_wait_time = .1f;
     [SerializeField] public float inter_char_time = .05f;
 }
 
 public class DialogueWalker : MonoBehaviour
 {
-    [SerializeField] private TMPro.TMP_Text spokenPrefab;
+    [SerializeField] private TMPro.TMP_Text tmpTextPrefab;
 
-    [SerializeField] private Button choicePrefab;
-
-    [SerializeField] private CurrentText startingText;
+    [SerializeField] private Level currentLevel;
     
     [SerializeField] private VerticalLayoutGroup textHolder;
 
@@ -63,19 +59,19 @@ public class DialogueWalker : MonoBehaviour
     
     public void Begin()
     {
-        StartCoroutine(blitText(startingText));
+        StartCoroutine(blitText(currentLevel.openingDialogue));
     }
     
-    IEnumerator blitText(CurrentText currentText)
+    IEnumerator blitText(TextLine[] lines)
     {
         foreach (Transform t in textHolder.transform)
         {
             Destroy(t.gameObject);
         }
-        foreach (var spoken in currentText.spoken)
+        foreach (var line in lines)
         {
             bool shouldContinue = true;
-            foreach (var flag in spoken.required)
+            foreach (var flag in line.required)
             {
                 shouldContinue &= get_state(flag);
             }
@@ -85,48 +81,13 @@ public class DialogueWalker : MonoBehaviour
             
             
             yield return StartCoroutine(TypewriterText(
-            Instantiate(spokenPrefab.gameObject, Vector3.zero, Quaternion.identity, textHolder.transform)
+            Instantiate(tmpTextPrefab.gameObject, Vector3.zero, Quaternion.identity, textHolder.transform)
             
-            .GetComponent<TMPro.TMP_Text>(),spoken.text,spoken.speaker));
+            .GetComponent<TMPro.TMP_Text>(),line.text,line.speaker));
             LayoutRebuilder.ForceRebuildLayoutImmediate(textHolder.GetComponent<RectTransform>());
             
             yield return new WaitForSeconds(config.inter_spoken_wait_time);
         }
-        yield return  new WaitForSeconds(config.time_between_spoken_and_choices);
-
-        foreach (var choice in currentText.choices)
-        {
-            bool shouldContinue = true;
-            foreach (var flag in choice.required)
-            {
-                shouldContinue &= get_state(flag);
-            }
-
-            if (!shouldContinue)
-                continue;
-            
-            GameObject choice_object = Instantiate(choicePrefab.gameObject, textHolder.transform);
-            choice_object.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                foreach (var flag in choice.set_true)
-                {
-                    set_state(flag,true);
-                }
-
-                foreach (var flag in choice.set_false)
-                {
-                    set_state(flag,false);
-                }
-                StartCoroutine(blitText(choice.dest));
-            });
-            yield return StartCoroutine(TypewriterText(
-                choice_object.GetComponentInChildren<TMPro.TMP_Text>(), choice.choice,Speaker.player
-            ));
-            
-            LayoutRebuilder.ForceRebuildLayoutImmediate(textHolder.GetComponent<RectTransform>());
-            yield return new WaitForSeconds(config.inter_choice_wait_time);
-        }
-        
         
         yield return null;
     }
