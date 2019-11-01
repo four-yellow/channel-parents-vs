@@ -18,17 +18,6 @@ public struct TextLine
     public string text;
 }
 
-[System.Serializable]
-public struct Choice {
-
-    public GameObject doorObject;
-    public string doorText;
-    public Level dest;
-    public TextLine[] closingDialogue;
-    public Flag[] required;
-    public Flag[] set_true;
-    public Flag[] set_false;
-}
 
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
@@ -36,5 +25,4 @@ public class Level : ScriptableObject
     public UnityEvent on_enter;
     public UnityEvent on_exit;
     public TextLine[] openingDialogue;
-    public Choice[] choices;
 } 
