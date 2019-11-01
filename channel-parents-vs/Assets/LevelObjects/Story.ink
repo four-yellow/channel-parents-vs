@@ -76,7 +76,7 @@ I want it now... #speaker: child
 Do you wanna rob the stand? #speaker: parent
 Huh? #speaker: child
 Because there's nothing else we can do about it. Come on, we're heading back. #speaker: parent
-(Should I?) #speaker: child_thoughts #door #door1pos: (-7.48,-1.41) #door2pos: (7.39,-1.41)
+(Should I?) #speaker: child_thoughts #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 
     * Rob the stand. #door #position: (x,y) #reactive
         What are you doing? Get over here. #speaker: parent

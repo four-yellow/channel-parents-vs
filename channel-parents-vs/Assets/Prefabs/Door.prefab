@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 2355051978694872384}
   - component: {fileID: 2355051978694872389}
   - component: {fileID: 2355051978694872390}
+  - component: {fileID: 1146211958400035876}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -201,6 +202,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.75, y: 7.46}
   m_EdgeRadius: 0
+--- !u!114 &1146211958400035876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355051978694872385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1c82409d6ce40e6a8bd16da42a82ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  openDoor: {fileID: 21300000, guid: 6e6576ec8298a41618482a8cb99236b0, type: 3}
+  closedDoor: {fileID: 21300000, guid: d9db370aa1efa4e7592eed86bac0c970, type: 3}
 --- !u!1 &2355051979373253835
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.345, y: 2.64}
+  m_AnchoredPosition: {x: 0.345, y: 3.35}
   m_SizeDelta: {x: 5.31, y: 2.046}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2355051979373253839
@@ -373,8 +389,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4292016127
+  m_fontColor: {r: 1, g: 0.97105265, b: 0.8254717, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
