@@ -64,12 +64,13 @@ public class DialogueWalker : MonoBehaviour
     
     IEnumerator blitText(TextLine[] lines)
     {
-        foreach (Transform t in textHolder.transform)
+        /*foreach (Transform t in textHolder.transform)
         {
             Destroy(t.gameObject);
-        }
+        }*/
         foreach (var line in lines)
         {
+            print(line.text);
             bool shouldContinue = true;
             foreach (var flag in line.required)
             {
@@ -80,11 +81,8 @@ public class DialogueWalker : MonoBehaviour
                 continue;
             
             
-            yield return StartCoroutine(TypewriterText(
-            Instantiate(tmpTextPrefab.gameObject, Vector3.zero, Quaternion.identity, textHolder.transform)
-            
-            .GetComponent<TMPro.TMP_Text>(),line.text,line.speaker));
-            LayoutRebuilder.ForceRebuildLayoutImmediate(textHolder.GetComponent<RectTransform>());
+            yield return StartCoroutine(TypewriterText(tmpTextPrefab,
+            line.text,line.speaker));
             
             yield return new WaitForSeconds(config.inter_spoken_wait_time);
         }
@@ -111,12 +109,12 @@ public class DialogueWalker : MonoBehaviour
             for (int j = 0; j < words[i].Length; j++)
             {
                 text.maxVisibleCharacters++;
-                AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+                /*AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
                 float varience = .04f;
                 src.pitch += UnityEngine.Random.value * varience - varience * .5f;
                 src.volume /= j;
                 src.PlayOneShot(text_sounds[(int)speaker]);
-                StartCoroutine(KillAudio(src));
+                StartCoroutine(KillAudio(src));*/
                 
                 yield return new WaitForSeconds(config.inter_char_time);
             }

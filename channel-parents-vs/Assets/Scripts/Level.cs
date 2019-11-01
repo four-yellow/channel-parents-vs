@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
-
-
 public enum Flag { obeyed, playing0, playing1, playing2 , pull_slot_machine};
 
 public enum Speaker { child, parent };
@@ -18,7 +16,6 @@ public struct TextLine
 
     [TextArea]
     public string text;
-
 }
 
 [System.Serializable]
