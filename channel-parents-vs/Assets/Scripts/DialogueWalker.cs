@@ -93,10 +93,12 @@ public class DialogueWalker : MonoBehaviour
             } else
             {
                 var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
-                Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent : Speaker.child;
+                Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
+                                  speakertag == "speaker: parent_thoughts" ? Speaker.parent :
+                                  Speaker.child;
                 StartCoroutine(TypewriterText(tmpTextPrefab,
                     text, speaker));
-            }            
+            }
         }
     }
 
@@ -140,6 +142,13 @@ public class DialogueWalker : MonoBehaviour
     IEnumerator TypewriterText(TMPro.TMP_Text text, string line,Speaker speaker)
     {
         text.text = "";
+        if (speaker == Speaker.parent)
+        {
+            text.color = new Color(0.5583683f, 1f, 0.5424528f);
+        }else
+        {
+            text.color = new Color(0.5411765f, 1f, 0.9965637f);
+        }
         text.maxVisibleCharacters = 0;
         string[] words = line.Split(' ');
         for(int i = 0;i < words.Length;i++)
