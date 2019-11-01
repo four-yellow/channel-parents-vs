@@ -32,6 +32,9 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private VerticalLayoutGroup choicesBox;
 
+    [SerializeField] private Animator childAnimator;
+    [SerializeField] private Animator parentAnimator;
+
     public Story story;
 
     public Dictionary<Flag, bool> state;
