@@ -18,8 +18,6 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private Level currentLevel;
     
-    [SerializeField] private VerticalLayoutGroup textHolder;
-
     [SerializeField] private DiagloueConfig config;
 
     [SerializeField] private AudioClip[] text_sounds;
@@ -29,6 +27,8 @@ public class DialogueWalker : MonoBehaviour
     [SerializeField] private TextAsset inkJSONAsset;
 
     [SerializeField] private Button buttonPrefab;
+
+    [SerializeField] private GameObject doorPrefab;
 
     [SerializeField] private VerticalLayoutGroup choicesBox;
 
@@ -80,16 +80,7 @@ public class DialogueWalker : MonoBehaviour
 
             if (story.currentChoices.Count > 0)
             {
-                for (int i = 0; i < story.currentChoices.Count; i++)
-                {
-                    Choice choice = story.currentChoices[i];
-                    Button button = CreateChoiceView(choice.text.Trim());
-                    // Tell the button what to do when we press it
-                    button.onClick.AddListener(delegate {
-                        OnClickChoiceButton(choice);
-                    });
-                }
-                choicesBox.gameObject.SetActive(true);
+                DisplayChoices();
             } else
             {
                 var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
@@ -109,14 +100,58 @@ public class DialogueWalker : MonoBehaviour
         RunStory();
     }
 
+    void DisplayChoices()
+    {
+        if (story.currentTags.Contains("door"))
+        {
+            foreach (var t in story.currentTags)
+            {
+                print(t);
+            }
+            for (int i = 0; i < story.currentChoices.Count; i++)
+            {
+                
+                String text = story.currentChoices[i].text.Trim();
+                String pos = story.currentTags.Find(x => x.StartsWith("door"+(i+1)+"pos", StringComparison.Ordinal));
+                print(pos);
+                print(pos.Remove(pos.IndexOf(',')).Substring(pos.IndexOf('(')));
+                float xpos = float.Parse(pos.Remove(pos.IndexOf(',')).Substring(pos.IndexOf('(')+1));
+                float ypos = float.Parse(pos.Remove(pos.IndexOf(')')).Substring(pos.IndexOf(',')+1));
+
+                GameObject door = CreateDoorObject(text, xpos, ypos);
+            }
+
+        }else
+        {
+            for (int i = 0; i < story.currentChoices.Count; i++)
+            {
+                Choice choice = story.currentChoices[i];
+                Button button = CreateChoiceView(choice.text.Trim());
+                // Tell the button what to do when we press it
+                button.onClick.AddListener(delegate {
+                    OnClickChoiceButton(choice);
+                });
+            }
+            choicesBox.gameObject.SetActive(true);
+        }
+    }
+
     void RemoveChoices()
     {
         int childCount = choicesBox.transform.childCount;
         for (int i = childCount - 1; i >= 0; --i)
         {
-            GameObject.Destroy(choicesBox.transform.GetChild(i).gameObject);
+            Destroy(choicesBox.transform.GetChild(i).gameObject);
         }
         choicesBox.gameObject.SetActive(false);
+    }
+
+    GameObject CreateDoorObject(string text, float x, float y)
+    {
+        GameObject door = Instantiate(doorPrefab);
+        door.transform.position = new Vector3(x, y, 0);
+        door.GetComponentInChildren<TMPro.TMP_Text>().text = text;
+        return door;
     }
 
     // Creates a button showing the choice text
@@ -144,10 +179,12 @@ public class DialogueWalker : MonoBehaviour
         text.text = "";
         if (speaker == Speaker.parent)
         {
-            text.color = new Color(0.5583683f, 1f, 0.5424528f);
+            //text.color = new Color(0.5583683f, 1f, 0.5424528f);
+            text.color = new Color(1f, 0.9144362f, 0.8160377f);
         }else
         {
-            text.color = new Color(0.5411765f, 1f, 0.9965637f);
+            //text.color = new Color(0.5411765f, 1f, 0.9965637f);
+            text.color = new Color(1f, 0.6704713f, 0.5424528f);
         }
         text.maxVisibleCharacters = 0;
         string[] words = line.Split(' ');

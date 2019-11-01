@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1159486389
     locked: 0
+  - name: Doors
+    uniqueID: 38381065
+    locked: 0
   - name: Player
     uniqueID: 4238987155
     locked: 0
