@@ -44,11 +44,14 @@ TagManager:
   - name: Background
     uniqueID: 1159486389
     locked: 0
-  - name: Text Box
-    uniqueID: 2213708623
+  - name: Doors
+    uniqueID: 38381065
     locked: 0
   - name: Player
     uniqueID: 4238987155
+    locked: 0
+  - name: Text Box
+    uniqueID: 2213708623
     locked: 0
   - name: Fade Level
     uniqueID: 3955042765
