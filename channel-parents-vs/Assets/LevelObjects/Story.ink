@@ -56,7 +56,7 @@ Well, why not? #speaker: parent
         ->piss_in_pants
 
 = no_piss_in_pants
-- I'm sorry, kid. Maybe we should have stayed at home... #speaker: parent 
+- I'm sorry, kid. Maybe we should have stayed at home... #speaker: parent #animation: parent_stand
 Can I get some ice-cream? There's a stand over there. #speaker: child
 Sure, why not. Let me...oh. I don't have cash on me right now. #speaker: parent 
 ->no_icecream_for_you

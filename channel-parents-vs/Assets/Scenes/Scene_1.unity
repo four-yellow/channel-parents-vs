@@ -423,8 +423,8 @@ MonoBehaviour:
   doorPrefab: {fileID: 2355051978694872385, guid: 2ea86a2cfc6824f9ca24699a0375e650,
     type: 3}
   choicesBox: {fileID: 1518344977}
-  childAnimator: {fileID: 0}
-  parentAnimator: {fileID: 0}
+  childAnimator: {fileID: 1407054607}
+  parentAnimator: {fileID: 1744691710}
 --- !u!224 &778906538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1159,12 +1159,12 @@ PrefabInstance:
     - target: {fileID: 2355051978694872391, guid: 2ea86a2cfc6824f9ca24699a0375e650,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.9
+      value: -18.88
       objectReference: {fileID: 0}
     - target: {fileID: 2355051978694872391, guid: 2ea86a2cfc6824f9ca24699a0375e650,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.63
+      value: -1.39
       objectReference: {fileID: 0}
     - target: {fileID: 2355051978694872391, guid: 2ea86a2cfc6824f9ca24699a0375e650,
         type: 3}

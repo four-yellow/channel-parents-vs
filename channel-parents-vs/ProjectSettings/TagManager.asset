@@ -50,6 +50,9 @@ TagManager:
   - name: Player
     uniqueID: 4238987155
     locked: 0
+  - name: child
+    uniqueID: 3956106677
+    locked: 0
   - name: Text Box
     uniqueID: 2213708623
     locked: 0

@@ -81,6 +81,12 @@ public class DialogueWalker : MonoBehaviour
             // This removes any white space from the text.
             text = text.Trim();
 
+            var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
+            if (parent_stand == "animation: parent_stand")
+            {
+                parentAnimator.SetTrigger("parent_stand");
+            }
+
             if (story.currentChoices.Count > 0)
             {
                 DisplayChoices();
@@ -123,7 +129,6 @@ public class DialogueWalker : MonoBehaviour
 
                 GameObject door = CreateDoorObject(text, xpos, ypos);
             }
-
         }else
         {
             for (int i = 0; i < story.currentChoices.Count; i++)
