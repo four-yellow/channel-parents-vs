@@ -4,7 +4,7 @@ VAR friend_user = "whatevr"
 VAR friend_name = "whattowrite"
 VAR raphael = false
 VAR computer_trial = false
-
+VAR sick_lie = false
 
 ->notes
 
@@ -282,10 +282,214 @@ Come on, I ordered some chinese. #speaker: parent #animation: parent_walking_out
     -> dinner_one 
     
 == dinner_one == 
+#location: dinner_one
+#fade_in
+#pause
+
+//Nothing special, just the parent and the child eating. A pause before the parent speaks.
+//For sounds, some light eating sounds I suppose. Tap dripping like Jared suggested.
+How was school today? #speaker: parent 
+Same. #speaker: child
+Hey, you don't have to be short... #speaker: parent
+... same as always. #speaker: child
+Sigh... alright. Well, how are your friends? #speaker: parent 
+
+* [Good.] #speaker: child
+    What did I just say about being short? #speaker: parent 
+    ... good as always. #speaker: child 
+   Sigh... #speaker: parent
+* [Same.] #speaker: child
+    I get it, I'll stop...
+* [We're meeting online today. ] #speaker: child
+    Oh, uh, I meant your school friends. #speaker: parent
+    (...) #speaker: child 
+    ... never mind. #speaker: parent
+    
+//Parent stands up. Eating sounds stop
+- Just do the dishes before you go upstairs, okay? I have a head-ache. #speaker: parent 
+Alright. #speaker: child 
+And I hate that I keep saying this, but stop wasting so much time playing your games. #speaker: parent 
+... alright. #speaker: child 
+And keep the volume down. #speaker: parent 
+(...) #speaker: child 
+//Child should start walking away at this point
+And stop talking to those weirdos online. #speaker: parent 
+//Child is out of the room 
+And... talk to me, will you? #speaker: parent #fade_out //This line needs to change
+
+* [Virtual world two notes.]
+-> virtual_two_notes
+
+
+== virtual_two_notes ==
+
+(Scene should be mostly the same, just slightly differnt to show the passing of time (updates to the game). Player avatars should also be different - they now have higher tier loot. )
+
+* [To the game world.]
+-> virtual_two
+
+
+== virtual_two == 
+
+#location: virtual_two
+//Kid blips into existence. Short pause, then friend blinks in.
+
+{kid_user}: yo #speaker: child_chat 
+{friend_user}: oh hey! how long have you been online? #speaker: friend_chat
+//They sit on the bench
+{kid_user}: i just logged in actually #speaker: child_chat 
+{friend_user}: wow, again? funny how this keeps happening, hahaha  #speaker: friend_chat
+{kid_user}: yeah, lol  #speaker: child_chat 
+{friend_user}: anyways, you up for a raid? there's one happening in half an hour #speaker: friend_chat
+{kid_user}: nah, don't feel like playing today #speaker: child_chat 
+{friend_user}: trash day, huh? #speaker: friend_chat
+{kid_user}: very trash. unusually trash, lol #speaker: child_chat 
+{kid_user}: id rather just chill and talk tbh #speaker: child_chat 
+{kid_user}: dont really wanna think too much  #speaker: child_chat 
+{friend_user}: of course. #speaker: friend_chat
+{kid_user}: how about you? how was your day? #speaker: child_chat 
+{friend_user}: nothing special #speaker: friend_chat
+{friend_user}: oh, actually, something hilarious happened the other day #speaker: friend_chat
+{friend_user}: wanna hear about it? #speaker: friend_chat
+{kid_user}: sure, tell me everything #speaker: child_chat 
+{friend_user}: yes! #speaker: friend_chat
+{friend_user}: so i went to the con i told you about earlier... #speaker: friend_chat #fade_out
+... #fade_in
+{friend_user}: ... and then i went home. #speaker: friend_chat
+{kid_user}: ... #speaker: child_chat
+{kid_user}: that uh, wasnt really funny #speaker: child_chat
+{friend_user}: thats cause your laaaaaaaaaaame #speaker: friend_chat
+{friend_user}: you're*, shut up #speaker: friend_chat
+{kid_user}: you're #speaker: friend_chat
+{kid_user}: shit, you got me, lol #speaker: child_chat
+{friend_user}: still think you should type properly if your gonna shit on my grammar #speaker: friend_chat
+{kid_user}: you're, and it's just a meme, i don't really care #speaker: child_chat
+{friend_user}: even as a meme, hahahah #speaker: friend_chat
+{friend_user}: hey, so how about we go raiding tomorrow #speaker: friend_chat
+{kid_user}: what time? #speaker: child_chat
+{friend_user}: afternoon-ish? somethings happening between 1-2 #speaker: friend_chat
+{kid_user}: during school hours huh? #speaker: child_chat
+{friend_user}: yeah. if you cant make it, thats ok.  #speaker: friend_chat
+{kid_user}: how come youre not going #speaker: child_chat
+{kid_user}: to school i mean #speaker: child_chat
+{friend_user}: you got me, hahaha  #speaker: friend_chat
+{friend_user}: parents are out of town, so im getting some much needed rest  #speaker: friend_chat
+{friend_user}: just pretend youre sick or something #speaker: friend_chat
+{kid_user}: ill think about it #speaker: child_chat
+{friend_user}: guess ill know if you log in  #speaker: friend_chat
+{friend_user}: anyways i gotta go  #speaker: friend_chat
+{friend_user}: see ya  #speaker: friend_chat
+{kid_user}: take care #speaker: child_chat
+//Friend blips out here. Kid stands up
+
+(... what do I do? ) #speaker: child
+
+ * [<i> Try skipping school. </i>] #door #position: (x, y) 
+    (Worth a shot. I don't wanna go to school anyways.) #speaker: child
+    -> sick_day_notes
+ * [<i> Go to school tomorrow. </i>] #door #position: (x, y) 
+    (No, I better not. Dad would be mad. ) #speaker: child
+    -> dinner_two_notes
+
+
+== sick_day_notes == 
+
+(As far as setting goes, it should be the kid's room, but in the morning. Kid should be in bed. Besides that, not much else).
+
+* [To the scene.]
+-> sick_day
+
+== sick_day == 
+
+//Kid is in bed, waiting for their father to come in 
+(Okay, knock in 3, 2, 1...) #speaker: child
+//Knocking sound effect here 
+Hey, are you up? I'm coming. ##speaker: parent 
+//Door opens. Parent walks to bed 
+Alright kid, wake up. Time to go. #speaker: parent 
+(...) #speaker: child 
+Come on, get up, or we'll both be late. #speaker: parent 
+
+* I don't feel so good. #speaker: child 
+    ~independence_meter += 0.1
+    I don't see any blood. #speaker: parent 
+    I have a fever, dad. #speaker: child 
+    Let me see... hmmm, you seem okay to me. #speaker: parent 
+    I'm really not... #speaker: child 
+    Kid, don't lie to me. I know what you're trying to do. #speaker: parent 
+    (...) #speaker: child 
+    I'm really - #speaker: child
+    I know you're lying. C'mon, let's go. #speaker: parent 
+    (...sigh) #speaker: child. 
+    
+* I'm getting up. #speaker: child 
+
+//Kid gets up, parent and child walk to the centerish of the room. 
+
+- Alright. After you. 
+
+
+ * [<i> Go back to sleep. </i>] #door #position: (x, y) 
+    Nope, don't even try. Let's go. #speaker: parent 
+    -> sick_day_notes
+ * [<i> Go to school tomorrow. </i>] #door #position: (x, y) #fade_out 
+    -> dinner_two_notes
+
+== dinner_two_notes == 
+
+(Again, some light aging and changes in the room.)
+
+* [To the dinner scene. ]
+->dinner_two 
+
+== dinner_two == 
+
+//For sounds, same as dinner_one, but quieter. 
+So... how was school today? #speaker: parent 
+Same. #speaker: child
+Right, same... #speaker: parent
+Do you wanna go to the park with me? We can bring a frisbee with us. #speaker: parent
+I'm busy today. #speaker: child
+Oh... with what? #speaker: parent 
+Work. I guess. #speaker: child 
+//Sounds stop
+//Kid gets up. Starts walking out
+... we haven't talked properly in a long time. #speaker: parent 
+Why... what am I doing wrong... #speaker: parent 
+Kid... #speaker: parent 
+* [To the next scene]
+-> virtual_three_notes 
+
+== virtual_three_notes == 
+
+(Again, light ageing. Better gear?)
+
+* [To the next scene]
+-> virtual_three 
+
+== virtual_three == 
+
+#location: virtual_three
+//Kid blips into existence. Friend is already there. Both standing. 
+{friend_user}: you took your time #speaker: friend_chat
+{kid_user}: yeah sorry #speaker: child_chat 
+{kid_user}: got distracted by something #speaker: child_chat 
+{friend_user}: yeah no worries #speaker: friend_chat
+{friend_user}: well, shall we? #speaker: friend_chat
+{kid_user}: mhm, lets go #speaker: child_chat 
+# fade_out
+
+
+
+
+
+
+
+
+
+
 
 ->END
-
-
 
 
 
