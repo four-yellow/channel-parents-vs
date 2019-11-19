@@ -5,6 +5,7 @@ VAR friend_name = "whattowrite"
 VAR raphael = false
 VAR computer_trial = false
 VAR sick_lie = false
+VAR played_over_time = false
 
 ->notes
 
@@ -400,7 +401,7 @@ And... talk to me, will you? #speaker: parent #fade_out //This line needs to cha
 -> sick_day
 
 == sick_day == 
-
+#location: bedroom
 //Kid is in bed, waiting for their father to come in 
 (Okay, knock in 3, 2, 1...) #speaker: child
 //Knocking sound effect here 
@@ -478,18 +479,191 @@ Kid... #speaker: parent
 {friend_user}: well, shall we? #speaker: friend_chat
 {kid_user}: mhm, lets go #speaker: child_chat 
 # fade_out
+// Some time later, the two walk in the screen from the left. 
+{friend_user}: nothing again #speaker: friend_chat
+{friend_user}: sigh #speaker: friend_chat
+{friend_user}: are we just trash? #speaker: friend_chat
+{kid_user}: its just bad luck dw #speaker: child_chat 
+{kid_user}: the last update fucked over the game tbh #speaker: child_chat 
+{friend_user}: yeah maybe... #speaker: friend_chat
+{kid_user}: lets just chill for a bit #speaker: child_chat 
+{kid_user}: we can try again tomorrow or something #speaker: child_chat
+{friend_user}: but I wanna try noooooooooow #speaker: friend_chat
+{friend_user}: we know what to do now #speaker: friend_chat
+{kid_user}: cmon dude #speaker: child_chat
+{kid_user}: later... #speaker: child_chat
+{friend_user}: you got anything to do? #speaker: friend_chat
+{kid_user}: dad gets bitchy when i play too much #speaker: child_chat
+{kid_user}: pushing my luck here #speaker: child_chat
+{friend_user}: one more try #speaker: friend_chat
+{friend_user}: pleeeease #speaker: friend_chat
+(... should I?) #speaker: child
+ * [<i> Continue playing. </i>] #door #position: (x, y) 
+    -> continue_playing
+ * [<i> Head back to work. </i>] #door #position: (x, y) 
+    -> quit_for_now
+
+= continue_playing 
+
+{kid_user}: sigh #speaker: child_chat
+{kid_user}: alright #speaker: child_chat
+{kid_user}: one more game #speaker: child_chat
+#fade_out 
+//Five games later
+{friend_user}: okay this really is the last one  #speaker: friend_chat
+{kid_user}: heard that one before  #speaker: child_chat
+{friend_user}: i think ive figure out how to beat the boss, for real this time  #speaker: friend_chat #sudden_out
+//While the above sentence is typing, the screen should cut off suddenly
+->too_much_game_notes
+
+= quit_for_now
+
+{kid_user}: no, i really should be going #speaker: child_chat
+{kid_user}: sorry #speaker: child_chat
+{friend_user}: eh  #speaker: friend_chat
+{friend_user}: whatever  #speaker: friend_chat
+{friend_user}: see ya  #speaker: friend_chat
+#fade_out
+
+* [Next scene.]
+-> dinner_three_notes
+
+== too_much_game_notes == 
+
+(Should be dark outside. We need the unplugged background for this one)
+
+* [To the scene.]
+-> too_much_game
+
+== too_much_game == 
+#location: bedroom_unplugged
+~played_over_time = true
+So this is what you're busy with? #speaker: parent 
+(...) #speaker: child 
+You'd rather play your game than spend some time with me? #speaker: parent 
+Ever since I got you that thing, we've just been... far apart. And you've always been quiet, but now you barely even look at me. #speaker: parent 
+Every day, the same routine. I wish you'd stop playing your games. Or just play less, for fuck's sake. Do you know what time it is? #speaker: parent 
+(... shit.) #speaker: child 
+Get up. You're coming downstairs and we're gonna sit together. I don't care if we talk or not. And this is gonna be a daily thing. Besides dinner. #speaker: parent 
+Come on. After you. #speaker: parent 
+(...) #speaker: child 
+//gets up 
+ * [<i> Continue playing. </i>] #door #position: (x, y) 
+    Don't even think about it. #speaker: parent
+ * [<i> Head back to work. </i>] #door #position: (x, y) 
+    
+    
+- -> dinner_three_notes
+
+== dinner_three_notes == 
+
+(Since only a week has passed, no significant aging to show)
+
+* [To the scene.]
+-> dinner_three
 
 
+== dinner_three == 
+#location: dinner_three
 
+~ temp name_given = ""
 
+//Both are sitting at the table, quietly eating. 
+... #speaker: parent 
+(...) #speaker: child 
+(Today's the day. ) #speaker: child 
+({friend_name} and I are meeeting today. ) #speaker: child
+(Park at night. Weird time, but not a big deal. ) #speaker: child
+(...) #speaker: child
+(Should I tell dad?) #speaker: child 
+{played_over_time: I think he's still mad. | I don't think he'll take it well. }
+(What do I do?) #speaker: child 
+Something on your mind? #speaker: parent 
+Hm? #speaker: child 
+You look pretty serious. What's on your mind? #speaker: parent 
+... I want to go out today. #speaker: child 
+Bit late, don't you think? #speaker: parent 
+Why this all of a sudden? #speaker: parent 
 
+* [I'm going to meet someone at the park. ] #speaker: child
+    Who? #speaker: parent 
+    A friend. #speaker: child 
+    Who? #speaker: parent 
+    
+    ** [Joe. ]#speaker: child
+        ~name_given = "Joe"
+        Who's Joe? #speaker: parent 
+        (... you're better than this. Don't say it, don't say it, don't say it...) #speaker: child 
+        Well? #speaker: parent 
 
+    ** [{friend_name}] #speaker: child
+        ~name_given = friend_name
+        Who's that? #speaker: parent 
+        
+    ** [Sam.] #speaker: child 
+        ~name_given = "Sam"
+        Who's that? #speaker: parent 
+        
+    -- Just, a friend. You don't know them. #speaker: child 
+    
 
+* [I just wanna walk. ] #speaker: child
+    Since when? Normally you'd just go up to your room. #speaker: parent 
+    
+* [<i> Say nothing </i> ]
+    Don't wanna say, huh? #speaker: parent 
+    
+- Well, forget it. It's way too late for you to be walking around right now. #speaker: parent 
+(... figures. ) #speaker: child 
+{ name_given == "":
+    ... you're going to meet your online friend, aren't you? #speaker: parent 
+    (!) #speaker: child 
+    I heard you sleep talking yesterday. Seemed like you were excited. #speaker: parent 
+- else:
+    ...say, is this {name_given} your online friend? #speaker: parent 
+}
 
+(I guess he knows... no point in hiding it now.) #speaker: child 
+{ name_given == "":
+    Why didn't you just tell me? #speaker: parent 
+    ... I don't know. #speaker: child 
+    You know I can't let you go. #speaker: parent 
+- else:
+    I'm glad you were honest with me, but I can't let you go. #speaker: parent 
+}
+I didn't think you would. #speaker: child
+You don't know anything about them. You don't know who they are. #speaker: parent 
+I do. We've been friends for years now. #speaker: child 
+You're not friends. You play the same game. #speaker: parent 
+We are friends. #speaker: child 
+... they're my only friend. #speaker: child 
+//Kid stands up here 
+I'm telling you not to go. #speaker: parent 
+... #speaker: child 
+You never listen to me. I'm telling you not to go. This is a bad idea. #speaker: parent 
 
-
+//Lines to add as the player moves 
+//Don't you step outside the house, kid. 
+//Don't take another step. 
+//Blah blah blah 
 
 ->END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
