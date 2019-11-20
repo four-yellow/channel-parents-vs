@@ -67,14 +67,7 @@ Because there's nothing else we can do about it. Come on, we're heading back. #s
  What are you doing? Get over here. #speaker: parent
  * Head to the car. #door #position: (x, y) 
 
-- ->new_computer_notes 
-
-== new_computer_notes == 
-
-(I was initially thinking this scene would take place over two rooms (kids room and the computer room), but it's definitely more economical to have just one room — the kid's room. Doesn't have to be anything too fancy — desk, bed, some posters, you get the idea. One note is that there should be a power outlet near where the computer will be set up (for the unplugging scene). And, of course, there should be a version without the computer, and one with (and one with the computer unplugged.))
-
-* [To the computer scene. ]
- -> new_computer
+- ->new_computer
 
 == new_computer == 
 #location: bedroom_one_no_pc
@@ -146,19 +139,8 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 (...) #speaker: child 
 (I guess that game everyone is playing. Let's download it...) #speaker: child #fade_out
 
--> virtual_one_notes
+-> virtual_one
 
-== virtual_one_notes == 
-
-(In the interest of time, I've culled most of the interactive stuff that we planned for the virtual world; forget choosing an avatar and playing a minigame. The virtual world will be very much like the a virtual version of the park, but without the ice-cream van and with a different background, I imagine (yes, there is a bench. It's where they'll talk). More fantastical. The theme of the game, if it helps your art, Grace, is D&D. For avatars, the kid should be a human rogue and the friend should be a human wizard. )
-
-((When the characters are typing into the chat-box, let's use a chatboxish looking font, yeah?))
-
-((Not really fond of how I wrote this scene... it feels clunky and off, but I'm not sure how to fix it.))
-
-* [To the virtual world!]
-    ->virtual_one
-    
 == virtual_one ==
 #location: virtual_one
 
@@ -213,14 +195,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 
 //Screen turns off I guess.
 
--> talking_about_computer_notes
-
-== talking_about_computer_notes == 
-
-(Nothing much to say, art wise. Just the kid's bedroom again).
-
-* [The next scene. ]
-    -> talking_about_computer
+-> talking_about_computer
 
 == talking_about_computer == 
 
@@ -249,15 +224,8 @@ What did I say about being responsible? #speaker: parent
 (...) #speaker: child 
 Come on, I ordered some chinese. #speaker: parent #animation: parent_walking_out #fade_out
 
--> dinner_one_notes 
+-> dinner_one 
 
-== dinner_one_notes == 
-
-(The first of the dinner scenes. Besides a table and two chairs (across each other), feel free to design the rest of the room as you see fit. One thng to keep into account is the time gap - this scene should happen a couple of years after the previous scene. Maybe age the parent slightly. The child should be aged significantly, naturally. )
-
-* [To the dinner scene!]
-    -> dinner_one 
-    
 == dinner_one == 
 #location: dinner_one
 #fade_in
@@ -295,16 +263,7 @@ And stop talking to those weirdos online. #speaker: parent
 And... talk to me, will you? #speaker: parent #fade_out //This line needs to change
 
 * [Virtual world two notes.]
--> virtual_two_notes
-
-
-== virtual_two_notes ==
-
-(Scene should be mostly the same, just slightly differnt to show the passing of time (updates to the game). Player avatars should also be different - they now have higher tier loot. )
-
-* [To the game world.]
 -> virtual_two
-
 
 == virtual_two == 
 
@@ -363,18 +322,10 @@ And... talk to me, will you? #speaker: parent #fade_out //This line needs to cha
 
  * [<i> Try skipping school. </i>] #door #position: (x, y) 
     (Worth a shot. I don't wanna go to school anyways.) #speaker: child
-    -> sick_day_notes
+    -> sick_day
  * [<i> Go to school tomorrow. </i>] #door #position: (x, y) 
     (No, I better not. Dad would be mad. ) #speaker: child
-    -> dinner_two_notes
-
-
-== sick_day_notes == 
-
-(As far as setting goes, it should be the kid's room, but in the morning. Kid should be in bed. Besides that, not much else).
-
-* [To the scene.]
--> sick_day
+    -> dinner_two
 
 == sick_day == 
 #location: bedroom
@@ -408,16 +359,9 @@ Come on, get up, or we'll both be late. #speaker: parent
 
  * [<i> Go back to sleep. </i>] #door #position: (x, y) 
     Nope, don't even try. Let's go. #speaker: parent 
-    -> sick_day_notes
+    -> dinner_two
  * [<i> Go to school tomorrow. </i>] #door #position: (x, y) #fade_out 
-    -> dinner_two_notes
-
-== dinner_two_notes == 
-
-(Again, some light aging and changes in the room.)
-
-* [To the dinner scene. ]
-->dinner_two 
+    -> dinner_two
 
 == dinner_two == 
 
@@ -434,14 +378,6 @@ Work. I guess. #speaker: child
 ... we haven't talked properly in a long time. #speaker: parent 
 Why... what am I doing wrong... #speaker: parent 
 Kid... #speaker: parent 
-* [To the next scene]
--> virtual_three_notes 
-
-== virtual_three_notes == 
-
-(Again, light ageing. Better gear?)
-
-* [To the next scene]
 -> virtual_three 
 
 == virtual_three == 
@@ -490,7 +426,7 @@ Kid... #speaker: parent
 {kid_user}: heard that one before  #speaker: child_chat
 {friend_user}: i think ive figure out how to beat the boss, for real this time  #speaker: friend_chat #sudden_out
 //While the above sentence is typing, the screen should cut off suddenly
-->too_much_game_notes
+->too_much_game
 
 = quit_for_now
 
@@ -500,16 +436,7 @@ Kid... #speaker: parent
 {friend_user}: whatever  #speaker: friend_chat
 {friend_user}: see ya  #speaker: friend_chat
 #fade_out
-
-* [Next scene.]
--> dinner_three_notes
-
-== too_much_game_notes == 
-
-(Should be dark outside. We need the unplugged background for this one)
-
-* [To the scene.]
--> too_much_game
+-> dinner_three
 
 == too_much_game == 
 #location: bedroom_unplugged
@@ -529,15 +456,7 @@ Come on. After you. #speaker: parent
  * [<i> Head back to work. </i>] #door #position: (x, y) 
     
     
-- -> dinner_three_notes
-
-== dinner_three_notes == 
-
-(Since only a week has passed, no significant aging to show)
-
-* [To the scene.]
--> dinner_three
-
+- -> dinner_three
 
 == dinner_three == 
 #location: dinner_three
@@ -624,27 +543,3 @@ You never listen to me. I'm telling you not to go. This is a bad idea. #speaker:
 //Blah blah blah 
 
 ->END
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
