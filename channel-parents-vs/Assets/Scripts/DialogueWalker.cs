@@ -48,6 +48,10 @@ public class DialogueWalker : MonoBehaviour
 
     private double seconds_left;
 
+    private GameObject player;
+
+    private PlayerInputController player_controller;
+
     private void Start()
     {
         state = new Dictionary<Flag, bool>();
@@ -59,8 +63,17 @@ public class DialogueWalker : MonoBehaviour
         timeline = GameObject.Find("Timeline");
 
         timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
+
+        player = GameObject.Find("Player");
+
+        player_controller = player.GetComponent(typeof(PlayerInputController)) as PlayerInputController;
+
         Assert.IsNotNull(timeline);
         Assert.IsNotNull(timeline_director);
+        Assert.IsNotNull(player);
+        Assert.IsNotNull(player_controller);
+
+        player_controller.canMove = false;
 
         RunStory();
     }
@@ -129,15 +142,13 @@ public class DialogueWalker : MonoBehaviour
             if (story.currentChoices.Count > 0)
             {
                 DisplayChoices();
-            } else
-            {
-                var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
-                Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
-                                  speakertag == "speaker: parent_thoughts" ? Speaker.parent :
-                                  Speaker.child;
-                StartCoroutine(TypewriterText(tmpTextPrefab,
-                    text, speaker));
-            }
+            } 
+            var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
+            Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
+                                speakertag == "speaker: parent_thoughts" ? Speaker.parent :
+                                Speaker.child;
+            StartCoroutine(TypewriterText(tmpTextPrefab,
+                text, speaker));
         }
     }
 
@@ -168,7 +179,9 @@ public class DialogueWalker : MonoBehaviour
 
                 GameObject door = CreateDoorObject(text, xpos, ypos);
             }
-        }else
+            player_controller.canMove = true;
+        }
+        else
         {
             for (int i = 0; i < story.currentChoices.Count; i++)
             {
