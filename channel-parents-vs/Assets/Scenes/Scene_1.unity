@@ -819,7 +819,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.61, y: 5.52}
+    oldSize: {x: 1.71, y: 4.49}
     newSize: {x: 3.19, y: 4.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -898,7 +898,7 @@ PlayableDirector:
   m_PlayableAsset: {fileID: 11400000, guid: bcd86165cfc661a4aa4ca6edd9c426c6, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
-  m_DirectorUpdateMode: 1
+  m_DirectorUpdateMode: 3
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -2843389890039904373, guid: bcd86165cfc661a4aa4ca6edd9c426c6, type: 2}

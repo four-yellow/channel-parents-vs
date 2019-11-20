@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using UnityEngine.Assertions;
+using UnityEngine.Playables;
 
 [CreateAssetMenu(menuName = "dialogue config")]
 public class DiagloueConfig : ScriptableObject
@@ -33,11 +35,18 @@ public class DialogueWalker : MonoBehaviour
     [SerializeField] private VerticalLayoutGroup choicesBox;
 
     [SerializeField] private Animator childAnimator;
+
     [SerializeField] private Animator parentAnimator;
 
     public Story story;
 
     public Dictionary<Flag, bool> state;
+
+    private GameObject timeline;
+
+    private PlayableDirector timeline_director;
+
+    private double seconds_left;
 
     private void Start()
     {
@@ -46,7 +55,30 @@ public class DialogueWalker : MonoBehaviour
         story = new Story(inkJSONAsset.text);
 
         choicesBox.gameObject.SetActive(false);
+
+        timeline = GameObject.Find("Timeline");
+
+        timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
+        Assert.IsNotNull(timeline);
+        Assert.IsNotNull(timeline_director);
+
         RunStory();
+    }
+
+    private void LateUpdate()
+    {
+        if (seconds_left > 0)
+        {
+            if (seconds_left < Time.deltaTime)
+            {
+                timeline_director.time += seconds_left;
+                seconds_left = 0;
+            } else {
+                timeline_director.time += Time.deltaTime;
+                seconds_left -= Time.deltaTime;
+            }
+            timeline_director.Evaluate();
+        }
     }
 
     bool get_state(Flag flag)
@@ -82,6 +114,13 @@ public class DialogueWalker : MonoBehaviour
             text = text.Trim();
 
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
+            string timeline_time = story.currentTags.Find(x => x.StartsWith("timeline: ", StringComparison.Ordinal));
+            if (timeline_time != null) {
+                //TODO: Make this safer
+                seconds_left = int.Parse(timeline_time.Substring(9, timeline_time.Length - 9));
+            }
+
+
             if (parent_stand == "animation: parent_stand")
             {
                 parentAnimator.SetTrigger("parent_stand");

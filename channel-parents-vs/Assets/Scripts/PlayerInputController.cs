@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEngine.Assertions;
 
 public class PlayerInputController : MonoBehaviour
 {
@@ -10,10 +13,15 @@ public class PlayerInputController : MonoBehaviour
 
     private GameObject currentDoor;
 
+    private Animator animator;
+
+    private Vector3 translate_by;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        Assert.IsNotNull(animator);
     }
 
     // Update is called once per frame
@@ -21,18 +29,35 @@ public class PlayerInputController : MonoBehaviour
     {
         if (!canMove) return;
 
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if (!Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKeyUp(KeyCode.RightArrow))
         {
-            this.gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
+            animator.SetBool("is_walking", false);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            translate_by = Vector3.left * speed * Time.deltaTime;
+            //this.gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
+            animator.SetBool("is_walking", true);
+            animator.SetBool("pointing_left", true);
+            animator.SetBool("pointing_right", false);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            this.gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            translate_by = Vector3.right * speed * Time.deltaTime;
+            //this.gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            animator.SetBool("is_walking", true);
+            animator.SetBool("pointing_left", false);
+            animator.SetBool("pointing_right", true);
         }
         if (Input.GetKey(KeyCode.UpArrow) && currentDoor != null)
         {
-            
+
         }
+
+        animator.Update(0);
+        this.gameObject.transform.Translate(translate_by);
+        translate_by = Vector3.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

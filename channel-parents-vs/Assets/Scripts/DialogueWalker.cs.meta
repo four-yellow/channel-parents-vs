@@ -3,7 +3,17 @@ guid: ac7c5d9f050db49acb010cf38ed0f5ee
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tmpTextPrefab: {instanceID: 0}
+  - currentLevel: {instanceID: 0}
+  - config: {instanceID: 0}
+  - audioPrefab: {instanceID: 0}
+  - inkJSONAsset: {fileID: 4900000, guid: 6cf48bb6d89824cc69e35b43f9a1aca6, type: 3}
+  - buttonPrefab: {instanceID: 0}
+  - doorPrefab: {instanceID: 0}
+  - choicesBox: {instanceID: 0}
+  - childAnimator: {instanceID: 0}
+  - parentAnimator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

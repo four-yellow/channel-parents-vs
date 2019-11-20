@@ -36,9 +36,10 @@ I have the game's structure/flowchart written out. That is, I've already decided
 
 == icecream_scene == 
 #location: park_day
+#timeline: 360
 //(Scene opens up with the father on the bench, relaxing. )
 
-Still down, huh? Even worse than before... #speaker: parent #animation: child_walking
+Still down, huh? Even worse than before... #speaker: parent
 
 //(The child walks into view, head held low. Stops near the parent. )
 
