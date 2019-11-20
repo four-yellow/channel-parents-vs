@@ -18,56 +18,56 @@ Still down, huh? Even worse than before... #speaker: parent
 
 //(The child walks into view, head held low. Stops near the parent. )
 
+~temp pissed_pants = false
+
 What's the matter, kid? Weren't you having fun? #speaker: parent
 No. #speaker: child
-Well, why not? #speaker: parent 
- * [Talk about losing your kite.]
-        I lost my kite. #speaker: child
- Oh, no... where'd you lose it? #speaker: parent
- Lightning hit it. It burned up. #speaker: child
- (...probably just lost it. Right? Regardless...) #speaker: parent_whisper
- ->no_piss_in_pants
- * [Talk about the tree.]
-        They threw me up a tree. #speaker: child
- What? Who did? #speaker: parent
- Bullies in my class. It took me an hour to get down. #speaker: child
- (An hour?!) #speaker: parent_whisper
- ->no_piss_in_pants
- * [Talk about the bathrooms.]
-        I needed to use the bathroom. #speaker: child
- And? It's right there. #speaker: parent
- I couldn't find it. #speaker: child
- (...Shit. ) #speaker: parent_whisper
- ->piss_in_pants
+Why not? #speaker: parent 
+    * [Talk about losing your kite.]
+    I lost my kite. #speaker: child
+    Oh, no... where'd you lose it? #speaker: parent
+    If I knew, I wouldn't have lost it. #speaker: child
+    (Smartass, hahaha. ) #speaker: parent_whisper
 
-= no_piss_in_pants
-I'm sorry, kid. Maybe we should have stayed at home... #speaker: parent 
-Can I get some ice-cream? There's a stand over there. #speaker: child
-Sure, why not. Let me...oh. I don't have cash on me. #speaker: parent #animation: parent_stand
-->no_icecream_for_you
+    * [Talk about the tree.]
+    They threw me up a tree. #speaker: child
+    What? Who did? #speaker: parent
+    I don't know. I was stuck for an hour. #speaker: child
+    (An hour?!) #speaker: parent_whisper
 
-= piss_in_pants
-I'm sorry, kid. Maybe we should have stayed at home... #speaker: parent 
-Can I get some ice-cream? There's a stand over there. #speaker: child
-No...not with those pants on, you're not. #speaker: parent 
-Can't you get some for me? #speaker: child
-I want to, but I don't have cash on me. #speaker: parent #animation: parent_stand
-->no_icecream_for_you
+    * [Talk about the bathrooms.]
+    ~pissed_pants = true
+    I needed to use the bathroom. #speaker: child
+    And? It's right there. #speaker: parent
+    I couldn't find it. #speaker: child
+    (...Shit. ) #speaker: parent_whisper
 
-= no_icecream_for_you
+- I'm sorry, kid. Maybe we should've stayed at home... #speaker: parent 
+Can I get some ice-cream? #speaker: child
+
+{ pissed_pants == true:
+    No...not with those pants on, you're not. #speaker: parent 
+    Can't you get some for me? #speaker: child
+    I want to, but I don't have any cash on me. #speaker: parent #animation: parent_stand
+- else:
+    Sure, why not. Let me...oh. Left the cash back home. #speaker: parent #animation: parent_stand
+}
+
 Oh. #speaker: child
 I'll get you some tonight, don't worry. #speaker: parent
-I want it now... #speaker: child
+But I want it now... #speaker: child
 Do you wanna rob the stand? #speaker: parent
 Huh? #speaker: child
-Because there's nothing else we can do about it. Come on, we're heading back. #speaker: parent
-(Should I?) #speaker: child_thoughts #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
+Because there's nothing else we can do. Come on, let's go home. #speaker: parent
+(...should I?) #speaker: child_thoughts #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
+-> park_doors
 
- * Rob the stand. #door #position: (x, y) #reactive
- What are you doing? Get over here. #speaker: parent
- * Head to the car. #door #position: (x, y) 
-
-- ->new_computer
+= park_doors 
+    * Rob the stand. 
+    What are you doing? Get over here. #speaker: parent
+    -> park_doors
+    * Head to the car.  
+    ->new_computer
 
 == new_computer == 
 #location: bedroom_one_no_pc
