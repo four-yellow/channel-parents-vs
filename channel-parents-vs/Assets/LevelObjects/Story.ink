@@ -63,7 +63,7 @@ Because there's nothing else we can do. Come on, let's go home. #speaker: parent
 -> park_doors
 
 = park_doors 
-    * Rob the stand. 
+    + Rob the stand. 
     What are you doing? Get over here. #speaker: parent
     -> park_doors
     * Head to the car.  
