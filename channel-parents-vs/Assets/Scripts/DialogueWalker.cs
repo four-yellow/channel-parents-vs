@@ -38,6 +38,8 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private Animator parentAnimator;
 
+    [SerializeField] private BackgroundManager backgroundManager;
+
     public Story story;
 
     public Dictionary<Flag, bool> state;
@@ -94,28 +96,18 @@ public class DialogueWalker : MonoBehaviour
         }
     }
 
-    bool get_state(Flag flag)
+    string getTagWithKey(string key)
     {
-        if (state.ContainsKey(flag))
-            return state[flag];
-        return false;
-    }
-
-    void set_state(Flag flag, bool b)
-    {
-        if (state.ContainsKey(flag))
-            state[flag] = b;
+        string found_tag = story.currentTags.Find(x => x.StartsWith(key, StringComparison.Ordinal));
+        if (found_tag == null)
+        {
+            return found_tag;
+        }
         else
-            state.Add(flag,b);
+        {
+            return found_tag.Split(' ')[1];
+        }
     }
-
-    public void set_true(string flag)
-    {
-        Flag arg;
-        if(Flag.TryParse(flag,out arg))
-            set_state(arg,true);
-    }
-    
     
     public void RunStory()
     {
@@ -126,13 +118,20 @@ public class DialogueWalker : MonoBehaviour
             // This removes any white space from the text.
             text = text.Trim();
 
+            string sceneTag = getTagWithKey("location");
+            if (sceneTag != null)
+            {
+                // start of new scene
+                backgroundManager.setBackground(sceneTag);
+
+            }
+
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
             string timeline_time = story.currentTags.Find(x => x.StartsWith("timeline: ", StringComparison.Ordinal));
             if (timeline_time != null) {
                 //TODO: Make this safer
                 seconds_left = int.Parse(timeline_time.Substring(9, timeline_time.Length - 9));
             }
-
 
             if (parent_stand == "animation: parent_stand")
             {
@@ -142,7 +141,7 @@ public class DialogueWalker : MonoBehaviour
             if (story.currentChoices.Count > 0)
             {
                 DisplayChoices();
-            } 
+            }
             var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
             Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
                                 speakertag == "speaker: parent_thoughts" ? Speaker.parent :
@@ -194,6 +193,11 @@ public class DialogueWalker : MonoBehaviour
             }
             choicesBox.gameObject.SetActive(true);
         }
+    }
+
+    void loadNewScene()
+    {
+        String sceneTag = getTagWithKey("Scene");
     }
 
     void RemoveChoices()
