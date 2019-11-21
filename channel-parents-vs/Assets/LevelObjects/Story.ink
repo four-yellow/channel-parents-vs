@@ -4,7 +4,6 @@ VAR friend_user = "whatevr"
 VAR friend_name = "whattowrite"
 VAR raphael = false
 VAR computer_trial = false
-VAR sick_lie = false
 VAR played_over_time = false
 
 ->icecream_scene
@@ -46,7 +45,7 @@ Why not? #speaker: parent
 Can I get some ice-cream? #speaker: child
 
 { pissed_pants == true:
-    No...not with those pants on, you're not. #speaker: parent 
+    No... not with those pants on, you're not. #speaker: parent 
     Can't you get some for me? #speaker: child
     I want to, but I don't have any cash on me. #speaker: parent #animation: parent_stand
 - else:
@@ -82,28 +81,28 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 ...are you up? #speaker:parent 
 
- * Yes. #speaker: child 
- ~ independence_meter += 0.05
- Then why didn't you say so...? #speaker: parent 
- I was working. #speaker: child #pause: 3.0
- Right... well, come help me set this thing up. You know about these things more than me. #speaker: parent #off screen #sound: building #animation: child_walking_towards_door #fade_out
- * Ignore him. 
- Sigh... and I was looking forward to this. Sleep well, kid. We'll set up your computer later. #speaker: parent #animation: parent_walking_out
- I'm up. #speaker: child #animation: child_sits_up #animation: parent_stops_mid_walk #pause: 3.0
- Well... there goes the surprise. #speaker: parent #animation: parent_turns_around 
- Sorry... #speaker: child 
- It's alright. Come help me set it up, yeah? #speaker: parent #off screen #sound: building #animation: child_walking_towards_door #fade_out
+    * Yes. #speaker: child 
+    ~ independence_meter += 0.05
+    Then why didn't you say so...? #speaker: parent 
+    I was working. #speaker: child #pause: 3.0
+    Right... well, come help me set this thing up. You know about these things more than me. #speaker: parent #off screen #sound: building #animation: child_walking_towards_door #fade_out
+    * Ignore him. 
+    Sigh... and I was looking forward to this. Sleep well, kid. We'll set up your computer later. #speaker: parent #animation: parent_walking_out
+    I'm up. #speaker: child #animation: child_sits_up #animation: parent_stops_mid_walk #pause: 3.0
+    Well... there goes the surprise. #speaker: parent #animation: parent_turns_around 
+    Sorry... #speaker: child 
+    It's alright. Come help me set it up, yeah? #speaker: parent #off screen #sound: building #animation: child_walking_towards_door #fade_out
  
 - ->brand_new_pc
 
 = chilling_in_bed 
 
- + Ignore him. 
+    + Ignore him. 
     {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert}#speaker: parent #off screen
- * In a minute. #speaker: child
-    Your loss. It's pretty cool. #speaker: parent
-    ... In a second. #speaker: child
- * Coming. #speaker: child
+    * In a minute. #speaker: child
+      Your loss. It's pretty cool. #speaker: parent
+      ... In a second. #speaker: child
+    * Coming. #speaker: child
  
 - There's a good kid. You're gonna have to help me set it up, though... #speaker: parent #off screen #sound: building_pc #animation: child_walking_towards_door #fade_out
 
@@ -112,21 +111,21 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = brand_new_pc
 #location: bedroom_one_pc #fade_in
 
-...that was quick! You sure know your stuff! #speaker: parent 
+...that was quick! You know your stuff! #speaker: parent 
 I was saving up for one. #speaker: child 
 (I know.) #speaker: parent_whisper
 Well... do you like it? #speaker: parent
 
-* [Hug him. ] Thanks, dad. #animation: hug #speaker: child 
-    ...anything for you, buddy. #speaker: parent
-     Now, don't let me get in the way of your fun. #speaker: parent
-* Thanks, dad. #speaker: child
-    Don't worry about it. Think of it as your birthday gift for the next few years. #speaker: parent
-    You can have it back. #speaker: child 
-    Cold! Hahaha! I'll let you start setting it up now. #speaker: parent
-* I have to try it first. #speaker: child
-    ~computer_trial = true
-    Oh, of course. Uhm... I'll leave you to it... #speaker: parent
+    * [Hug him. ] Thanks, dad. #animation: hug #speaker: child 
+        ...anything for you, buddy. #speaker: parent
+         Now, don't let me get in the way of your fun. #speaker: parent
+    * Thanks, dad. #speaker: child
+        Don't worry about it. This is your birthday gift for the next few years. #speaker: parent
+        You can have it back. #speaker: child 
+        Cold! Hahaha! I'll let you start setting it up now. #speaker: parent
+    * I have to try it first. #speaker: child
+        ~computer_trial = true
+        Oh, of course. Uhm... I'll leave you to it... #speaker: parent
  
 - Just, be responsible, okay? You're old enough to know better. And don't play on it for too long. Those screens can hurt your eyes. #speaker: parent #animation: exiting_room_stops_door
 I'll be in my room if you need me. #speaker: parent #animation: exiting_room 
@@ -137,7 +136,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 (...) #speaker: child 
 (...) #speaker: child 
 (...) #speaker: child 
-(I guess that game everyone is playing. Let's download it...) #speaker: child #fade_out
+(I guess the game everyone's playing. Let's download it...) #speaker: child #fade_out
 
 -> virtual_one
 
@@ -146,14 +145,14 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 
 //Kid-avatar should blip into existence, with a pop sound effect.
 
-(It's quiet here. Is this the wrong game?) #speaker: child
+(No one's in the lobby. Is this the wrong game?) #speaker: child
 (Should I ask...?) #speaker: child #animation: sits_on_bench #pause: 2.0
 (...) #speaker: child #animation: sits_on_bench
 {kid_user}: hello? #speaker: child_chat 
 {kid_user}: anyone here? #speaker: child_chat 
 {kid_user}: i dont know how to play #speaker: child_chat 
 (...) #speaker: child
-(I'll just leave...) #speaker: child
+(Yep, wrong game...) #speaker: child
 
 //Friend blips into existence 
 
@@ -185,7 +184,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 
 - {friend_user}: im {friend_name}, by the way #speaker: friend_chat
 {friend_user}: do you wanna go to town and stock up? #speaker: friend_chat
-{kid_user}: i think my dad is calling, so not now. #speaker: child_chat
+{kid_user}: i think my dad is calling, so not rn #speaker: child_chat
 {friend_user}: that's okay. add me as a friend, we can play later ! #speaker: friend_chat
 {kid_user}: mhm, alright. #speaker: child_chat
 (...) #speaker: child_chat 
@@ -210,19 +209,19 @@ Yeah. #speaker: child
 Yeah, it's really cool. I downloaded a game.  #speaker: child 
 Of course that's the first thing you do, hahaha! #speaker: parent 
 Sorry... #speaker: child 
-I'm just teasing! What else? #speaker: parent 
+I'm just kidding! What else? #speaker: parent 
 I met someone online. We talked. #speaker: child 
 Did you really? #speaker: parent 
 Yeah.  #speaker: child 
 What did I say about being responsible? #speaker: parent 
 
 * They seemed nice, though. #speaker: child 
-* It's part of the game. #speaker: child 
+* It was part of the game. #speaker: child 
 * Nothing happened. #speaker: child 
 
-- Doesn't matter. You don't really know who you're talking to. You have to be careful. #speaker: parent
+- Doesn't matter. You don't really know who you're talking to. You gotta be careful. #speaker: parent
 (...) #speaker: child 
-Come on, I ordered some chinese. #speaker: parent #animation: parent_walking_out #fade_out
+Come on downstairs, I ordered some chinese. #speaker: parent #animation: parent_walking_out #fade_out
 
 -> dinner_one 
 
@@ -230,6 +229,8 @@ Come on, I ordered some chinese. #speaker: parent #animation: parent_walking_out
 #location: dinner_one
 #fade_in
 #pause
+
+~ temp mentioned_friends = false
 
 //Nothing special, just the parent and the child eating. A pause before the parent speaks.
 //For sounds, some light eating sounds I suppose. Tap dripping like Jared suggested.
@@ -246,23 +247,23 @@ Sigh... alright. Well, how are your friends? #speaker: parent
 * [Same.] #speaker: child
     I get it, I'll stop...
 * [We're meeting online today. ] #speaker: child
+    ~mentioned_friends = true
     Oh, uh, I meant your school friends. #speaker: parent
     (...) #speaker: child 
     ... never mind. #speaker: parent
     
 //Parent stands up. Eating sounds stop
-- Just do the dishes before you go upstairs, okay? I have a head-ache. #speaker: parent 
+- Just take out the trash before you go upstairs, okay? I have a head-ache. #speaker: parent 
 Alright. #speaker: child 
 And I hate that I keep saying this, but stop wasting so much time playing your games. #speaker: parent 
 ... alright. #speaker: child 
 And keep the volume down. #speaker: parent 
 (...) #speaker: child 
 //Child should start walking away at this point
-And stop talking to those weirdos online. #speaker: parent 
+{mentioned_friends: And stop talking to those weirdos online. } #speaker: parent 
 //Child is out of the room 
-And... talk to me, will you? #speaker: parent #fade_out //This line needs to change
+And... talk to me, will you? #speaker: parent #fade_out
 
-* [Virtual world two notes.]
 -> virtual_two
 
 == virtual_two == 
@@ -273,7 +274,7 @@ And... talk to me, will you? #speaker: parent #fade_out //This line needs to cha
 {kid_user}: yo #speaker: child_chat 
 {friend_user}: oh hey! how long have you been online? #speaker: friend_chat
 //They sit on the bench
-{kid_user}: i just logged in actually #speaker: child_chat 
+{kid_user}: just logged in actually #speaker: child_chat 
 {friend_user}: wow, again? funny how this keeps happening, hahaha  #speaker: friend_chat
 {kid_user}: yeah, lol  #speaker: child_chat 
 {friend_user}: anyways, you up for a raid? there's one happening in half an hour #speaker: friend_chat
@@ -281,8 +282,8 @@ And... talk to me, will you? #speaker: parent #fade_out //This line needs to cha
 {friend_user}: trash day, huh? #speaker: friend_chat
 {kid_user}: very trash. unusually trash, lol #speaker: child_chat 
 {kid_user}: id rather just chill and talk tbh #speaker: child_chat 
-{kid_user}: dont really wanna think too much  #speaker: child_chat 
-{friend_user}: of course. #speaker: friend_chat
+{kid_user}: dont wanna think too much  #speaker: child_chat 
+{friend_user}: of course #speaker: friend_chat
 {kid_user}: how about you? how was your day? #speaker: child_chat 
 {friend_user}: nothing special #speaker: friend_chat
 {friend_user}: oh, actually, something hilarious happened the other day #speaker: friend_chat
@@ -304,8 +305,8 @@ And... talk to me, will you? #speaker: parent #fade_out //This line needs to cha
 {friend_user}: hey, so how about we go raiding tomorrow #speaker: friend_chat
 {kid_user}: what time? #speaker: child_chat
 {friend_user}: afternoon-ish? somethings happening between 1-2 #speaker: friend_chat
-{kid_user}: during school hours huh? #speaker: child_chat
-{friend_user}: yeah. if you cant make it, thats ok.  #speaker: friend_chat
+{kid_user}: during school hours? #speaker: child_chat
+{friend_user}: yeah. if you cant make it, thats ok  #speaker: friend_chat
 {kid_user}: how come youre not going #speaker: child_chat
 {kid_user}: to school i mean #speaker: child_chat
 {friend_user}: you got me, hahaha  #speaker: friend_chat
@@ -330,15 +331,18 @@ And... talk to me, will you? #speaker: parent #fade_out //This line needs to cha
 == sick_day == 
 #location: bedroom
 //Kid is in bed, waiting for their father to come in 
-(Okay, knock in 3, 2, 1...) #speaker: child
+//The 3,2,1 should be a second apart each
+(Okay, knock in 3, 2, 1...) #speaker: child 
 //Knocking sound effect here 
 Hey, are you up? I'm coming. ##speaker: parent 
 //Door opens. Parent walks to bed 
 Alright kid, wake up. Time to go. #speaker: parent 
 (...) #speaker: child 
 Come on, get up, or we'll both be late. #speaker: parent 
+-> Lie 
 
-* I don't feel so good. #speaker: child 
+= Lie
+    * I don't feel so good. #speaker: child 
     ~independence_meter += 0.1
     I don't see any blood. #speaker: parent 
     I have a fever, dad. #speaker: child 
@@ -347,20 +351,23 @@ Come on, get up, or we'll both be late. #speaker: parent
     Kid, don't lie to me. I know what you're trying to do. #speaker: parent 
     (...) #speaker: child 
     I'm really - #speaker: child
-    I know you're lying. C'mon, let's go. #speaker: parent 
+    Stop. Just... don't. C'mon, let's go. #speaker: parent 
     (...sigh) #speaker: child. 
+    -> Lie 
     
-* I'm getting up. #speaker: child 
+    * I'm getting up. #speaker: child 
 
 //Kid gets up, parent and child walk to the centerish of the room. 
 
 - Alright. After you. 
+-> sick_doors
 
+= sick_doors
 
  * [<i> Go back to sleep. </i>] #door #position: (x, y) 
     Nope, don't even try. Let's go. #speaker: parent 
-    -> dinner_two
- * [<i> Go to school tomorrow. </i>] #door #position: (x, y) #fade_out 
+    -> sick_doors
+ * [<i> Go to school. </i>] #door #position: (x, y) #fade_out 
     -> dinner_two
 
 == dinner_two == 
@@ -369,15 +376,15 @@ Come on, get up, or we'll both be late. #speaker: parent
 So... how was school today? #speaker: parent 
 Same. #speaker: child
 Right, same... #speaker: parent
-Do you wanna go to the park with me? We can bring a frisbee with us. #speaker: parent
+Do you wanna go to the park with me? We can bring a frisbee. #speaker: parent
 I'm busy today. #speaker: child
 Oh... with what? #speaker: parent 
 Work. I guess. #speaker: child 
 //Sounds stop
-//Kid gets up. Starts walking out
+//Kid gets up. Walks out
 ... we haven't talked properly in a long time. #speaker: parent 
-Why... what am I doing wrong... #speaker: parent 
-Kid... #speaker: parent 
+... #speaker: parent 
+
 -> virtual_three 
 
 == virtual_three == 
@@ -395,8 +402,8 @@ Kid... #speaker: parent
 {friend_user}: nothing again #speaker: friend_chat
 {friend_user}: sigh #speaker: friend_chat
 {friend_user}: are we just trash? #speaker: friend_chat
-{kid_user}: its just bad luck dw #speaker: child_chat 
-{kid_user}: the last update fucked over the game tbh #speaker: child_chat 
+{kid_user}: its just bad luck  #speaker: child_chat 
+{kid_user}: the last update fucked the game up tbh #speaker: child_chat 
 {friend_user}: yeah maybe... #speaker: friend_chat
 {kid_user}: lets just chill for a bit #speaker: child_chat 
 {kid_user}: we can try again tomorrow or something #speaker: child_chat
@@ -421,16 +428,17 @@ Kid... #speaker: parent
 {kid_user}: alright #speaker: child_chat
 {kid_user}: one more game #speaker: child_chat
 #fade_out 
-//Five games later
+Five games later
+#fade_in
 {friend_user}: okay this really is the last one  #speaker: friend_chat
 {kid_user}: heard that one before  #speaker: child_chat
-{friend_user}: i think ive figure out how to beat the boss, for real this time  #speaker: friend_chat #sudden_out
+{friend_user}: i think ive figured out how to beat the boss, for real this time  #speaker: friend_chat #sudden_out
 //While the above sentence is typing, the screen should cut off suddenly
 ->too_much_game
 
 = quit_for_now
 
-{kid_user}: no, i really should be going #speaker: child_chat
+{kid_user}: no i really should be going #speaker: child_chat
 {kid_user}: sorry #speaker: child_chat
 {friend_user}: eh  #speaker: friend_chat
 {friend_user}: whatever  #speaker: friend_chat
@@ -443,20 +451,21 @@ Kid... #speaker: parent
 ~played_over_time = true
 So this is what you're busy with? #speaker: parent 
 (...) #speaker: child 
-You'd rather play your game than spend some time with me? #speaker: parent 
-Ever since I got you that thing, we've just been... far apart. And you've always been quiet, but now you barely even look at me. #speaker: parent 
+You'd rather game than spend some time with me? #speaker: parent 
+Ever since I got you that thing, we've just been... apart. And you've always been quiet, but now you barely even look at me. #speaker: parent 
 Every day, the same routine. I wish you'd stop playing your games. Or just play less, for fuck's sake. Do you know what time it is? #speaker: parent 
-(... shit.) #speaker: child 
-Get up. You're coming downstairs and we're gonna sit together. I don't care if we talk or not. And this is gonna be a daily thing. Besides dinner. #speaker: parent 
+(... shit, it's late.) #speaker: child 
+Get up. We're gonna sit together downstairs. I don't care if we talk or not. And this is gonna be a daily thing, besides dinner. #speaker: parent 
 Come on. After you. #speaker: parent 
 (...) #speaker: child 
-//gets up 
+-> too_much_doors
+
+= too_much_doors
  * [<i> Continue playing. </i>] #door #position: (x, y) 
     Don't even think about it. #speaker: parent
+    -> too_much_doors
  * [<i> Head back to work. </i>] #door #position: (x, y) 
-    
-    
-- -> dinner_three
+    -> dinner_three
 
 == dinner_three == 
 #location: dinner_three
@@ -468,7 +477,7 @@ Come on. After you. #speaker: parent
 (...) #speaker: child 
 (Today's the day. ) #speaker: child 
 ({friend_name} and I are meeeting today. ) #speaker: child
-(Park at night. Weird time, but not a big deal. ) #speaker: child
+(Park at night. Weird time, but whatever. ) #speaker: child
 (...) #speaker: child
 (Should I tell dad?) #speaker: child 
 {played_over_time: I think he's still mad. | I don't think he'll take it well. }
@@ -501,21 +510,20 @@ Why this all of a sudden? #speaker: parent
         
     -- Just, a friend. You don't know them. #speaker: child 
     
-
 * [I just wanna walk. ] #speaker: child
     Since when? Normally you'd just go up to your room. #speaker: parent 
     
 * [<i> Say nothing </i> ]
     Don't wanna say, huh? #speaker: parent 
     
-- Well, forget it. It's way too late for you to be walking around right now. #speaker: parent 
+- Well, forget it. It's way too late for you to be walking around. #speaker: parent 
 (... figures. ) #speaker: child 
 { name_given == "":
     ... you're going to meet your online friend, aren't you? #speaker: parent 
     (!) #speaker: child 
     I heard you sleep talking yesterday. Seemed like you were excited. #speaker: parent 
 - else:
-    ...say, is this {name_given} your online friend? #speaker: parent 
+    ...say, is {name_given} your online friend? #speaker: parent 
 }
 
 (I guess he knows... no point in hiding it now.) #speaker: child 
