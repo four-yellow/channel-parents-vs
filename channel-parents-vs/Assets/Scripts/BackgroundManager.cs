@@ -60,6 +60,7 @@ public class BackgroundManager : MonoBehaviour
         {
             Destroy(d.gameObject);
         }
+        yield return new WaitForSeconds(1f);
         start_a = color.a;
         t = 0;
         while (t < time)

@@ -134,17 +134,11 @@ public class DialogueWalker : MonoBehaviour
 
         }
     }
-        string getTagWithKey(string key)
+
+    string getTagWithKey(string key)
     {
         string found_tag = story.currentTags.Find(x => x.StartsWith(key, StringComparison.Ordinal));
-        if (found_tag == null)
-        {
-            return found_tag;
-        }
-        else
-        {
-            return found_tag.Split(' ')[1];
-        }
+        return (found_tag == null) ? found_tag : found_tag.Split(' ')[1];
     }
     
     public void RunStory()

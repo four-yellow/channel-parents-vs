@@ -11,7 +11,7 @@ public class PlayerInputController : MonoBehaviour
 
     public float speed = 5.0f;
 
-    private GameObject currentDoor;
+    private DoorScript currentDoor;
 
     private Animator animator;
 
@@ -52,7 +52,7 @@ public class PlayerInputController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow) && currentDoor != null)
         {
-
+            currentDoor.setDoorOpen();
         }
 
         animator.Update(0);
@@ -62,13 +62,12 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("opened");
         DoorScript other = (DoorScript)collision.gameObject.GetComponent(typeof(DoorScript));
-        other.setDoorOpen();
+        currentDoor = other;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        DoorScript other = (DoorScript)collision.gameObject.GetComponent(typeof(DoorScript));
-        other.setDoorClosed();
+        //DoorScript other = (DoorScript)collision.gameObject.GetComponent(typeof(DoorScript));
+        currentDoor = null;
     }
 }
