@@ -43,8 +43,6 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private PositionManager positionsManager;
 
-
-
     public Story story;
 
     public Dictionary<Flag, bool> state;
@@ -64,6 +62,14 @@ public class DialogueWalker : MonoBehaviour
     private GameObject parent;
 
     private Animator parent_animator;
+
+    private bool enterDown = false;
+
+    private bool enterUp = true;
+
+    private bool anyKey = false;
+
+    private bool printing = false; 
 
     private void Start()
     {
@@ -115,6 +121,27 @@ public class DialogueWalker : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Return) && enterUp)
+        {
+            enterDown = true;
+            enterUp = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Return))
+        {
+            enterDown = false;
+            enterUp = true;
+        }
+
+        if (enterDown && !printing)
+        {
+            enterDown = false;
+            RunStory();
+        }
+
+    }
     void resetParameters()
     {
         foreach (UnityEngine.AnimatorControllerParameter parameter in player_animator.parameters)
@@ -282,8 +309,9 @@ public class DialogueWalker : MonoBehaviour
         Destroy(audioSource.gameObject);
     }
 
-    IEnumerator TypewriterText(TMPro.TMP_Text text, string line,Speaker speaker)
+    IEnumerator TypewriterText(TMPro.TMP_Text text, string line, Speaker speaker)
     {
+        printing = true;
         text.text = "";
         if (speaker == Speaker.parent)
         {
@@ -298,10 +326,20 @@ public class DialogueWalker : MonoBehaviour
         string[] words = line.Split(' ');
         for(int i = 0;i < words.Length;i++)
         {
+
             text.text += words[i];
             text.text += " ";
             for (int j = 0; j < words[i].Length; j++)
             {
+                if(enterDown)
+                {
+                    printing = false;
+                    enterDown = false;
+                    text.text = line;
+                    text.maxVisibleCharacters = line.Length;
+                    yield break;
+                }
+
                 text.maxVisibleCharacters++;
                 /*AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
                 float varience = .04f;
@@ -315,8 +353,7 @@ public class DialogueWalker : MonoBehaviour
 
             text.maxVisibleCharacters++;
         }
-        yield return new WaitForSeconds(config.inter_spoken_wait_time);
-        RunStory();
 
+        printing = false;
     }
 }
