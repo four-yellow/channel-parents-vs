@@ -65,6 +65,11 @@ public class DialogueWalker : MonoBehaviour
     private GameObject parent;
 
     private Animator parent_animator;
+
+    private GameObject friend;
+
+    private Animator friend_animator;
+
     private string current_text;
 
     private bool scene_was_faded = false;
@@ -99,6 +104,11 @@ public class DialogueWalker : MonoBehaviour
 
         parent_animator = parent.GetComponent(typeof(Animator)) as Animator;
 
+        friend = GameObject.Find("Friend");
+
+        friend_animator = friend.GetComponent(typeof(Animator)) as Animator;
+
+
         Assert.IsNotNull(timeline);
         Assert.IsNotNull(timeline_director);
         Assert.IsNotNull(player);
@@ -106,6 +116,8 @@ public class DialogueWalker : MonoBehaviour
         Assert.IsNotNull(player_animator);
         Assert.IsNotNull(parent);
         Assert.IsNotNull(parent_animator);
+        Assert.IsNotNull(friend);
+        Assert.IsNotNull(friend_animator);
         player_controller.canMove = false;
 
         RunStory();
@@ -173,6 +185,35 @@ public class DialogueWalker : MonoBehaviour
         return (found_tag == null) ? found_tag : found_tag.Split(' ')[1];
     }
     
+    void blipChildIntoExistence()
+    {
+        Vector3 player_zero = new Vector3(-player.transform.position.x,
+                                 -player.transform.position.y,
+                                 -player.transform.position.z);
+
+        player.transform.position += player_zero;
+        resetParameters();
+
+        player_animator.SetBool("is_virtual", true);
+        Vector3 player_pos = new Vector3(3.24f, -3.31f, 0);
+        player.transform.position += player_pos;
+        player.transform.localScale = new Vector3(8, 8, 1);
+    }
+
+    void blipFriendIntoExistence()
+    {
+        print("Hello");
+        Vector3 friend_zero = new Vector3(-player.transform.position.x,
+                                 -player.transform.position.y,
+                                 -player.transform.position.z);
+
+        friend.transform.position += friend_zero;
+        resetParameters();
+        Vector3 friend_pos = new Vector3(0.05f, -3.31f, 0);
+        friend.transform.position += friend_pos;
+        friend.transform.localScale = new Vector3(8, 8, 1);
+    }
+
     public void RunStory()
     {
         //StackTrace st = new StackTrace();
@@ -210,6 +251,19 @@ public class DialogueWalker : MonoBehaviour
             scene_was_faded = false;
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
             string timeline_time = getTagWithKey("timeline:");
+            string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
+            string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
+
+            if (cblip != null)
+            {
+                blipChildIntoExistence();
+            }
+
+            if (fblip != null)
+            {
+                blipFriendIntoExistence();
+            }
+
             if (timeline_time != null) {
                 //TODO: Make this safer
                 seconds_left = int.Parse(timeline_time.Substring(0, timeline_time.Length));
@@ -274,6 +328,16 @@ public class DialogueWalker : MonoBehaviour
 
     void loadNewScene()
     {
+
+        Vector3 far = new Vector3(50, 50, 50);
+        Vector3 scale = new Vector3(1, 1, 1);
+        player.transform.position += far;
+        parent.transform.position += far;
+        friend.transform.position += far;
+        player.transform.localScale = scale;
+        parent.transform.localScale = scale;
+        friend.transform.localScale = scale;
+
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)

@@ -16,7 +16,7 @@ VAR played_over_time = false
 
 //(Scene opens up with the father on the bench, relaxing. )
 
-Still down, huh? Even worse than before... #speaker: parent
+Oh, he's coming back now. #speaker: parent
 
 //(The child walks into view, head held low. Stops near the parent. )
 
@@ -80,7 +80,9 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 ->chilling_in_bed
 
 = intruder_alert
+#location: bedroom_one_no_pc
 #setting: 3
+#timelime: 3
 #fade_out #insert_parent #sound: door_opening #fade_in
 
 ...are you up? #speaker: parent 
@@ -143,7 +145,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 
 == virtual_one ==
 #location: virtual_one
-
+#cblip
 //Kid-avatar should blip into existence, with a pop sound effect.
 
 (No one's in the lobby. Is this the wrong game?) #speaker: child
@@ -157,7 +159,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 
 //Friend blips into existence 
 
-{friend_user}: hellooo! #speaker: friend_chat
+{friend_user}: hellooo! #speaker: friend_chat #fblip
 {friend_user}: I heard your call for help, and im here... to help! #speaker: friend_chat
 {kid_user}: thanks :) #speaker: child_chat
 {friend_user}: Now, where to start... #speaker: friend_chat #fade_out #animation: friend_sit
