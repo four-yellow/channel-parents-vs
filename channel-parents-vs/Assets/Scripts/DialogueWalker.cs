@@ -153,7 +153,7 @@ public class DialogueWalker : MonoBehaviour
             enterUp = true;
         }
 
-        if (enterDown && !printing)
+        if (enterDown && !printing && !scene_was_faded)
         {
             enterDown = false;
             RunStory();
