@@ -18,11 +18,10 @@ public struct TextLine
     public string text;
 }
 
-
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
 {
     public UnityEvent on_enter;
     public UnityEvent on_exit;
     public TextLine[] openingDialogue;
-} 
+}

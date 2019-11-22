@@ -122,8 +122,8 @@ public class DialogueWalker : MonoBehaviour
             if (sceneTag != null)
             {
                 // start of new scene
-                backgroundManager.setBackground(sceneTag);
-
+                StartCoroutine(backgroundManager.FadeScene(1.5f, sceneTag, this.RunStory));
+                //return;
             }
 
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));

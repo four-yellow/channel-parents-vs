@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class BackgroundManager : MonoBehaviour
     public SpriteRenderer Bedroom1;
     public SpriteRenderer Bedroom2;
     public SpriteRenderer Bedroom3;
+    public SpriteRenderer ScreenFade;
 
     public void setBackground(System.String name)
     {
@@ -33,6 +35,35 @@ public class BackgroundManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public IEnumerator FadeScene(float time, string name, Action callback)
+    {
+        Color color = ScreenFade.color;
+        float start_a = color.a;
+        float t = 0;
+        while(t < time)
+        {
+            t += Time.deltaTime;
+            float blend = Mathf.Clamp01(t / time);
+
+            color.a = Mathf.Lerp(start_a, 1, blend);
+            ScreenFade.color = color;
+            yield return null;
+        }
+        setBackground(name);
+        start_a = color.a;
+        t = 0;
+        while (t < time)
+        {
+            t += Time.deltaTime;
+            float blend = Mathf.Clamp01(t / time);
+
+            color.a = Mathf.Lerp(start_a, 0, blend);
+            ScreenFade.color = color;
+            yield return null;
+        }
+        //callback.Invoke();
     }
 
     public void disableAll()
