@@ -23,13 +23,15 @@ public class BackgroundManager : MonoBehaviour
             case "IceCream2":
                 ParkNight.enabled = true;
                 break;
-            case "Bedroom1":
+            case "bedroom_one_no_pc":
+            case "bedroom_one_pc":
                 Bedroom1.enabled = true;
                 break;
             case "Bedroom2":
                 Bedroom2.enabled = true;
                 break;
-            case "Bedroom3":
+            case "bedroom":
+            case "bedroom_unplugged":
                 Bedroom3.enabled = true;
                 break;
             default:
