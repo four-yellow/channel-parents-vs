@@ -85,7 +85,7 @@ public class DialogueWalker : MonoBehaviour
 
         parent = GameObject.Find("Parent");
 
-        parent_animator = player.GetComponent(typeof(Animator)) as Animator;
+        parent_animator = parent.GetComponent(typeof(Animator)) as Animator;
 
         Assert.IsNotNull(timeline);
         Assert.IsNotNull(timeline_director);

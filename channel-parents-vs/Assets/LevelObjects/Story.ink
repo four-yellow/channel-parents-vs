@@ -114,7 +114,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = brand_new_pc
 #location: bedroom_one_pc #fade_in
-
+#setting: 4
 ...that was quick! You know your stuff! #speaker: parent 
 I was saving up for one. #speaker: child 
 (I know.) #speaker: parent_whisper

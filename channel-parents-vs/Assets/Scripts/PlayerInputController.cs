@@ -36,19 +36,25 @@ public class PlayerInputController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            translate_by = Vector3.left * speed * Time.deltaTime;
-            //this.gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
-            animator.SetBool("is_walking", true);
-            animator.SetBool("pointing_left", true);
-            animator.SetBool("pointing_right", false);
+            if (!animator.GetBool("is_sleeping"))
+            {
+                translate_by = Vector3.left * speed * Time.deltaTime;
+                //this.gameObject.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                animator.SetBool("is_walking", true);
+                animator.SetBool("pointing_left", true);
+                animator.SetBool("pointing_right", false);
+            }
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            translate_by = Vector3.right * speed * Time.deltaTime;
-            //this.gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
-            animator.SetBool("is_walking", true);
-            animator.SetBool("pointing_left", false);
-            animator.SetBool("pointing_right", true);
+            if (!animator.GetBool("is_sleeping"))
+            {
+                translate_by = Vector3.right * speed * Time.deltaTime;
+                //this.gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                animator.SetBool("is_walking", true);
+                animator.SetBool("pointing_left", false);
+                animator.SetBool("pointing_right", true);
+            }
         }
         if (Input.GetKey(KeyCode.UpArrow) && currentDoor != null)
         {
