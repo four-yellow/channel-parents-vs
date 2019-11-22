@@ -177,6 +177,9 @@ public class DialogueWalker : MonoBehaviour
                 parent_animator.SetBool(parameter.name, false);
             }
         }
+
+        player_animator.Update(0);
+        parent_animator.Update(0);
     }
 
     string getTagWithKey(string key)

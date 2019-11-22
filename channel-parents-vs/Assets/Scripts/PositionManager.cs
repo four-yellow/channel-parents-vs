@@ -96,8 +96,8 @@ public class PositionManager : MonoBehaviour
 
             case 6: //Timeskip. First dinner. 
                 player_animator.SetInteger("grown_up", 1);
-                parent_pos = new Vector3(8.52f, -1.18f, 0f);
-                player_pos = new Vector3(4.76f, -2.11f, 0f);
+                parent_pos = new Vector3(4.76f, -2.11f, 0f);
+                player_pos = new Vector3(-4.28f, -2.28f, 0f);
                 parent_animator.SetBool("is_dining", true);
                 player.transform.position += player_pos;
                 parent.transform.position += parent_pos;
