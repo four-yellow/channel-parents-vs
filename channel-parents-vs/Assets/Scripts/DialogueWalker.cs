@@ -172,7 +172,7 @@ public class DialogueWalker : MonoBehaviour
 
             if (parent_stand == "animation: parent_stand")
             {
-                parentAnimator.SetTrigger("parent_stand");
+                parent_animator.SetBool("is_sitting", false);
             }
 
             if (story.currentChoices.Count > 0)
