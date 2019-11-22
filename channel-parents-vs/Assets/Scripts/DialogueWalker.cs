@@ -7,12 +7,15 @@ using Ink.Runtime;
 using UnityEngine.Assertions;
 using UnityEngine.Playables;
 using UnityEditorInternal;
+using System.Diagnostics;
 
 [CreateAssetMenu(menuName = "dialogue config")]
 public class DiagloueConfig : ScriptableObject
 {
     [SerializeField] public float inter_spoken_wait_time = .1f;
     [SerializeField] public float inter_char_time = .05f;
+    [SerializeField] public float scene_fade_duration = 1.5f;
+    [SerializeField] public float scene_fade_pause = 1f;
 }
 
 public class DialogueWalker : MonoBehaviour
@@ -62,6 +65,9 @@ public class DialogueWalker : MonoBehaviour
     private GameObject parent;
 
     private Animator parent_animator;
+    private string current_text;
+
+    private bool scene_was_faded = false;
 
     private bool enterDown = false;
 
@@ -158,7 +164,6 @@ public class DialogueWalker : MonoBehaviour
             {
                 parent_animator.SetBool(parameter.name, false);
             }
-
         }
     }
 
@@ -170,26 +175,39 @@ public class DialogueWalker : MonoBehaviour
     
     public void RunStory()
     {
-        if (story.canContinue)
+        //StackTrace st = new StackTrace();
+        //UnityEngine.Debug.Log(st.GetFrame(1).GetMethod().Name);
+        print("runstory called");
+        print(story.canContinue);
+        print(story.currentErrors);
+        if (story.canContinue || scene_was_faded)
         {
-            // Continue gets the next line of the story
-            string text = story.Continue();
+            string text = current_text;
+            print(scene_was_faded);
+            if (scene_was_faded)
+            {
+                scene_was_faded = false;
+            }
+            else
+            {
+                text = story.Continue();
+                current_text = text;
+                string sceneTag = getTagWithKey("location");
+                UnityEngine.Debug.Log(current_text);
+                UnityEngine.Debug.Log(sceneTag);
+                if (sceneTag != null)
+                {
+                    scene_was_faded = true;
+                    // start of new scene
+                    print("started fade");
+                    StartCoroutine(backgroundManager.FadeScene(config.scene_fade_duration, config.scene_fade_pause, sceneTag, this.loadNewScene, this.RunStory));
+                    return;
+                }
+            }
             // This removes any white space from the text.
             text = text.Trim();
-
-            string sceneTag = getTagWithKey("location");
-            if (sceneTag != null)
-            {
-                // start of new scene
-                resetParameters();
-                string setting_number = getTagWithKey("setting:");
-                if (setting_number != null) {
-                    positionsManager.setTheScene(int.Parse(setting_number.Substring(0, setting_number.Length)));
-                }
-                StartCoroutine(backgroundManager.FadeScene(1.5f, sceneTag, this.RunStory));
-                //return;
-            }
-
+            
+            scene_was_faded = false;
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
             string timeline_time = getTagWithKey("timeline:");
             if (timeline_time != null) {
@@ -226,17 +244,12 @@ public class DialogueWalker : MonoBehaviour
     {
         if (story.currentTags.Contains("door"))
         {
-            foreach (var t in story.currentTags)
-            {
-                print(t);
-            }
+            player_controller.canDoor = true;
             for (int i = 0; i < story.currentChoices.Count; i++)
             {
                 
                 String text = story.currentChoices[i].text.Trim();
                 String pos = story.currentTags.Find(x => x.StartsWith("door"+(i+1)+"pos", StringComparison.Ordinal));
-                print(pos);
-                print(pos.Remove(pos.IndexOf(',')).Substring(pos.IndexOf('(')));
                 float xpos = float.Parse(pos.Remove(pos.IndexOf(',')).Substring(pos.IndexOf('(')+1));
                 float ypos = float.Parse(pos.Remove(pos.IndexOf(')')).Substring(pos.IndexOf(',')+1));
 
@@ -261,7 +274,13 @@ public class DialogueWalker : MonoBehaviour
 
     void loadNewScene()
     {
-        String sceneTag = getTagWithKey("Scene");
+        resetParameters();
+        string setting_number = getTagWithKey("setting:");
+        if (setting_number != null)
+        {
+            positionsManager.setTheScene(int.Parse(setting_number.Substring(0, setting_number.Length)));
+        }
+        tmpTextPrefab.text = "";
     }
 
     void RemoveChoices()
@@ -299,7 +318,10 @@ public class DialogueWalker : MonoBehaviour
 
     public void chooseDoor(int index)
     {
-        story.ChooseChoiceIndex(index);        
+        player_controller.canDoor = false;
+        print("chose door at index:");
+        print(index);
+        story.ChooseChoiceIndex(index);
         RunStory();
     }
 
@@ -353,7 +375,6 @@ public class DialogueWalker : MonoBehaviour
 
             text.maxVisibleCharacters++;
         }
-
         printing = false;
     }
 }

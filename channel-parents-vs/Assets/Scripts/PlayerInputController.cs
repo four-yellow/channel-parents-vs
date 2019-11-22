@@ -7,7 +7,8 @@ using UnityEngine.Assertions;
 
 public class PlayerInputController : MonoBehaviour
 {
-    public bool canMove = true;
+    public bool canMove = false;
+    public bool canDoor = false;
 
     public float speed = 5.0f;
 
@@ -56,9 +57,11 @@ public class PlayerInputController : MonoBehaviour
                 animator.SetBool("pointing_right", true);
             }
         }
-        if (Input.GetKey(KeyCode.UpArrow) && currentDoor != null)
+        if (Input.GetKey(KeyCode.UpArrow) && currentDoor != null && canDoor)
         {
             currentDoor.setDoorOpen();
+            currentDoor = null;
+            canDoor = false;
         }
 
         animator.Update(0);

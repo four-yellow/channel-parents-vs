@@ -40,7 +40,7 @@ public class BackgroundManager : MonoBehaviour
         }
     }
 
-    public IEnumerator FadeScene(float time, string name, Action callback)
+    public IEnumerator FadeScene(float time, float pause, string name, Action duringFade, Action callback)
     {
         Color color = ScreenFade.color;
         float start_a = color.a;
@@ -55,12 +55,14 @@ public class BackgroundManager : MonoBehaviour
             yield return null;
         }
         setBackground(name);
+        duringFade.Invoke();
         DoorScript[] doors = FindObjectsOfType<DoorScript>();
         foreach (DoorScript d in doors)
         {
             Destroy(d.gameObject);
         }
-        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(pause);
         start_a = color.a;
         t = 0;
         while (t < time)
@@ -72,7 +74,7 @@ public class BackgroundManager : MonoBehaviour
             ScreenFade.color = color;
             yield return null;
         }
-        //callback.Invoke();
+        callback.Invoke();
         
     }
 
