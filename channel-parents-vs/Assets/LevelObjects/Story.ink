@@ -18,7 +18,7 @@ VAR played_over_time = false
 
 Oh, he's coming back now. #speaker: parent
 
-//(The child walks into view, head held low. Stops near the parent. )
+//(The child walks into view, head held low. Stops near the parent. ) 
 
 ~temp pissed_pants = false
 

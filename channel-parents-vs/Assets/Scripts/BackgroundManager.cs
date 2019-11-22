@@ -16,6 +16,7 @@ public class BackgroundManager : MonoBehaviour
     public SpriteRenderer Dinner1;
     public SpriteRenderer Dinner2;
     public SpriteRenderer Dinner3;
+    public SpriteRenderer VirtualWorld;
 
     public void setBackground(System.String name)
     {
@@ -46,6 +47,11 @@ public class BackgroundManager : MonoBehaviour
                 break;
             case "dinner_three":
                 Dinner3.enabled = true;
+                break;
+            case "virtual_one":
+            case "virtual_two":
+            case "virtual_three":
+                VirtualWorld.enabled = true;
                 break;
             default:
                 break;
@@ -101,5 +107,6 @@ public class BackgroundManager : MonoBehaviour
         Dinner2.enabled = false;
         Dinner3.enabled = false;
         BedroomNoPC.enabled = false;
+        VirtualWorld.enabled = false;
     }
 }

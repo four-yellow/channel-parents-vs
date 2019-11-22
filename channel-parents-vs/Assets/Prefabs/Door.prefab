@@ -217,6 +217,7 @@ MonoBehaviour:
   isOpen: 0
   openDoor: {fileID: 21300000, guid: 6e6576ec8298a41618482a8cb99236b0, type: 3}
   closedDoor: {fileID: 21300000, guid: d9db370aa1efa4e7592eed86bac0c970, type: 3}
+  choiceIndex: 0
 --- !u!1 &2355051979373253835
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,8 +383,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fe126a3ee2c444bcea724d827ea3e6b8, type: 2}
+  m_sharedMaterial: {fileID: 889279319917049325, guid: fe126a3ee2c444bcea724d827ea3e6b8,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
