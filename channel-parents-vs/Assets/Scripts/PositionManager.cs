@@ -72,6 +72,7 @@ public class PositionManager : MonoBehaviour
                 parent_pos = new Vector3(8.52f, -1.18f, 0f);
                 player_pos = new Vector3(-5.11f, -1.73f, 0f);
                 parent_animator.SetBool("Parent_Stand_Left", true);
+                player_animator.SetBool("is_sleeping", true);
                 player.transform.position += player_pos;
                 parent.transform.position += parent_pos;
                 break;
