@@ -398,8 +398,8 @@ public class DialogueWalker : MonoBehaviour
             text.color = new Color(1f, 0.9144362f, 0.8160377f);
         }else if (speaker == Speaker.friend)
         {
-            //text.color = new Color(0.5583683f, 1f, 0.5424528f);
-            text.color = Color.cyan;
+            text.color = new Color(82f/255f, 164f/255f, 1f);
+            //text.color = Color.cyan;
         } else
         {
             //text.color = new Color(0.5411765f, 1f, 0.9965637f);
