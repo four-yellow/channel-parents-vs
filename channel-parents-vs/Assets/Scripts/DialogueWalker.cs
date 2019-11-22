@@ -141,7 +141,7 @@ public class DialogueWalker : MonoBehaviour
             enterUp = true;
         }
 
-        if (enterDown && !printing)
+        if (enterDown && !printing && !scene_was_faded)
         {
             enterDown = false;
             RunStory();
@@ -175,15 +175,9 @@ public class DialogueWalker : MonoBehaviour
     
     public void RunStory()
     {
-        //StackTrace st = new StackTrace();
-        //UnityEngine.Debug.Log(st.GetFrame(1).GetMethod().Name);
-        print("runstory called");
-        print(story.canContinue);
-        print(story.currentErrors);
         if (story.canContinue || scene_was_faded)
         {
             string text = current_text;
-            print(scene_was_faded);
             if (scene_was_faded)
             {
                 scene_was_faded = false;
@@ -199,7 +193,6 @@ public class DialogueWalker : MonoBehaviour
                 {
                     scene_was_faded = true;
                     // start of new scene
-                    print("started fade");
                     StartCoroutine(backgroundManager.FadeScene(config.scene_fade_duration, config.scene_fade_pause, sceneTag, this.loadNewScene, this.RunStory));
                     return;
                 }
