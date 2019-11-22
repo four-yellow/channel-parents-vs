@@ -8,6 +8,7 @@ public class DoorScript : MonoBehaviour
     [SerializeField] private Sprite openDoor;
     [SerializeField] private Sprite closedDoor;
     private SpriteRenderer sr;
+    public int choiceIndex;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class DoorScript : MonoBehaviour
     {
         print("opening");
         sr.sprite = openDoor;
+        GameObject.Find("DialogueWalkerObject").GetComponent<DialogueWalker>().chooseDoor(choiceIndex);
     }
     public void setDoorClosed()
     {
