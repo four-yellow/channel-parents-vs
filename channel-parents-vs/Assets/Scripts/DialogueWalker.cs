@@ -202,10 +202,9 @@ public class DialogueWalker : MonoBehaviour
 
     void blipFriendIntoExistence()
     {
-        print("Hello");
-        Vector3 friend_zero = new Vector3(-player.transform.position.x,
-                                 -player.transform.position.y,
-                                 -player.transform.position.z);
+        Vector3 friend_zero = new Vector3(-friend.transform.position.x,
+                                 -friend.transform.position.y,
+                                 -friend.transform.position.z);
 
         friend.transform.position += friend_zero;
         resetParameters();
