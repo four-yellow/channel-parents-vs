@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using UnityEngine.Assertions;
 using UnityEngine.Playables;
+using UnityEditorInternal;
 
 [CreateAssetMenu(menuName = "dialogue config")]
 public class DiagloueConfig : ScriptableObject
@@ -40,6 +41,10 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private BackgroundManager backgroundManager;
 
+    [SerializeField] private PositionManager positionsManager;
+
+
+
     public Story story;
 
     public Dictionary<Flag, bool> state;
@@ -52,7 +57,13 @@ public class DialogueWalker : MonoBehaviour
 
     private GameObject player;
 
+    private Animator player_animator;
+
     private PlayerInputController player_controller;
+
+    private GameObject parent;
+
+    private Animator parent_animator;
 
     private void Start()
     {
@@ -68,13 +79,21 @@ public class DialogueWalker : MonoBehaviour
 
         player = GameObject.Find("Player");
 
+        player_animator = player.GetComponent(typeof(Animator)) as Animator;
+
         player_controller = player.GetComponent(typeof(PlayerInputController)) as PlayerInputController;
+
+        parent = GameObject.Find("Parent");
+
+        parent_animator = player.GetComponent(typeof(Animator)) as Animator;
 
         Assert.IsNotNull(timeline);
         Assert.IsNotNull(timeline_director);
         Assert.IsNotNull(player);
         Assert.IsNotNull(player_controller);
-
+        Assert.IsNotNull(player_animator);
+        Assert.IsNotNull(parent);
+        Assert.IsNotNull(parent_animator);
         player_controller.canMove = false;
 
         RunStory();
@@ -96,7 +115,26 @@ public class DialogueWalker : MonoBehaviour
         }
     }
 
-    string getTagWithKey(string key)
+    void resetParameters()
+    {
+        foreach (UnityEngine.AnimatorControllerParameter parameter in player_animator.parameters)
+        {
+            if (parameter.type == UnityEngine.AnimatorControllerParameterType.Bool){
+                player_animator.SetBool(parameter.name, false);
+            }
+               
+        }
+
+        foreach (UnityEngine.AnimatorControllerParameter parameter in parent_animator.parameters)
+        {
+            if (parameter.type == UnityEngine.AnimatorControllerParameterType.Bool)
+            {
+                parent_animator.SetBool(parameter.name, false);
+            }
+
+        }
+    }
+        string getTagWithKey(string key)
     {
         string found_tag = story.currentTags.Find(x => x.StartsWith(key, StringComparison.Ordinal));
         if (found_tag == null)
@@ -122,15 +160,20 @@ public class DialogueWalker : MonoBehaviour
             if (sceneTag != null)
             {
                 // start of new scene
+                resetParameters();
+                string setting_number = getTagWithKey("setting:");
+                if (setting_number != null) {
+                    positionsManager.setTheScene(int.Parse(setting_number.Substring(0, setting_number.Length)));
+                }
                 StartCoroutine(backgroundManager.FadeScene(1.5f, sceneTag, this.RunStory));
                 //return;
             }
 
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
-            string timeline_time = story.currentTags.Find(x => x.StartsWith("timeline: ", StringComparison.Ordinal));
+            string timeline_time = getTagWithKey("timeline:");
             if (timeline_time != null) {
                 //TODO: Make this safer
-                seconds_left = int.Parse(timeline_time.Substring(9, timeline_time.Length - 9));
+                seconds_left = int.Parse(timeline_time.Substring(0, timeline_time.Length));
             }
 
             if (parent_stand == "animation: parent_stand")

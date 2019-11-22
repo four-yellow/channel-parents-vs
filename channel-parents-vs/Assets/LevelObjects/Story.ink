@@ -9,8 +9,11 @@ VAR played_over_time = false
 ->icecream_scene
 
 == icecream_scene == 
+#knot: icecream_scene
 #location: park_day
 #timeline: 6
+#setting: 1
+
 //(Scene opens up with the father on the bench, relaxing. )
 
 Still down, huh? Even worse than before... #speaker: parent
@@ -70,7 +73,7 @@ Because there's nothing else we can do. Come on, let's go home. #speaker: parent
 
 == new_computer == 
 #location: bedroom_one_no_pc
-
+#knot: new_computer
 //Kid is lying in bed, staring at the ceiling, as one does. Bedroom door is closed. 
 
 Hey, can you come here real quick? I wanna show you something. #speaker: parent #off screen #sound: knocking
