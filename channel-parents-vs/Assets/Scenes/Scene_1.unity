@@ -149,7 +149,7 @@ Transform:
   m_LocalScale: {x: 1.0215484, y: 1.0215484, z: 1.0215484}
   m_Children: []
   m_Father: {fileID: 192959102}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &45335812
 SpriteRenderer:
@@ -630,7 +630,7 @@ Transform:
   m_LocalScale: {x: 1.0215484, y: 1.0215484, z: 1.0215484}
   m_Children: []
   m_Father: {fileID: 192959102}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &424316106
 SpriteRenderer:
@@ -973,6 +973,7 @@ MonoBehaviour:
   Dinner1: {fileID: 45335812}
   Dinner2: {fileID: 424316106}
   Dinner3: {fileID: 1373771913}
+  VirtualWorld: {fileID: 1778496723}
 --- !u!1 &914213955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,8 +1177,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fe126a3ee2c444bcea724d827ea3e6b8, type: 2}
+  m_sharedMaterial: {fileID: 889279319917049325, guid: fe126a3ee2c444bcea724d827ea3e6b8,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1303,7 +1305,7 @@ Transform:
   m_LocalScale: {x: 1.0215484, y: 1.0215484, z: 1.0215484}
   m_Children: []
   m_Father: {fileID: 192959102}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1317222866
 SpriteRenderer:
@@ -1383,7 +1385,7 @@ Transform:
   m_LocalScale: {x: 1.0215484, y: 1.0215484, z: 1.0215484}
   m_Children: []
   m_Father: {fileID: 192959102}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1373771913
 SpriteRenderer:
