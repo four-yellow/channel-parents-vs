@@ -16,7 +16,7 @@ VAR played_over_time = false
 
 //(Scene opens up with the father on the bench, relaxing. )
 
-Oh, he's coming back now. #speaker: parent
+Oh, finally back... #speaker: parent
 
 //(The child walks into view, head held low. Stops near the parent. ) 
 
