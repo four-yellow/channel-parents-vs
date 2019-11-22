@@ -12,6 +12,10 @@ public class BackgroundManager : MonoBehaviour
     public SpriteRenderer Bedroom2;
     public SpriteRenderer Bedroom3;
     public SpriteRenderer ScreenFade;
+    public SpriteRenderer BedroomNoPC;
+    public SpriteRenderer Dinner1;
+    public SpriteRenderer Dinner2;
+    public SpriteRenderer Dinner3;
 
     public void setBackground(System.String name)
     {
@@ -25,6 +29,8 @@ public class BackgroundManager : MonoBehaviour
                 ParkNight.enabled = true;
                 break;
             case "bedroom_one_no_pc":
+                BedroomNoPC.enabled = true;
+                break;
             case "bedroom_one_pc":
                 Bedroom1.enabled = true;
                 break;
@@ -34,6 +40,12 @@ public class BackgroundManager : MonoBehaviour
             case "bedroom":
             case "bedroom_unplugged":
                 Bedroom3.enabled = true;
+                break;
+            case "dinner_one":
+                Dinner1.enabled = true;
+                break;
+            case "dinner_three":
+                Dinner3.enabled = true;
                 break;
             default:
                 break;
@@ -85,5 +97,9 @@ public class BackgroundManager : MonoBehaviour
         Bedroom1.enabled = false;
         Bedroom2.enabled = false;
         Bedroom3.enabled = false;
+        Dinner1.enabled = false;
+        Dinner2.enabled = false;
+        Dinner3.enabled = false;
+        BedroomNoPC.enabled = false;
     }
 }
