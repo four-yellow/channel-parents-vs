@@ -427,12 +427,12 @@ public class DialogueWalker : MonoBehaviour
                 }
 
                 text.maxVisibleCharacters++;
-                /*AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+                AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
                 float varience = .04f;
                 src.pitch += UnityEngine.Random.value * varience - varience * .5f;
                 src.volume /= j;
                 src.PlayOneShot(text_sounds[(int)speaker]);
-                StartCoroutine(KillAudio(src));*/
+                StartCoroutine(KillAudio(src));
                 
                 yield return new WaitForSeconds(config.inter_char_time);
             }
@@ -440,5 +440,6 @@ public class DialogueWalker : MonoBehaviour
             text.maxVisibleCharacters++;
         }
         printing = false;
+
     }
 }

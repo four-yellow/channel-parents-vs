@@ -18,6 +18,17 @@ public class BackgroundManager : MonoBehaviour
     public SpriteRenderer Dinner3;
     public SpriteRenderer VirtualWorld;
 
+    public AudioClip[] ParkDaySounds;
+    public AudioClip[] ParkNightSounds;
+    public AudioClip[] Bedroom1Sounds;
+    public AudioClip[] BedroomNoPCSounds;
+    public AudioClip[] Dinner1Sounds;
+    public AudioClip[] VirtualWorldSounds;
+
+    public AudioSource audioPrefab;
+
+    public List<AudioSource> currentAudioSources;
+
     public void setBackground(System.String name)
     {
         disableAll();
@@ -25,33 +36,42 @@ public class BackgroundManager : MonoBehaviour
         {
             case "park_day":
                 ParkDay.enabled = true;
+                playAudioForScene(ParkDaySounds);
                 break;
             case "IceCream2":
                 ParkNight.enabled = true;
+                playAudioForScene(ParkNightSounds);
                 break;
             case "bedroom_one_no_pc":
                 BedroomNoPC.enabled = true;
+                playAudioForScene(BedroomNoPCSounds);
                 break;
             case "bedroom_one_pc":
                 Bedroom1.enabled = true;
+                playAudioForScene(Bedroom1Sounds);
                 break;
             case "Bedroom2":
                 Bedroom2.enabled = true;
+                playAudioForScene(Bedroom1Sounds);
                 break;
             case "bedroom":
             case "bedroom_unplugged":
                 Bedroom3.enabled = true;
+                playAudioForScene(BedroomNoPCSounds);
                 break;
             case "dinner_one":
                 Dinner1.enabled = true;
+                playAudioForScene(Dinner1Sounds);
                 break;
             case "dinner_three":
                 Dinner3.enabled = true;
+                playAudioForScene(Dinner1Sounds);
                 break;
             case "virtual_one":
             case "virtual_two":
             case "virtual_three":
                 VirtualWorld.enabled = true;
+                playAudioForScene(VirtualWorldSounds);
                 break;
             default:
                 break;
@@ -108,5 +128,24 @@ public class BackgroundManager : MonoBehaviour
         Dinner3.enabled = false;
         BedroomNoPC.enabled = false;
         VirtualWorld.enabled = false;
+
+        foreach(AudioSource s in currentAudioSources)
+        {
+            s.Pause();
+            Destroy(s.gameObject);
+        }
+        currentAudioSources =  new List<AudioSource>();
+    }
+
+    public void playAudioForScene(AudioClip[] clips)
+    {
+        foreach(AudioClip c in clips)
+        {
+            AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+            src.clip = c;
+            src.loop = true;
+            src.Play();
+            currentAudioSources.Add(src);
+        }
     }
 }
