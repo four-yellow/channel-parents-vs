@@ -195,8 +195,6 @@ public class DialogueWalker : MonoBehaviour
                                  -player.transform.position.z);
 
         player.transform.position += player_zero;
-        resetParameters();
-
         player_animator.SetBool("is_virtual", true);
         Vector3 player_pos = new Vector3(3.24f, -3.31f, 0);
         player.transform.position += player_pos;
@@ -210,7 +208,6 @@ public class DialogueWalker : MonoBehaviour
                                  -friend.transform.position.z);
 
         friend.transform.position += friend_zero;
-        resetParameters();
         Vector3 friend_pos = new Vector3(0.05f, -3.31f, 0);
         friend.transform.position += friend_pos;
         friend.transform.localScale = new Vector3(8, 8, 1);
