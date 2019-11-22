@@ -103,12 +103,12 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = chilling_in_bed 
 
-    + [Ignore him. ]
-    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert}#speaker: parent #off screen
-    * [In a minute. ] #speaker: child
+    + [Ignore him. ] 
+    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert}
+    * [In a minute. ]
       Your loss. It's pretty cool. #speaker: parent
       ... In a second. #speaker: child
-    * [Coming. ] #speaker: child
+    * [Coming. ]
  
 - There's a good kid. You're gonna have to help me set it up, though... #speaker: parent #off screen #sound: building_pc #animation: child_walking_towards_door #fade_out
 
@@ -122,11 +122,11 @@ I was saving up for one. #speaker: child
 (I know.) #speaker: parent 
 Well... do you like it? #speaker: parent
 
-    * Thanks, dad. #speaker: child
+    * [Thanks, dad.] #speaker: child
         Don't worry about it. This is your birthday gift for the next few years. #speaker: parent
         You can have it back. #speaker: child 
         Cold! Hahaha! I'll let you start setting it up now. #speaker: parent
-    * I have to try it first. #speaker: child
+    * [I have to try it first. ]#speaker: child
         ~computer_trial = true
         Oh, of course. Uhm... I'll leave you to it... #speaker: parent
  
@@ -202,6 +202,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 == talking_about_computer == 
 
 #location: bedroom_one_pc
+#setting: 5
 
 Can I come in? #speaker: parent #sound: knocking
 Yeah. #speaker: child 
@@ -230,6 +231,7 @@ Come on downstairs, I ordered some chinese. #speaker: parent #animation: parent_
 
 == dinner_one == 
 #location: dinner_one
+#setting: 6
 #fade_in
 #pause
 

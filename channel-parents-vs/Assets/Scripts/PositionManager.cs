@@ -71,7 +71,7 @@ public class PositionManager : MonoBehaviour
             case 3: //Parent walks in on sleeping kid
                 parent_pos = new Vector3(8.52f, -1.18f, 0f);
                 player_pos = new Vector3(-5.11f, -1.73f, 0f);
-                parent_animator.SetBool("Parent_Stand_Left", true);
+                parent_animator.SetBool("pointing_left", true);
                 player_animator.SetBool("is_sleeping", true);
                 player.transform.position += player_pos;
                 parent.transform.position += parent_pos;
@@ -80,7 +80,25 @@ public class PositionManager : MonoBehaviour
             case 4: //Parent and kid set up computer
                 parent_pos = new Vector3(1.84f, -1.18f, 0f);
                 player_pos = new Vector3(-1.27f, -1.99f, 0f);
-                parent_animator.SetBool("Parent_Stand_Left", true);
+                parent_animator.SetBool("pointing_left", true);
+                player.transform.position += player_pos;
+                parent.transform.position += parent_pos;
+                break;
+
+            case 5: //Parent checking up on kid
+                parent_pos = new Vector3(8.52f, -1.18f, 0f);
+                player_pos = new Vector3(-1.27f, -1.99f, 0f);
+                parent_animator.SetBool("pointing_left", true);
+                player_animator.SetBool("pointing_right", true);
+                player.transform.position += player_pos;
+                parent.transform.position += parent_pos;
+                break;
+
+            case 6: //Timeskip. First dinner. 
+                player_animator.SetInteger("grown_up", 1);
+                parent_pos = new Vector3(8.52f, -1.18f, 0f);
+                player_pos = new Vector3(4.76f, -2.11f, 0f);
+                parent_animator.SetBool("is_dining", true);
                 player.transform.position += player_pos;
                 parent.transform.position += parent_pos;
                 break;
