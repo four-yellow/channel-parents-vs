@@ -65,26 +65,27 @@ Because there's nothing else we can do. Come on, let's go home. #speaker: parent
 -> park_doors
 
 = park_doors 
-    + Rob the stand. 
+    + [Rob the stand. ]
     What are you doing? Get over here. #speaker: parent
     -> park_doors
-    * Head to the car.  
+    * [Head to the car. ]
     ->new_computer
 
 == new_computer == 
 #location: bedroom_one_no_pc
-#knot: new_computer
+#setting: 2
 //Kid is lying in bed, staring at the ceiling, as one does. Bedroom door is closed. 
 
 Hey, can you come here real quick? I wanna show you something. #speaker: parent #off screen #sound: knocking
 ->chilling_in_bed
 
 = intruder_alert
+#setting: 3
 #fade_out #insert_parent #sound: door_opening #fade_in
 
 ...are you up? #speaker:parent 
 
-    * Yes. #speaker: child 
+    * [Yes.] #speaker: child 
     ~ independence_meter += 0.05
     Then why didn't you say so...? #speaker: parent 
     I was working. #speaker: child #pause: 3.0
@@ -100,12 +101,12 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = chilling_in_bed 
 
-    + Ignore him. 
+    + [Ignore him. ]
     {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert}#speaker: parent #off screen
-    * In a minute. #speaker: child
+    * [In a minute. ] #speaker: child
       Your loss. It's pretty cool. #speaker: parent
       ... In a second. #speaker: child
-    * Coming. #speaker: child
+    * [Coming. ] #speaker: child
  
 - There's a good kid. You're gonna have to help me set it up, though... #speaker: parent #off screen #sound: building_pc #animation: child_walking_towards_door #fade_out
 

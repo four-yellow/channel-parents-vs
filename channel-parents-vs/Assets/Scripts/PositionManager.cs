@@ -21,7 +21,7 @@ public class PositionManager : MonoBehaviour
         player_animator = player.GetComponent(typeof(Animator)) as Animator;
 
         parent = GameObject.Find("Parent");
-        parent_animator = player.GetComponent(typeof(Animator)) as Animator;
+        parent_animator = parent.GetComponent(typeof(Animator)) as Animator;
 
         Assert.IsNotNull(player);
         Assert.IsNotNull(player_animator);
@@ -38,8 +38,8 @@ public class PositionManager : MonoBehaviour
     {
         //Zero out positions in world-space. For some reason I can't understand,
         //This is the easy way of doing it in Unity. 
-        Vector3 player_zero = new Vector3(-player.transform.position.x, 
-                                         -player.transform.position.y,    
+        Vector3 player_zero = new Vector3(-player.transform.position.x,
+                                         -player.transform.position.y,
                                          -player.transform.position.z);
 
         Vector3 parent_zero = new Vector3(-parent.transform.position.x,
@@ -53,13 +53,32 @@ public class PositionManager : MonoBehaviour
         switch (settingNumber)
         {
             case 1: //First icecream-scene
-
                 parent_pos = new Vector3(1.73f, -2.78f, 0f);
                 player_pos = new Vector3(-13.3f, -2.9f, 0f);
+                parent_animator.SetBool("is_sitting", true);
                 player.transform.position += player_pos;
                 parent.transform.position += parent_pos;
                 break;
+
+            case 2: //Setting up the PC scene 
+                parent_pos = new Vector3(20f, 20f, 0f);
+                player_pos = new Vector3(-5.11f, 1.73f, 0f);
+                player_animator.SetBool("is_sleeping", true);
+                player.transform.position += player_pos;
+                parent.transform.position += parent_pos;
+                break;
+
+            case 3: //Parent walks in on sleeping kid
+                parent_pos = new Vector3(8.52f, -1.85f, 0f);
+                player_pos = new Vector3(-5.11f, 1.73f, 0f);
+                parent_animator.SetBool("Parent_Stand_Left", true);
+                player.transform.position += player_pos;
+                parent.transform.position += parent_pos;
+                break;
+
         }
+        player_animator.Update(0);
+        parent_animator.Update(0);
 
     }
 
