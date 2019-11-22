@@ -176,7 +176,7 @@ public class DialogueWalker : MonoBehaviour
                 float xpos = float.Parse(pos.Remove(pos.IndexOf(',')).Substring(pos.IndexOf('(')+1));
                 float ypos = float.Parse(pos.Remove(pos.IndexOf(')')).Substring(pos.IndexOf(',')+1));
 
-                GameObject door = CreateDoorObject(text, xpos, ypos);
+                GameObject door = CreateDoorObject(text, xpos, ypos, i);
             }
             player_controller.canMove = true;
         }
@@ -210,11 +210,12 @@ public class DialogueWalker : MonoBehaviour
         choicesBox.gameObject.SetActive(false);
     }
 
-    GameObject CreateDoorObject(string text, float x, float y)
+    GameObject CreateDoorObject(string text, float x, float y, int choiceIndex)
     {
         GameObject door = Instantiate(doorPrefab);
         door.transform.position = new Vector3(x, y, 0);
         door.GetComponentInChildren<TMPro.TMP_Text>().text = text;
+        door.GetComponent<DoorScript>().choiceIndex = choiceIndex;
         return door;
     }
 
@@ -230,6 +231,12 @@ public class DialogueWalker : MonoBehaviour
         choiceText.text = text;
 
         return choice;
+    }
+
+    public void chooseDoor(int index)
+    {
+        story.ChooseChoiceIndex(index);        
+        RunStory();
     }
 
     IEnumerator KillAudio(AudioSource audioSource)

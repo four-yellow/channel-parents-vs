@@ -54,6 +54,11 @@ public class BackgroundManager : MonoBehaviour
             yield return null;
         }
         setBackground(name);
+        DoorScript[] doors = FindObjectsOfType<DoorScript>();
+        foreach (DoorScript d in doors)
+        {
+            Destroy(d.gameObject);
+        }
         start_a = color.a;
         t = 0;
         while (t < time)
@@ -66,6 +71,7 @@ public class BackgroundManager : MonoBehaviour
             yield return null;
         }
         //callback.Invoke();
+        
     }
 
     public void disableAll()
