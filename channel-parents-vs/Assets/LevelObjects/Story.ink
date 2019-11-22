@@ -29,20 +29,20 @@ Why not? #speaker: parent
     I lost my kite. #speaker: child
     Oh, no... where'd you lose it? #speaker: parent
     If I knew, I wouldn't have lost it. #speaker: child
-    (Smartass, hahaha. ) #speaker: parent_whisper
+    (Smartass, hahaha. ) #speaker: parent 
 
     * [Talk about the tree.]
     They threw me up a tree. #speaker: child
     What? Who did? #speaker: parent
     I don't know. I was stuck for an hour. #speaker: child
-    (An hour?!) #speaker: parent_whisper
+    (An hour?!) #speaker: parent
 
     * [Talk about the bathrooms.]
     ~pissed_pants = true
     I needed to use the bathroom. #speaker: child
     And? It's right there. #speaker: parent
     I couldn't find it. #speaker: child
-    (...Shit. ) #speaker: parent_whisper
+    (...Shit. ) #speaker: parent
 
 - I'm sorry, kid. Maybe we should've stayed at home... #speaker: parent 
 Can I get some ice-cream? #speaker: child
@@ -61,7 +61,7 @@ But I want it now... #speaker: child
 Do you wanna rob the stand? #speaker: parent
 Huh? #speaker: child
 Because there's nothing else we can do. Come on, let's go home. #speaker: parent
-(...should I?) #speaker: child_thoughts #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
+(...should I?) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 -> park_doors
 
 = park_doors 
@@ -83,7 +83,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 #setting: 3
 #fade_out #insert_parent #sound: door_opening #fade_in
 
-...are you up? #speaker:parent 
+...are you up? #speaker: parent 
 
     * [Yes.] #speaker: child 
     ~ independence_meter += 0.05
@@ -117,12 +117,9 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 #setting: 4
 ...that was quick! You know your stuff! #speaker: parent 
 I was saving up for one. #speaker: child 
-(I know.) #speaker: parent_whisper
+(I know.) #speaker: parent 
 Well... do you like it? #speaker: parent
 
-    * [Hug him. ] Thanks, dad. #animation: hug #speaker: child 
-        ...anything for you, buddy. #speaker: parent
-         Now, don't let me get in the way of your fun. #speaker: parent
     * Thanks, dad. #speaker: child
         Don't worry about it. This is your birthday gift for the next few years. #speaker: parent
         You can have it back. #speaker: child 
@@ -323,12 +320,12 @@ And... talk to me, will you? #speaker: parent #fade_out
 {kid_user}: take care #speaker: child_chat
 //Friend blips out here. Kid stands up
 
-(... what do I do? ) #speaker: child
+(... what do I do? ) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
 
- * [<i> Try skipping school. </i>] #door #position: (x, y) 
+ * [<i> Try skipping school. </i>]
     (Worth a shot. I don't wanna go to school anyways.) #speaker: child
     -> sick_day
- * [<i> Go to school tomorrow. </i>] #door #position: (x, y) 
+ * [<i> Go to school tomorrow. </i>]
     (No, I better not. Dad would be mad. ) #speaker: child
     -> dinner_two
 
@@ -363,15 +360,15 @@ Come on, get up, or we'll both be late. #speaker: parent
 
 //Kid gets up, parent and child walk to the centerish of the room. 
 
-- Alright. After you. 
+- Alright. After you. #speaker: parent #door #position: (0, 0) #door #position: (0,0) #fade_out 
 -> sick_doors
 
 = sick_doors
 
- * [<i> Go back to sleep. </i>] #door #position: (x, y) 
+ * [<i> Go back to sleep. </i>]
     Nope, don't even try. Let's go. #speaker: parent 
     -> sick_doors
- * [<i> Go to school. </i>] #door #position: (x, y) #fade_out 
+ * [<i> Go to school. </i>]
     -> dinner_two
 
 == dinner_two == 
@@ -420,10 +417,10 @@ Work. I guess. #speaker: child
 {kid_user}: pushing my luck here #speaker: child_chat
 {friend_user}: one more try #speaker: friend_chat
 {friend_user}: pleeeease #speaker: friend_chat
-(... should I?) #speaker: child
- * [<i> Continue playing. </i>] #door #position: (x, y) 
+(... should I?) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+ * [<i> Continue playing. </i>] 
     -> continue_playing
- * [<i> Head back to work. </i>] #door #position: (x, y) 
+ * [<i> Head back to work. </i>] 
     -> quit_for_now
 
 = continue_playing 
@@ -461,14 +458,14 @@ Every day, the same routine. I wish you'd stop playing your games. Or just play 
 (... shit, it's late.) #speaker: child 
 Get up. We're gonna sit together downstairs. I don't care if we talk or not. And this is gonna be a daily thing, besides dinner. #speaker: parent 
 Come on. After you. #speaker: parent 
-(...) #speaker: child 
+(...) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
 -> too_much_doors
 
 = too_much_doors
- * [<i> Continue playing. </i>] #door #position: (x, y) 
+ * [<i> Continue playing. </i>] 
     Don't even think about it. #speaker: parent
     -> too_much_doors
- * [<i> Head back to work. </i>] #door #position: (x, y) 
+ * [<i> Head back to work. </i>] 
     -> dinner_three
 
 == dinner_three == 
