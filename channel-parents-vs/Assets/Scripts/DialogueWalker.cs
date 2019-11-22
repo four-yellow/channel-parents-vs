@@ -273,6 +273,7 @@ public class DialogueWalker : MonoBehaviour
             var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
             Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
                                 speakertag == "speaker: parent_thoughts" ? Speaker.parent :
+                                speakertag == "speaker: friend_chat" ? Speaker.friend :
                                 Speaker.child;
             StartCoroutine(TypewriterText(tmpTextPrefab,
                 text, speaker));
@@ -395,7 +396,11 @@ public class DialogueWalker : MonoBehaviour
         {
             //text.color = new Color(0.5583683f, 1f, 0.5424528f);
             text.color = new Color(1f, 0.9144362f, 0.8160377f);
-        }else
+        }else if (speaker == Speaker.friend)
+        {
+            //text.color = new Color(0.5583683f, 1f, 0.5424528f);
+            text.color = Color.cyan;
+        } else
         {
             //text.color = new Color(0.5411765f, 1f, 0.9965637f);
             text.color = new Color(1f, 0.6704713f, 0.5424528f);

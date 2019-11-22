@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum Flag { obeyed, playing0, playing1, playing2 , pull_slot_machine};
 
-public enum Speaker { child, parent };
+public enum Speaker { child, parent, friend };
 
 [System.Serializable]
 public struct TextLine

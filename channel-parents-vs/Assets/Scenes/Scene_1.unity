@@ -733,7 +733,7 @@ SpriteRenderer:
   m_Size: {x: 3.19, y: 4.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &368084025
@@ -955,7 +955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -1199,6 +1199,7 @@ MonoBehaviour:
   text_sounds:
   - {fileID: 8300000, guid: 6ca9843e948354c6db1aa7fed0ed5982, type: 3}
   - {fileID: 8300000, guid: 4725831f39765423798d6f56720f4770, type: 3}
+  - {fileID: 8300000, guid: 15aa511e227ad4e91a9e58e10f3d8274, type: 3}
   audioPrefab: {fileID: 1284174891}
   inkJSONAsset: {fileID: 4900000, guid: 4656a99f50b5b479b960a44f9dc2e00c, type: 3}
   buttonPrefab: {fileID: 4237662064734300535, guid: af30b3cfb0a4147f5be79f220714e726,
@@ -1697,7 +1698,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1317222864
 GameObject:

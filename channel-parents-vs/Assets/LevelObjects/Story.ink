@@ -322,7 +322,7 @@ And... talk to me, will you? #speaker: parent #fade_out
 {kid_user}: take care #speaker: child_chat
 //Friend blips out here. Kid stands up
 
-(... what do I do? ) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+(... what do I do? ) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41) 
 
  * [<i> Try skipping school. </i>]
     (Worth a shot. I don't wanna go to school anyways.) #speaker: child
@@ -362,7 +362,7 @@ Come on, get up, or we'll both be late. #speaker: parent
 
 //Kid gets up, parent and child walk to the centerish of the room. 
 
-- Alright. After you. #speaker: parent #door #position: (0, 0) #door #position: (0,0) #fade_out 
+- Alright. After you. #speaker: parent #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41) #fade_out 
 -> sick_doors
 
 = sick_doors
@@ -419,7 +419,7 @@ Work. I guess. #speaker: child
 {kid_user}: pushing my luck here #speaker: child_chat
 {friend_user}: one more try #speaker: friend_chat
 {friend_user}: pleeeease #speaker: friend_chat
-(... should I?) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+(... should I?) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41) 
  * [<i> Continue playing. </i>] 
     -> continue_playing
  * [<i> Head back to work. </i>] 
@@ -460,7 +460,7 @@ Every day, the same routine. I wish you'd stop playing your games. Or just play 
 (... shit, it's late.) #speaker: child 
 Get up. We're gonna sit together downstairs. I don't care if we talk or not. And this is gonna be a daily thing, besides dinner. #speaker: parent 
 Come on. After you. #speaker: parent 
-(...) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+(...) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41) 
 -> too_much_doors
 
 = too_much_doors
