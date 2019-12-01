@@ -61,7 +61,7 @@ public class PositionManager : MonoBehaviour
                 break;
 
             case 2: //Setting up the PC scene 
-                parent_pos = new Vector3(20f, 20f, 0f);
+                parent_pos = new Vector3(30f, 20f, 0f);
                 player_pos = new Vector3(-5.11f, -1.73f, 0f);
                 player_animator.SetBool("is_sleeping", true);
                 player.transform.position += player_pos;
@@ -69,7 +69,7 @@ public class PositionManager : MonoBehaviour
                 break;
 
             case 3: //Parent walks in on sleeping kid
-                parent_pos = new Vector3(8.52f, -1.18f, 0f);
+                parent_pos = new Vector3(30f, -1.18f, 0f);
                 player_pos = new Vector3(-5.11f, -1.73f, 0f);
                 parent_animator.SetBool("pointing_left", true);
                 player_animator.SetBool("is_sleeping", true);

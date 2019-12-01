@@ -74,6 +74,7 @@ Because there's nothing else we can do. Come on, let's go home. #speaker: parent
 == new_computer == 
 #location: bedroom_one_no_pc
 #setting: 2
+#switch: 2
 //Kid is lying in bed, staring at the ceiling, as one does. Bedroom door is closed. 
 
 Hey, can you come here real quick? I wanna show you something. #speaker: parent #off screen #sound: knocking
@@ -82,7 +83,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = intruder_alert
 #location: bedroom_one_no_pc
 #setting: 3
-#timelime: 3
+#timeline: 5
 #fade_out #insert_parent #sound: door_opening #fade_in
 
 ...are you up? #speaker: parent 
@@ -104,7 +105,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = chilling_in_bed 
 
     + [Ignore him. ] 
-    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert}
+    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert} #speaker: parent 
     * [In a minute. ]
       Your loss. It's pretty cool. #speaker: parent
       ... In a second. #speaker: child

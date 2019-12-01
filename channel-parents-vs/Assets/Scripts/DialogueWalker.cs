@@ -80,7 +80,7 @@ public class DialogueWalker : MonoBehaviour
 
     private bool anyKey = false;
 
-    private bool printing = false; 
+    private bool printing = false;
 
     private void Start()
     {
@@ -90,7 +90,7 @@ public class DialogueWalker : MonoBehaviour
 
         choicesBox.gameObject.SetActive(false);
 
-        timeline = GameObject.Find("Timeline");
+        timeline = GameObject.Find("TimelineParkDay");
 
         timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
 
@@ -121,6 +121,24 @@ public class DialogueWalker : MonoBehaviour
         player_controller.canMove = false;
 
         RunStory();
+    }
+    
+    private void switchTimelineObject(int newTimeline)
+    {
+        switch (newTimeline)
+        {
+            case 1: //Forgive me 
+                timeline = GameObject.Find("TimelineParkDay");
+                break;
+
+            case 2:
+                timeline = GameObject.Find("TimelineBedroomOne");
+                break;
+        }
+
+        timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
+        Assert.IsNotNull(timeline);
+        Assert.IsNotNull(timeline_director);
     }
 
     private void LateUpdate()
@@ -250,6 +268,7 @@ public class DialogueWalker : MonoBehaviour
             scene_was_faded = false;
             var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
             string timeline_time = getTagWithKey("timeline:");
+            string switch_timeline = getTagWithKey("switch:");
             string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
 
@@ -266,6 +285,11 @@ public class DialogueWalker : MonoBehaviour
             if (timeline_time != null) {
                 //TODO: Make this safer
                 seconds_left = int.Parse(timeline_time.Substring(0, timeline_time.Length));
+            }
+
+            if(switch_timeline != null)
+            {
+                switchTimelineObject(int.Parse(switch_timeline.Substring(0, switch_timeline.Length)));
             }
 
             if (parent_stand == "animation: parent_stand")
@@ -328,7 +352,7 @@ public class DialogueWalker : MonoBehaviour
 
     void loadNewScene()
     {
-
+        /*
         Vector3 far = new Vector3(50, 50, 50);
         Vector3 scale = new Vector3(1, 1, 1);
         player.transform.position += far;
@@ -337,7 +361,7 @@ public class DialogueWalker : MonoBehaviour
         player.transform.localScale = scale;
         parent.transform.localScale = scale;
         friend.transform.localScale = scale;
-
+        */
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)
