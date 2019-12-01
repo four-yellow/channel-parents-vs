@@ -80,7 +80,7 @@ public class DialogueWalker : MonoBehaviour
 
     private bool anyKey = false;
 
-    private bool printing = false; 
+    private bool printing = false;
 
     private void Start()
     {
@@ -90,7 +90,7 @@ public class DialogueWalker : MonoBehaviour
 
         choicesBox.gameObject.SetActive(false);
 
-        timeline = GameObject.Find("Timeline");
+        timeline = GameObject.Find("TimelineParkDay");
 
         timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
 
@@ -121,6 +121,53 @@ public class DialogueWalker : MonoBehaviour
         player_controller.canMove = false;
 
         RunStory();
+    }
+    
+    private void switchTimelineObject(int newTimeline)
+    {
+        switch (newTimeline)
+        {
+            case 1: //Forgive me 
+                timeline = GameObject.Find("TimelineParkDay");
+                break;
+
+            case 2:
+                timeline = GameObject.Find("TimelineBedroomOne");
+                break;
+
+            case 3:
+                timeline = GameObject.Find("TimelineAboutComputer");
+                break;
+
+            case 4:
+                timeline = GameObject.Find("TimelineDinnerOne");
+                break;
+        }
+
+        timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
+        Assert.IsNotNull(timeline);
+        Assert.IsNotNull(timeline_director);
+    }
+
+    private void setTimelineFrame(int seconds)
+    {
+        timeline_director.time = seconds;
+        //timeline_director.Evaluate();
+    }
+
+    private void setPoses(string anim)
+    {
+        switch (anim)
+        {
+
+            case "animation: parent_stand":
+                parent_animator.SetBool("is_sitting", false);
+                break;
+
+            case "animation: child_stand_right":
+                player_animator.SetBool("is_sitting", false);
+                break;
+        }
     }
 
     private void LateUpdate()
@@ -248,8 +295,10 @@ public class DialogueWalker : MonoBehaviour
             text = text.Trim();
             
             scene_was_faded = false;
-            var parent_stand = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
+            var animation = story.currentTags.Find(x => x.StartsWith("animation: ", StringComparison.Ordinal));
             string timeline_time = getTagWithKey("timeline:");
+            string timeline_set = getTagWithKey("timelineset:");
+            string switch_timeline = getTagWithKey("switch:");
             string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
 
@@ -265,12 +314,24 @@ public class DialogueWalker : MonoBehaviour
 
             if (timeline_time != null) {
                 //TODO: Make this safer
+                //UNDO: Fuck that
                 seconds_left = int.Parse(timeline_time.Substring(0, timeline_time.Length));
             }
 
-            if (parent_stand == "animation: parent_stand")
+
+            if (timeline_set != null)
             {
-                parent_animator.SetBool("is_sitting", false);
+                setTimelineFrame(int.Parse(timeline_set.Substring(0, timeline_set.Length)));
+            }
+
+            if (switch_timeline != null)
+            {
+                switchTimelineObject(int.Parse(switch_timeline.Substring(0, switch_timeline.Length)));
+            }
+
+            if (animation != null)
+            {
+                setPoses(animation);
             }
 
             if (story.currentChoices.Count > 0)
@@ -328,7 +389,7 @@ public class DialogueWalker : MonoBehaviour
 
     void loadNewScene()
     {
-
+        /*
         Vector3 far = new Vector3(50, 50, 50);
         Vector3 scale = new Vector3(1, 1, 1);
         player.transform.position += far;
@@ -337,7 +398,7 @@ public class DialogueWalker : MonoBehaviour
         player.transform.localScale = scale;
         parent.transform.localScale = scale;
         friend.transform.localScale = scale;
-
+        */
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)

@@ -74,6 +74,7 @@ Because there's nothing else we can do. Come on, let's go home. #speaker: parent
 == new_computer == 
 #location: bedroom_one_no_pc
 #setting: 2
+#switch: 2
 //Kid is lying in bed, staring at the ceiling, as one does. Bedroom door is closed. 
 
 Hey, can you come here real quick? I wanna show you something. #speaker: parent #off screen #sound: knocking
@@ -82,7 +83,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = intruder_alert
 #location: bedroom_one_no_pc
 #setting: 3
-#timelime: 3
+#timeline: 5
 #fade_out #insert_parent #sound: door_opening #fade_in
 
 ...are you up? #speaker: parent 
@@ -104,7 +105,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = chilling_in_bed 
 
     + [Ignore him. ] 
-    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert}
+    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert} #speaker: parent 
     * [In a minute. ]
       Your loss. It's pretty cool. #speaker: parent
       ... In a second. #speaker: child
@@ -117,21 +118,22 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = brand_new_pc
 #location: bedroom_one_pc #fade_in
 #setting: 4
+#timelineset: 5
 ...that was quick! You know your stuff! #speaker: parent 
 I was saving up for one. #speaker: child 
 (I know.) #speaker: parent 
 Well... do you like it? #speaker: parent
 
-    * [Thanks, dad.] #speaker: child
+    * [Thanks, dad.]
         Don't worry about it. This is your birthday gift for the next few years. #speaker: parent
         You can have it back. #speaker: child 
         Cold! Hahaha! I'll let you start setting it up now. #speaker: parent
-    * [I have to try it first. ]#speaker: child
+    * [I have to try it first. ]
         ~computer_trial = true
         Oh, of course. Uhm... I'll leave you to it... #speaker: parent
  
 - Just, be responsible, okay? You're old enough to know better. And don't play on it for too long. Those screens can hurt your eyes. #speaker: parent #animation: exiting_room_stops_door
-I'll be in my room if you need me. #speaker: parent #animation: exiting_room 
+I'll be in my room if you need me. #speaker: parent #animation: exiting_room #timeline: 5
 #fade_out #fade_in 
 
 //Because the tags don't say shit, the parent now leaves the room and the child starts the computer. 
@@ -203,11 +205,10 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room
 
 #location: bedroom_one_pc
 #setting: 5
+#switch: 3
 
 Can I come in? #speaker: parent #sound: knocking
-Yeah. #speaker: child 
-
-//Parent enters the room 
+Yeah. #speaker: child #timeline: 1 #animation: child_stand_right
 
 {computer_trial: Well, is it any good? | Looks like you're having fun. } #speaker: parent 
 Yeah, it's really cool. I downloaded a game.  #speaker: child 
@@ -232,6 +233,7 @@ Come on downstairs, I ordered some chinese. #speaker: parent #animation: parent_
 == dinner_one == 
 #location: dinner_one
 #setting: 6
+#switch: 4
 #fade_in
 #pause
 
@@ -262,8 +264,8 @@ Sigh... alright. Well, how are your friends? #speaker: parent
 Alright. #speaker: child 
 And I hate that I keep saying this, but stop wasting so much time playing your games. #speaker: parent 
 ... alright. #speaker: child 
-And keep the volume down. #speaker: parent 
-(...) #speaker: child 
+And keep the volume down. #speaker: parent
+(...) #speaker: child #timeline: 3
 //Child should start walking away at this point
 {mentioned_friends: And stop talking to those weirdos online. } #speaker: parent 
 //Child is out of the room 
