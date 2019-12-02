@@ -147,6 +147,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room #ti
 
 == virtual_one ==
 #location: virtual_one
+#switch: 7
 #cblip
 //Kid-avatar should blip into existence, with a pop sound effect.
 
@@ -274,8 +275,11 @@ And... talk to me, will you? #speaker: parent #fade_out
 -> virtual_two
 
 == virtual_two == 
-
 #location: virtual_two
+#switch: 8
+#cblip
+#pause 
+#fblip
 //Kid blips into existence. Short pause, then friend blinks in.
 
 {kid_user}: yo #speaker: child_chat 
@@ -326,22 +330,24 @@ And... talk to me, will you? #speaker: parent #fade_out
 {kid_user}: take care #speaker: child_chat
 //Friend blips out here. Kid stands up
 
-(... what do I do? ) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+(... what do I do? ) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 
  * [<i> Try skipping school. </i>]
     (Worth a shot. I don't wanna go to school anyways.) #speaker: child
     -> sick_day
  * [<i> Go to school tomorrow. </i>]
-    (No, I better not. Dad would be mad. ) #speaker: child
+    (I better not skip. Dad would be mad. ) #speaker: child
     -> dinner_two
 
 == sick_day == 
 #location: bedroom
+#switch: 5
+#setting: 7
 //Kid is in bed, waiting for their father to come in 
 //The 3,2,1 should be a second apart each
 (Okay, knock in 3, 2, 1...) #speaker: child 
 //Knocking sound effect here 
-Hey, are you up? I'm coming. ##speaker: parent 
+Hey, are you up? I'm coming. #speaker: parent #timeline: 5
 //Door opens. Parent walks to bed 
 Alright kid, wake up. Time to go. #speaker: parent 
 (...) #speaker: child 
@@ -366,7 +372,7 @@ Come on, get up, or we'll both be late. #speaker: parent
 
 //Kid gets up, parent and child walk to the centerish of the room. 
 
-- Alright. After you. #speaker: parent #door #position: (0, 0) #door #position: (0,0) #fade_out 
+- Alright. After you. #speaker: parent child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41) #animation: child_stand_right
 -> sick_doors
 
 = sick_doors
@@ -378,7 +384,9 @@ Come on, get up, or we'll both be late. #speaker: parent
     -> dinner_two
 
 == dinner_two == 
-
+#location: dinner_one
+#setting: 8
+#switch: 6
 //For sounds, same as dinner_one, but quieter. 
 So... how was school today? #speaker: parent 
 Same. #speaker: child
@@ -386,7 +394,7 @@ Right, same... #speaker: parent
 Do you wanna go to the park with me? We can bring a frisbee. #speaker: parent
 I'm busy today. #speaker: child
 Oh... with what? #speaker: parent 
-Work. I guess. #speaker: child 
+Work. I guess. #speaker: child #timeline: 3
 //Sounds stop
 //Kid gets up. Walks out
 ... we haven't talked properly in a long time. #speaker: parent 
@@ -397,6 +405,7 @@ Work. I guess. #speaker: child
 == virtual_three == 
 
 #location: virtual_three
+#fblip #cblip
 //Kid blips into existence. Friend is already there. Both standing. 
 {friend_user}: you took your time #speaker: friend_chat
 {kid_user}: yeah sorry #speaker: child_chat 
@@ -423,7 +432,7 @@ Work. I guess. #speaker: child
 {kid_user}: pushing my luck here #speaker: child_chat
 {friend_user}: one more try #speaker: friend_chat
 {friend_user}: pleeeease #speaker: friend_chat
-(... should I?) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+(... should I?) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
  * [<i> Continue playing. </i>] 
     -> continue_playing
  * [<i> Head back to work. </i>] 
@@ -464,7 +473,7 @@ Every day, the same routine. I wish you'd stop playing your games. Or just play 
 (... shit, it's late.) #speaker: child 
 Get up. We're gonna sit together downstairs. I don't care if we talk or not. And this is gonna be a daily thing, besides dinner. #speaker: parent 
 Come on. After you. #speaker: parent 
-(...) #speaker: child #door #position: (0, 0) #door #position: (0, 0) 
+(...) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 -> too_much_doors
 
 = too_much_doors
@@ -550,7 +559,7 @@ We are friends. #speaker: child
 //Kid stands up here 
 I'm telling you not to go. #speaker: parent 
 ... #speaker: child 
-You never listen to me. I'm telling you not to go. This is a bad idea. #speaker: parent 
+You never listen to me. I'm telling you not to go. This is a bad idea. #speaker: parent #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 
 //Lines to add as the player moves 
 //Don't you step outside the house, kid. 

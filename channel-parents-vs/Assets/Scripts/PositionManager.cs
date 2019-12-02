@@ -103,6 +103,21 @@ public class PositionManager : MonoBehaviour
                 parent.transform.position += parent_pos;
                 break;
 
+            case 7: //Sick day
+                parent_pos = new Vector3(30f, 20f, 0f);
+                player_pos = new Vector3(-5.11f, -1.73f, 0f);
+                player_animator.SetBool("is_sleeping", true);
+                player.transform.position += player_pos;
+                parent.transform.position += parent_pos;
+                break;
+
+            case 8: //Timeskip. Second dinner. 
+                parent_pos = new Vector3(4.76f, -2.11f, 0f);
+                player_pos = new Vector3(-4.28f, -2.28f, 0f);
+                parent_animator.SetBool("is_dining", true);
+                player.transform.position += player_pos;
+                parent.transform.position += parent_pos;
+                break;
         }
 
         player_animator.Update(0);
