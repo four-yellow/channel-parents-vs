@@ -1129,6 +1129,10 @@ Transform:
   - {fileID: 1364517977}
   - {fileID: 1093249107}
   - {fileID: 175562550}
+  - {fileID: 807447412}
+  - {fileID: 1108307651}
+  - {fileID: 674297030}
+  - {fileID: 1218676692}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1212,6 +1216,66 @@ Transform:
   m_Father: {fileID: 192959102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &674297029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674297030}
+  - component: {fileID: 674297031}
+  m_Layer: 0
+  m_Name: TimelineVirtualOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &674297030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674297029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 590051974}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &674297031
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674297029}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 311ce20e0cdee964c8da61d8ad74455c, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 3
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 706330522285454621, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 3498673648718368851, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1744691710}
+  - key: {fileID: -8447613309660887437, guid: cbb3df89b2b851347b0ec10cbb05b8fb, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 9151742447411320731, guid: cbb3df89b2b851347b0ec10cbb05b8fb, type: 2}
+    value: {fileID: 1744691710}
+  - key: {fileID: 433838532473582573, guid: 308d6b24886c572478186a88d6aba4df, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4832811047960804938, guid: 308d6b24886c572478186a88d6aba4df, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &720386564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1427,66 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6757eb75ed16e40af920bae386ed4c11, type: 3}
   audioPrefab: {fileID: 475866030}
   currentAudioSources: []
+--- !u!1 &807447411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 807447412}
+  - component: {fileID: 807447413}
+  m_Layer: 0
+  m_Name: TimelineDinnerTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &807447412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807447411}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 590051974}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &807447413
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807447411}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: b297144bd3f7bed4bb50207210e2a0bf, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 3
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 706330522285454621, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 3498673648718368851, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1744691710}
+  - key: {fileID: -8447613309660887437, guid: cbb3df89b2b851347b0ec10cbb05b8fb, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 9151742447411320731, guid: cbb3df89b2b851347b0ec10cbb05b8fb, type: 2}
+    value: {fileID: 1744691710}
+  - key: {fileID: -8447613309660887437, guid: b297144bd3f7bed4bb50207210e2a0bf, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 9151742447411320731, guid: b297144bd3f7bed4bb50207210e2a0bf, type: 2}
+    value: {fileID: 1744691710}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &914213955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1623,62 @@ PlayableDirector:
     value: {fileID: 1744691710}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &1108307650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1108307651}
+  - component: {fileID: 1108307652}
+  m_Layer: 0
+  m_Name: TimelineSickDay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1108307651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108307650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 590051974}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1108307652
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108307650}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 308d6b24886c572478186a88d6aba4df, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 3
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 706330522285454621, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 3498673648718368851, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1744691710}
+  - key: {fileID: 433838532473582573, guid: 308d6b24886c572478186a88d6aba4df, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 4832811047960804938, guid: 308d6b24886c572478186a88d6aba4df, type: 2}
+    value: {fileID: 1744691710}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1218531149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,6 +1745,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1218676691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1218676692}
+  - component: {fileID: 1218676693}
+  m_Layer: 0
+  m_Name: TimelineVirtualTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1218676692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218676691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 590051974}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1218676693
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218676691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 527d2ebc3c5254a4a87bb932f87ad41c, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 3
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 706330522285454621, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 3498673648718368851, guid: 177c1a4a0a35bc547b87c5dc2a2ccd11, type: 2}
+    value: {fileID: 1744691710}
+  - key: {fileID: -8447613309660887437, guid: cbb3df89b2b851347b0ec10cbb05b8fb, type: 2}
+    value: {fileID: 1407054607}
+  - key: {fileID: 9151742447411320731, guid: cbb3df89b2b851347b0ec10cbb05b8fb, type: 2}
+    value: {fileID: 1744691710}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1267312155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,7 +2325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407054605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -1.77, z: -3.9011607}
+  m_LocalPosition: {x: -5.12, y: -1.67, z: -3.9011607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2152,7 +2388,7 @@ SpriteRenderer:
   m_SortingLayerID: -55980141
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 32b40e4ed56ebbe4aa1ec9c9d9b36b3f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8dd1306235e66fc449bb700388cff699, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2195,7 +2431,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.87, y: 4.73}
+    oldSize: {x: 6.87, y: 3}
     newSize: {x: 3.19, y: 4.86}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

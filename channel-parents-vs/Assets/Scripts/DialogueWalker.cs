@@ -142,6 +142,22 @@ public class DialogueWalker : MonoBehaviour
             case 4:
                 timeline = GameObject.Find("TimelineDinnerOne");
                 break;
+
+            case 5:
+                timeline = GameObject.Find("TimelineSickDay");
+                break;
+
+            case 6:
+                timeline = GameObject.Find("TimelineDinnerTwo");
+                break;
+
+            case 7:
+                timeline = GameObject.Find("TimelineVirtualOne");
+                break;
+
+            case 8:
+                timeline = GameObject.Find("TimelineVirtualTwo");
+                break;
         }
 
         timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
@@ -166,6 +182,8 @@ public class DialogueWalker : MonoBehaviour
 
             case "animation: child_stand_right":
                 player_animator.SetBool("is_sitting", false);
+                player_animator.SetBool("is_sleeping", false);
+                player_animator.SetBool("is_dining", false);
                 break;
         }
     }
@@ -230,8 +248,17 @@ public class DialogueWalker : MonoBehaviour
             }
         }
 
+        foreach (UnityEngine.AnimatorControllerParameter parameter in friend_animator.parameters)
+        {
+            if (parameter.type == UnityEngine.AnimatorControllerParameterType.Bool)
+            {
+                friend_animator.SetBool(parameter.name, false);
+            }
+        }
+
         player_animator.Update(0);
         parent_animator.Update(0);
+        friend_animator.Update(0);
     }
 
     string getTagWithKey(string key)
@@ -401,7 +428,6 @@ public class DialogueWalker : MonoBehaviour
 
     void loadNewScene()
     {
-        /*
         Vector3 far = new Vector3(50, 50, 50);
         Vector3 scale = new Vector3(1, 1, 1);
         player.transform.position += far;
@@ -410,7 +436,6 @@ public class DialogueWalker : MonoBehaviour
         player.transform.localScale = scale;
         parent.transform.localScale = scale;
         friend.transform.localScale = scale;
-        */
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)
