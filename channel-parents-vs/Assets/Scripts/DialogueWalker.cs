@@ -206,6 +206,11 @@ public class DialogueWalker : MonoBehaviour
             RunStory();
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EndTheGame();
+        }
+
     }
     void resetParameters()
     {
@@ -353,6 +358,13 @@ public class DialogueWalker : MonoBehaviour
         story.ChooseChoiceIndex(choice.index);
         RemoveChoices();
         RunStory();
+    }
+
+    void EndTheGame()
+    {
+        // Called by pressing the escape key for now
+        // End Game Here
+
     }
 
     void DisplayChoices()
