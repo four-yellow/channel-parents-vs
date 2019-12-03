@@ -46,6 +46,8 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private PositionManager positionsManager;
 
+    [SerializeField] private TMPro.TMP_Text enterIndicator;
+
     public Story story;
 
     public Dictionary<Flag, bool> state;
@@ -374,7 +376,11 @@ public class DialogueWalker : MonoBehaviour
             if (story.currentChoices.Count > 0)
             {
                 choicesAvailable = true;
+                enterIndicator.gameObject.SetActive(false);
                 //DisplayChoices();
+            }else
+            {
+                enterIndicator.gameObject.SetActive(true);
             }
             var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
             Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
@@ -414,7 +420,6 @@ public class DialogueWalker : MonoBehaviour
             player_controller.canMove = true;
             for (int i = 0; i < story.currentChoices.Count; i++)
             {
-                
                 String text = story.currentChoices[i].text.Trim();
                 String pos = story.currentTags.Find(x => x.StartsWith("door"+(i+1)+"pos", StringComparison.Ordinal));
                 float xpos = float.Parse(pos.Remove(pos.IndexOf(',')).Substring(pos.IndexOf('(')+1));
@@ -425,6 +430,7 @@ public class DialogueWalker : MonoBehaviour
         }
         else
         {
+            Button firstbutton = null;
             for (int i = 0; i < story.currentChoices.Count; i++)
             {
                 Choice choice = story.currentChoices[i];
@@ -433,8 +439,13 @@ public class DialogueWalker : MonoBehaviour
                 button.onClick.AddListener(delegate {
                     OnClickChoiceButton(choice);
                 });
+                if (i == 0)
+                {
+                    firstbutton = button;
+                }
             }
             choicesBox.gameObject.SetActive(true);
+            firstbutton.Select();
         }
     }
 
