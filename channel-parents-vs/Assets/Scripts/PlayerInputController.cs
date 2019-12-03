@@ -12,7 +12,7 @@ public class PlayerInputController : MonoBehaviour
 
     public float speed = 5.0f;
 
-    private DoorScript currentDoor;
+    public int currentDoor;
 
     private Animator animator;
 
@@ -30,12 +30,24 @@ public class PlayerInputController : MonoBehaviour
     {
         if (!canMove) return;
 
+        if (this.transform.position.x < -5)
+        {
+            currentDoor = 0;
+        }
+        else if (this.transform.position.x > 5)
+        {
+            currentDoor = 1;
+        }else
+        {
+            currentDoor = -1;
+        }
+
         if (!Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKeyUp(KeyCode.RightArrow))
         {
             animator.SetBool("is_walking", false);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && this.transform.position.x > -8)
         {
             if (!animator.GetBool("is_sleeping"))
             {
@@ -46,7 +58,7 @@ public class PlayerInputController : MonoBehaviour
                 animator.SetBool("pointing_right", false);
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && this.transform.position.x < 8)
         {
             if (!animator.GetBool("is_sleeping"))
             {
@@ -57,10 +69,10 @@ public class PlayerInputController : MonoBehaviour
                 animator.SetBool("pointing_right", true);
             }
         }
-        if (Input.GetKey(KeyCode.UpArrow) && currentDoor != null && canDoor)
+        if (Input.GetKey(KeyCode.UpArrow) && currentDoor != -1 && canDoor)
         {
-            currentDoor.setDoorOpen();
-            currentDoor = null;
+            GameObject.Find("DialogueWalkerObject").GetComponent<DialogueWalker>().chooseDoor(currentDoor);
+            currentDoor = -1;
             canDoor = false;
         }
 
@@ -69,14 +81,4 @@ public class PlayerInputController : MonoBehaviour
         translate_by = Vector3.zero;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        DoorScript other = (DoorScript)collision.gameObject.GetComponent(typeof(DoorScript));
-        currentDoor = other;
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        //DoorScript other = (DoorScript)collision.gameObject.GetComponent(typeof(DoorScript));
-        currentDoor = null;
-    }
 }
