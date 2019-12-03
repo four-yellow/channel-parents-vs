@@ -82,6 +82,9 @@ public class DialogueWalker : MonoBehaviour
 
     private bool printing = false;
 
+    private bool choicesAvailable = false;
+    private bool doorsActive = false;
+
     private void Start()
     {
         state = new Dictionary<Flag, bool>();
@@ -299,6 +302,8 @@ public class DialogueWalker : MonoBehaviour
         print("runstory called");
         print(story.canContinue);
         print(story.currentErrors);
+
+        // story.canContinue is false if choice needs to be made
         if (story.canContinue || scene_was_faded)
         {
             string text = current_text;
@@ -368,7 +373,8 @@ public class DialogueWalker : MonoBehaviour
 
             if (story.currentChoices.Count > 0)
             {
-                DisplayChoices();
+                choicesAvailable = true;
+                //DisplayChoices();
             }
             var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
             Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
@@ -447,6 +453,7 @@ public class DialogueWalker : MonoBehaviour
 
     void RemoveChoices()
     {
+        choicesAvailable = false;
         int childCount = choicesBox.transform.childCount;
         for (int i = childCount - 1; i >= 0; --i)
         {
@@ -484,6 +491,7 @@ public class DialogueWalker : MonoBehaviour
         print("chose door at index:");
         print(index);
         story.ChooseChoiceIndex(index);
+        choicesAvailable = false;
         RunStory();
     }
 
@@ -525,6 +533,10 @@ public class DialogueWalker : MonoBehaviour
                     enterDown = false;
                     text.text = line;
                     text.maxVisibleCharacters = line.Length;
+                    if (choicesAvailable)
+                    {
+                        DisplayChoices();
+                    }
                     yield break;
                 }
 
@@ -542,6 +554,10 @@ public class DialogueWalker : MonoBehaviour
             text.maxVisibleCharacters++;
         }
         printing = false;
+        if (choicesAvailable)
+        {
+            DisplayChoices();
+        }
 
     }
 }
