@@ -402,9 +402,16 @@ public class DialogueWalker : MonoBehaviour
 
     void DisplayChoices()
     {
-        if (story.currentTags.Contains("door"))
+        if (doorsActive)
         {
             player_controller.canDoor = true;
+            player_controller.canMove = true;
+        }
+        else if (story.currentTags.Contains("door"))
+        {
+            doorsActive = true;
+            player_controller.canDoor = true;
+            player_controller.canMove = true;
             for (int i = 0; i < story.currentChoices.Count; i++)
             {
                 
@@ -415,7 +422,6 @@ public class DialogueWalker : MonoBehaviour
 
                 GameObject door = CreateDoorObject(text, xpos, ypos, i);
             }
-            player_controller.canMove = true;
         }
         else
         {
@@ -449,6 +455,10 @@ public class DialogueWalker : MonoBehaviour
             positionsManager.setTheScene(int.Parse(setting_number.Substring(0, setting_number.Length)));
         }
         tmpTextPrefab.text = "";
+        doorsActive = false;
+        choicesAvailable = false;
+        player_controller.canDoor = false;
+        player_controller.canMove = false;
     }
 
     void RemoveChoices()
