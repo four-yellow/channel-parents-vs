@@ -93,7 +93,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
     Then why didn't you say so...? #speaker: parent 
     I was working. #speaker: child #pause: 3.0
     Right... well, come help me set this thing up. You know about these things more than me. #speaker: parent #off screen #sound: building #animation: child_walking_towards_door #fade_out
-    * Ignore him. 
+    * [Ignore him.]
     Sigh... and I was looking forward to this. Sleep well, kid. We'll set up your computer later. #speaker: parent #animation: parent_walking_out
     I'm up. #speaker: child #animation: child_sits_up #animation: parent_stops_mid_walk #pause: 3.0
     Well... there goes the surprise. #speaker: parent #animation: parent_turns_around 
@@ -311,7 +311,7 @@ And I hate that I keep saying this, but stop wasting so much time playing your g
 And keep the volume down. #speaker: parent
 (...) #speaker: child #timeline: 3
 //Child should start walking away at this point
-{mentioned_friends: And stop talking to those weirdos online. } #speaker: parent 
+{mentioned_friends: And stop talking to those weirdos online. | ... } #speaker: parent 
 //Child is out of the room 
 And... talk to me, will you? #speaker: parent #fade_out
 
@@ -409,7 +409,7 @@ Come on, get up, or we'll both be late. #speaker: parent
     I'm really - #speaker: child
     Stop. Just... don't. C'mon, let's go. #speaker: parent 
     (...sigh) #speaker: child. 
-    -> Lie 
+    -> Lie
     
     * I'm getting up. #speaker: child 
 
@@ -420,7 +420,7 @@ Come on, get up, or we'll both be late. #speaker: parent
 
 = sick_doors
 
- * [<i> Go back to sleep. </i>]
+ + [<i> Go back to sleep. </i>]
     Nope, don't even try. Let's go. #speaker: parent 
     -> sick_doors
  * [<i> Go to school. </i>]
@@ -520,7 +520,7 @@ Come on. After you. #speaker: parent
 -> too_much_doors
 
 = too_much_doors
- * [<i> Continue playing. </i>] 
+ + [<i> Continue playing. </i>] 
     Don't even think about it. #speaker: parent
     -> too_much_doors
  * [<i> Head back to work. </i>] 
