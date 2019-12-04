@@ -105,7 +105,50 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 = chilling_in_bed 
 
     + [Ignore him. ] 
-    {Come on, I know you can hear me. ->chilling_in_bed | Hello? Are you in there? ->chilling_in_bed| C'mon, you really wanna do this? ->chilling_in_bed| I'm coming in. -> intruder_alert} #speaker: parent 
+      Come on, I know you can hear me.  #speaker: parent 
+      ->chilling_in_bed2
+    * [In a minute. ]
+      Your loss. It's pretty cool. #speaker: parent
+      ... In a second. #speaker: child
+    * [Coming. ]
+ 
+- There's a good kid. You're gonna have to help me set it up, though... #speaker: parent #off screen #sound: building_pc #animation: child_walking_towards_door #fade_out
+
+->brand_new_pc
+
+= chilling_in_bed2
+
+    + [Ignore him. ] 
+      Hello? Are you in there? #speaker: parent 
+      ->chilling_in_bed3
+    * [In a minute. ]
+      Your loss. It's pretty cool. #speaker: parent
+      ... In a second. #speaker: child
+    * [Coming. ]
+ 
+- There's a good kid. You're gonna have to help me set it up, though... #speaker: parent #off screen #sound: building_pc #animation: child_walking_towards_door #fade_out
+
+->brand_new_pc
+
+= chilling_in_bed3
+
+    + [Ignore him. ] 
+      C'mon, you really wanna do this? #speaker: parent 
+      ->chilling_in_bed4
+    * [In a minute. ]
+      Your loss. It's pretty cool. #speaker: parent
+      ... In a second. #speaker: child
+    * [Coming. ]
+ 
+- There's a good kid. You're gonna have to help me set it up, though... #speaker: parent #off screen #sound: building_pc #animation: child_walking_towards_door #fade_out
+
+->brand_new_pc
+
+= chilling_in_bed4
+
+    + [Ignore him. ] 
+      I'm coming in. #speaker: parent 
+      -> intruder_alert
     * [In a minute. ]
       Your loss. It's pretty cool. #speaker: parent
       ... In a second. #speaker: child
