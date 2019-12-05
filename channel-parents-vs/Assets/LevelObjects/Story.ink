@@ -641,6 +641,9 @@ Oh...! #speaker: child
     Hey! #speaker: friend
 }
 Hey. #speaker: child 
+//What is wrong with me
+... #speaker: friend 
+... #speaker: child
 ->end_game
 
 = meet_icecream
