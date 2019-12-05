@@ -149,6 +149,8 @@ public class PositionManager : MonoBehaviour
                 break;
 
             case 11: //Virtual Three
+                player_animator.SetInteger("grown_up", 1);
+                friend_animator.SetInteger("grown_up", 1);
                 parent_pos = new Vector3(50f, 50f, 0f);
                 player_pos = new Vector3(50f, 50f, 0f);
                 friend_pos = new Vector3(0.05f, -3.31f, 0);

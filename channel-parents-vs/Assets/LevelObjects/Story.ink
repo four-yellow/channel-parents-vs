@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->dinner_one  
+->virtual_three   
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -459,7 +459,8 @@ Work. I guess. #speaker: child #timeline: 3
 {friend_user}: yeah no worries #speaker: friend_chat
 {friend_user}: well, shall we? #speaker: friend_chat
 {kid_user}: mhm, lets go #speaker: child_chat 
-# fade_out
+#location: virtual_two
+#setting: 10
 // Some time later, the two walk in the screen from the left. 
 {friend_user}: nothing again #speaker: friend_chat
 {friend_user}: sigh #speaker: friend_chat
@@ -489,10 +490,9 @@ Work. I guess. #speaker: child #timeline: 3
 {kid_user}: sigh #speaker: child_chat
 {kid_user}: alright #speaker: child_chat
 {kid_user}: one more game #speaker: child_chat
-#fade_out 
-Five games later
-#fade_in
-{friend_user}: okay this really is the last one  #speaker: friend_chat
+#location: virtual_two
+#setting: 10 
+{friend_user}: okay this really is the last try  #speaker: friend_chat
 {kid_user}: heard that one before  #speaker: child_chat
 {friend_user}: i think ive figured out how to beat the boss, for real this time  #speaker: friend_chat #sudden_out
 //While the above sentence is typing, the screen should cut off suddenly
