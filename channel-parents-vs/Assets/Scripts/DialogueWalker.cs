@@ -16,6 +16,9 @@ public class DiagloueConfig : ScriptableObject
     [SerializeField] public float inter_char_time = .05f;
     [SerializeField] public float scene_fade_duration = 1.5f;
     [SerializeField] public float scene_fade_pause = 1f;
+    [SerializeField] public Color child_color = new Color(1f, 0.6704713f, 0.5424528f);
+    [SerializeField] public Color parent_color = new Color(1f, 0.9144362f, 0.8160377f);
+    [SerializeField] public Color friend_color = new Color(82f / 255f, 164f / 255f, 1f);
 }
 
 public class DialogueWalker : MonoBehaviour
@@ -416,7 +419,7 @@ public class DialogueWalker : MonoBehaviour
     {
         // Called by pressing the escape key for now
         // End Game Here
-
+        print("End of Game");
     }
 
     void DisplayChoices()
@@ -524,8 +527,6 @@ public class DialogueWalker : MonoBehaviour
     public void chooseDoor(int index)
     {
         player_controller.canDoor = false;
-        print("chose door at index:");
-        print(index);
         story.ChooseChoiceIndex(index);
         choicesAvailable = false;
         RunStory();
@@ -543,16 +544,13 @@ public class DialogueWalker : MonoBehaviour
         text.text = "";
         if (speaker == Speaker.parent)
         {
-            //text.color = new Color(0.5583683f, 1f, 0.5424528f);
-            text.color = new Color(1f, 0.9144362f, 0.8160377f);
+            text.color = config.parent_color;
         }else if (speaker == Speaker.friend)
         {
-            text.color = new Color(82f/255f, 164f/255f, 1f);
-            //text.color = Color.cyan;
+            text.color = config.friend_color;
         } else
         {
-            //text.color = new Color(0.5411765f, 1f, 0.9965637f);
-            text.color = new Color(1f, 0.6704713f, 0.5424528f);
+            text.color = config.child_color;
         }
         text.maxVisibleCharacters = 0;
         string[] words = line.Split(' ');
