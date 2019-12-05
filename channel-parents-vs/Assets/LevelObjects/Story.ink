@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->icecream_scene
+->virtual_three  
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -320,7 +320,7 @@ And... talk to me, will you? #speaker: parent #fade_out
 == virtual_two == 
 #location: virtual_two
 #switch: 8
-#cblip
+#setting: 9
 #pause 
 #fblip
 //Kid blips into existence. Short pause, then friend blinks in.
@@ -344,8 +344,9 @@ And... talk to me, will you? #speaker: parent #fade_out
 {friend_user}: wanna hear about it? #speaker: friend_chat
 {kid_user}: sure, tell me everything #speaker: child_chat 
 {friend_user}: yes! #speaker: friend_chat
-{friend_user}: so i went to the con i told you about earlier... #speaker: friend_chat #fade_out
-... #fade_in
+{friend_user}: so i went to the con i told you about earlier... #speaker: friend_cha
+#location: virtual_two
+#setting: 10
 {friend_user}: ... and then i went home. #speaker: friend_chat
 {kid_user}: ... #speaker: child_chat
 {kid_user}: that uh, wasnt really funny #speaker: child_chat
@@ -370,7 +371,7 @@ And... talk to me, will you? #speaker: parent #fade_out
 {friend_user}: guess ill know if you log in  #speaker: friend_chat
 {friend_user}: anyways i gotta go  #speaker: friend_chat
 {friend_user}: see ya  #speaker: friend_chat
-{kid_user}: take care #speaker: child_chat
+{kid_user}: take care #speaker: child_chat #funblip
 //Friend blips out here. Kid stands up
 
 (... what do I do? ) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
@@ -448,7 +449,8 @@ Work. I guess. #speaker: child #timeline: 3
 == virtual_three == 
 
 #location: virtual_three
-#fblip #cblip
+#setting: 11
+#cblip
 //Kid blips into existence. Friend is already there. Both standing. 
 {friend_user}: you took your time #speaker: friend_chat
 {kid_user}: yeah sorry #speaker: child_chat 

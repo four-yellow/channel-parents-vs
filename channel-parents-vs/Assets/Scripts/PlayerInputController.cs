@@ -37,7 +37,8 @@ public class PlayerInputController : MonoBehaviour
         else if (this.transform.position.x > 5)
         {
             currentDoor = 1;
-        }else
+        }
+        else
         {
             currentDoor = -1;
         }

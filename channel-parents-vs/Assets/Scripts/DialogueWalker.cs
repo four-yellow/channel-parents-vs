@@ -297,6 +297,13 @@ public class DialogueWalker : MonoBehaviour
         friend.transform.localScale = new Vector3(8, 8, 1);
     }
 
+    void unblipFriendFromExistence()
+    {
+        Vector3 friend_pos = new Vector3(100f, 100f, 0);
+        friend.transform.position += friend_pos;
+        friend.transform.localScale = new Vector3(1, 1, 1);
+    }
+
     public void RunStory()
     {
         //StackTrace st = new StackTrace();
@@ -340,6 +347,7 @@ public class DialogueWalker : MonoBehaviour
             string switch_timeline = getTagWithKey("switch:");
             string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
+            string funblip = story.currentTags.Find(x => x.StartsWith("funblip", StringComparison.Ordinal));
 
             if (cblip != null)
             {
@@ -349,6 +357,11 @@ public class DialogueWalker : MonoBehaviour
             if (fblip != null)
             {
                 blipFriendIntoExistence();
+            }
+
+            if(funblip != null)
+            {
+                unblipFriendFromExistence();
             }
 
             if (timeline_time != null) {
