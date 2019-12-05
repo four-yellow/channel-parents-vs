@@ -345,7 +345,7 @@ And... talk to me, will you? #speaker: parent #fade_out
 {friend_user}: wanna hear about it? #speaker: friend_chat
 {kid_user}: sure, tell me everything #speaker: child_chat 
 {friend_user}: yes! #speaker: friend_chat
-{friend_user}: so i went to the con i told you about earlier... #speaker: friend_cha
+{friend_user}: so i went to the con i told you about earlier... #speaker: friend_chat
 #location: virtual_two
 #setting: 10
 {friend_user}: ... and then i went home. #speaker: friend_chat
@@ -611,5 +611,66 @@ You never listen to me. I'm telling you not to go. This is a bad idea. #speaker:
 //Don't you step outside the house, kid. 
 //Don't take another step. 
 //Blah blah blah 
+
+ + [<i> Head out. </i>]
+    -> park_night_end
+ * [<i> Stay at home. </i>] 
+    -> virtual_end
+    
+= park_night_end
+
+~ temp dice_roll = RANDOM(1, 100) 
+{ dice_roll >= 5:
+    ->meet_friend
+- else:
+    ->meet_icecream
+}
+
+= meet_friend 
+Late... #speaker: child 
+Where are they? #speaker: child 
+Oh...! #speaker: child 
+//Friend walks in here from the right of the screen. 
+... #speaker: friend 
+... #speaker: child 
+//While waving
+{raphael:
+    Raphael? #speaker: friend
+    (...Just go with it.)
+- else: 
+    Hey! #speaker: friend
+}
+Hey. #speaker: child 
+->end_game
+
+= meet_icecream
+#location: park_night
+#setting: 6546
+#switch: 63
+
+#pause 
+Late... #speaker: child 
+Where are they? #speaker: child 
+... #speaker: child 
+Guess I'll wait a bit more. #speaker: child
+//peek out and music around here
+-> end_game
+
+
+= virtual_end
+#location: virtual_three
+#setting: 14
+#cblip
+//No music for this scene
+{kid_user}: been a while since you last came online... #speaker: child_chat 
+{kid_user}: where did you go? #speaker: child_chat 
+{kid_user}: ... #speaker: child_chat 
+{kid_user}: i miss you #speaker: child_chat 
+{kid_user}: ... #speaker: child_chat 
+{kid_user}: ... #speaker: child_chat
+#cunblip
+->end_game
+
+== end_game == 
 
 ->END

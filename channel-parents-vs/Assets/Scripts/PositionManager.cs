@@ -152,7 +152,7 @@ public class PositionManager : MonoBehaviour
                 parent_pos = new Vector3(50f, 50f, 0f);
                 player_pos = new Vector3(50f, 50f, 0f);
                 friend_pos = new Vector3(0.05f, -3.31f, 0);
-                friend.transform.localScale = new Vector3(8, 8, 1);
+                friend.transform.localScale = new Vector3(4, 4, 1);
                 player_animator.SetBool("is_virtual", true);
                 break;
         }
