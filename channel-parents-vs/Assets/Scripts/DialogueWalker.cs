@@ -282,7 +282,7 @@ public class DialogueWalker : MonoBehaviour
         player_animator.SetBool("is_virtual", true);
         Vector3 player_pos = new Vector3(3.24f, -3.31f, 0);
         player.transform.position += player_pos;
-        player.transform.localScale = new Vector3(8, 8, 1);
+        player.transform.localScale = (player_animator.GetInteger("grown_up") == 0) ? new Vector3(8, 8, 1) : new Vector3(5, 5, 1);
     }
 
     void blipFriendIntoExistence()
@@ -294,7 +294,7 @@ public class DialogueWalker : MonoBehaviour
         friend.transform.position += friend_zero;
         Vector3 friend_pos = new Vector3(0.05f, -3.31f, 0);
         friend.transform.position += friend_pos;
-        friend.transform.localScale = new Vector3(8, 8, 1);
+        friend.transform.localScale = (friend_animator.GetInteger("grown_up") == 0) ? new Vector3(8, 8, 1) : new Vector3(4, 4, 1);
     }
 
     void unblipFriendFromExistence()
@@ -464,6 +464,7 @@ public class DialogueWalker : MonoBehaviour
 
     void loadNewScene()
     {
+        /*
         Vector3 far = new Vector3(50, 50, 50);
         Vector3 scale = new Vector3(1, 1, 1);
         player.transform.position += far;
@@ -472,6 +473,7 @@ public class DialogueWalker : MonoBehaviour
         player.transform.localScale = scale;
         parent.transform.localScale = scale;
         friend.transform.localScale = scale;
+        */
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)

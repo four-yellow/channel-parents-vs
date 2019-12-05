@@ -110,6 +110,7 @@ public class PositionManager : MonoBehaviour
 
             case 6: //Timeskip. First dinner. 
                 player_animator.SetInteger("grown_up", 1);
+                friend_animator.SetInteger("grown_up", 1);
                 parent_pos = new Vector3(4.76f, -2.11f, 0f);
                 player_pos = new Vector3(-4.28f, -2.28f, 0f);
                 friend_pos = new Vector3(50f, 50f, 0f);
@@ -134,16 +135,16 @@ public class PositionManager : MonoBehaviour
                 parent_pos = new Vector3(50f, 50f, 0f);
                 player_pos = new Vector3(3.24f, -3.31f, 0);
                 friend_pos = new Vector3(50f, 50f, 0f);
-                player.transform.localScale = new Vector3(8, 8, 1);
+                player.transform.localScale = new Vector3(5, 5, 1);
                 player_animator.SetBool("is_virtual", true);
                 break;
 
-            case 10: //Virtual Two, after fade in 
+            case 10: //Neutral standing position
                 parent_pos = new Vector3(50f, 50f, 0f);
                 player_pos = new Vector3(3.24f, -3.31f, 0);
                 friend_pos = new Vector3(0.05f, -3.31f, 0);
-                player.transform.localScale = new Vector3(8, 8, 1);
-                friend.transform.localScale = new Vector3(8, 8, 1);
+                player.transform.localScale = (player_animator.GetInteger("grown_up") == 0) ? new Vector3(8, 8, 1) : new Vector3(5, 5, 1);
+                friend.transform.localScale = (friend_animator.GetInteger("grown_up") == 0) ? new Vector3(8, 8, 1) : new Vector3(4, 4, 1);
                 player_animator.SetBool("is_virtual", true);
                 break;
 

@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->icecream_scene  
+->dinner_one  
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -184,7 +184,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room #ti
 (...) #speaker: child 
 (...) #speaker: child 
 (...) #speaker: child 
-(I guess the game everyone's playing. Let's download it...) #speaker: child #fade_out
+(I guess that game everyone's playing. Let's download it...) #speaker: child #fade_out
 
 -> virtual_one
 
@@ -210,7 +210,8 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room #ti
 {kid_user}: thanks :) #speaker: child_chat
 {friend_user}: Now, where to start... #speaker: friend_chat #fade_out #animation: friend_sit
  
-//Fade out, to explain the game and shit...
+#location: virtual_one
+#setting: 10
 
 {friend_user}: ...and thats pretty much it! #speaker: friend_chat #fade_in
 {kid_user}: I didn't really get much of that... #spaker: child_chat 
@@ -270,7 +271,7 @@ What did I say about being responsible? #speaker: parent
 
 - Doesn't matter. You don't really know who you're talking to. You gotta be careful. #speaker: parent
 (...) #speaker: child 
-Come on downstairs, I ordered some chinese. #speaker: parent #animation: parent_walking_out #fade_out
+Come on, let's head downstairs. #speaker: parent #animation: parent_walking_out #fade_out
 
 -> dinner_one 
 
