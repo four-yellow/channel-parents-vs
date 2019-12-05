@@ -29,6 +29,16 @@ public class BackgroundManager : MonoBehaviour
 
     public List<AudioSource> currentAudioSources;
 
+    public CanvasRenderer RealDialogueBox;
+    public CanvasRenderer VirtualDialogueBox;
+
+    public WorldType currentWorldType = WorldType.Real;
+
+    public enum WorldType
+    {
+        Real, Virtual
+    }
+
     public void setBackground(System.String name)
     {
         disableAll();
@@ -37,41 +47,50 @@ public class BackgroundManager : MonoBehaviour
             case "park_day":
                 ParkDay.enabled = true;
                 playAudioForScene(ParkDaySounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "IceCream2":
                 ParkNight.enabled = true;
                 playAudioForScene(ParkNightSounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "bedroom_one_no_pc":
                 BedroomNoPC.enabled = true;
                 playAudioForScene(BedroomNoPCSounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "bedroom_one_pc":
                 Bedroom1.enabled = true;
                 playAudioForScene(Bedroom1Sounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "Bedroom2":
                 Bedroom2.enabled = true;
                 playAudioForScene(Bedroom1Sounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "bedroom":
             case "bedroom_unplugged":
                 Bedroom3.enabled = true;
                 playAudioForScene(BedroomNoPCSounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "dinner_one":
                 Dinner1.enabled = true;
                 playAudioForScene(Dinner1Sounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "dinner_three":
                 Dinner3.enabled = true;
                 playAudioForScene(Dinner1Sounds);
+                setDialogueBox(WorldType.Real);
                 break;
             case "virtual_one":
             case "virtual_two":
             case "virtual_three":
                 VirtualWorld.enabled = true;
                 playAudioForScene(VirtualWorldSounds);
+                setDialogueBox(WorldType.Virtual);
                 break;
             default:
                 break;
@@ -129,6 +148,9 @@ public class BackgroundManager : MonoBehaviour
         BedroomNoPC.enabled = false;
         VirtualWorld.enabled = false;
 
+        RealDialogueBox.gameObject.SetActive(false);
+        VirtualDialogueBox.gameObject.SetActive(false);
+
         foreach(AudioSource s in currentAudioSources)
         {
             s.Pause();
@@ -146,6 +168,19 @@ public class BackgroundManager : MonoBehaviour
             src.loop = true;
             src.Play();
             currentAudioSources.Add(src);
+        }
+    }
+
+    public void setDialogueBox(WorldType world)
+    {
+        currentWorldType = world;
+        if (world == WorldType.Real)
+        {
+            RealDialogueBox.gameObject.SetActive(true);
+        }
+        else
+        {
+            VirtualDialogueBox.gameObject.SetActive(true);
         }
     }
 }

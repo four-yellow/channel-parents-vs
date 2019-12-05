@@ -51,6 +51,9 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private TMPro.TMP_Text enterIndicator;
 
+    [SerializeField] private VerticalLayoutGroup VirtualChatBox;
+    [SerializeField] private TMPro.TMP_Text VirtualTextPrefab;
+
     public Story story;
 
     public Dictionary<Flag, bool> state;
@@ -403,8 +406,18 @@ public class DialogueWalker : MonoBehaviour
                                 speakertag == "speaker: parent_thoughts" ? Speaker.parent :
                                 speakertag == "speaker: friend_chat" ? Speaker.friend :
                                 Speaker.child;
-            StartCoroutine(TypewriterText(tmpTextPrefab,
-                text, speaker));
+            if (backgroundManager.currentWorldType == BackgroundManager.WorldType.Real)
+            {
+                StartCoroutine(TypewriterText(tmpTextPrefab, text, speaker));
+            }
+            else
+            {
+                TMPro.TMP_Text newline = Instantiate(VirtualTextPrefab);
+                newline.transform.SetParent(VirtualChatBox.transform, false);
+                newline.transform.SetAsLastSibling();
+                VirtualChatBox.CalculateLayoutInputVertical();
+                StartCoroutine(TypewriterText(newline, text, speaker));
+            }
         }
     }
 
@@ -477,6 +490,7 @@ public class DialogueWalker : MonoBehaviour
         parent.transform.localScale = scale;
         friend.transform.localScale = scale;
         */
+        RemoveVirtualChat();
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)
@@ -499,6 +513,15 @@ public class DialogueWalker : MonoBehaviour
             Destroy(choicesBox.transform.GetChild(i).gameObject);
         }
         choicesBox.gameObject.SetActive(false);
+    }
+
+    void RemoveVirtualChat()
+    {
+        int childCount = VirtualChatBox.transform.childCount;
+        for (int i = childCount - 1; i >= 0; --i)
+        {
+            Destroy(VirtualChatBox.transform.GetChild(i).gameObject);
+        }
     }
 
     GameObject CreateDoorObject(string text, float x, float y, int choiceIndex)
