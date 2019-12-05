@@ -191,6 +191,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room #ti
 == virtual_one ==
 #location: virtual_one
 #switch: 7
+#setting: 12
 #cblip
 //Kid-avatar should blip into existence, with a pop sound effect.
 
