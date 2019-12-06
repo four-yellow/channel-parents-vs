@@ -148,6 +148,7 @@ public class BackgroundManager : MonoBehaviour
         Bedroom1.enabled = false;
         Bedroom2.enabled = false;
         Bedroom3.enabled = false;
+        Bedroom4.enabled = false;
         Dinner1.enabled = false;
         Dinner2.enabled = false;
         Dinner3.enabled = false;

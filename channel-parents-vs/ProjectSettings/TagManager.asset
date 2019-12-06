@@ -47,6 +47,9 @@ TagManager:
   - name: VirtualText Box
     uniqueID: 1692836491
     locked: 0
+  - name: DoorFadeBackground
+    uniqueID: 3841792097
+    locked: 0
   - name: Doors
     uniqueID: 38381065
     locked: 0

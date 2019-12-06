@@ -41,6 +41,8 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private GameObject doorPrefab;
 
+    [SerializeField] private GameObject virtualDoorPrefab;
+
     [SerializeField] private VerticalLayoutGroup choicesBox;
 
     [SerializeField] private Animator childAnimator;
@@ -55,6 +57,10 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private VerticalLayoutGroup VirtualChatBox;
     [SerializeField] private TMPro.TMP_Text VirtualTextPrefab;
+
+    [SerializeField] private SpriteRenderer doorFadeBackground;
+
+    [SerializeField] private AudioClip doorOpenSound;
 
     public Story story;
 
@@ -126,6 +132,7 @@ public class DialogueWalker : MonoBehaviour
 
         friend_animator = friend.GetComponent(typeof(Animator)) as Animator;
 
+        doorFadeBackground.color = new Color(0f, 0f, 0f, 0f);
 
         Assert.IsNotNull(timeline);
         Assert.IsNotNull(timeline_director);
@@ -513,6 +520,7 @@ public class DialogueWalker : MonoBehaviour
         else if (story.currentTags.Contains("door"))
         {
             doorsActive = true;
+            StartCoroutine(FadeInDoorBackground(1f,1f,null));
             player_controller.canDoor = true;
             player_controller.canMove = true;
             for (int i = 0; i < story.currentChoices.Count; i++)
@@ -596,7 +604,9 @@ public class DialogueWalker : MonoBehaviour
 
     GameObject CreateDoorObject(string text, float x, float y, int choiceIndex)
     {
-        GameObject door = Instantiate(doorPrefab);
+        GameObject door = (backgroundManager.currentWorldType == BackgroundManager.WorldType.Real) ?
+                            Instantiate(doorPrefab) :
+                            Instantiate(doorPrefab); //for virtual door here
         door.transform.position = new Vector3(x, y, 0);
         door.GetComponentInChildren<TMPro.TMP_Text>().text = text;
         door.GetComponent<DoorScript>().choiceIndex = choiceIndex;
@@ -622,7 +632,65 @@ public class DialogueWalker : MonoBehaviour
         player_controller.canDoor = false;
         story.ChooseChoiceIndex(index);
         choicesAvailable = false;
+        StartCoroutine(removeDoorsVirtual());
+        StartCoroutine(FadeOutDoorBackground(1f, 1f, null));
         RunStory();
+    }
+
+    public IEnumerator FadeInDoorBackground(float fade_time, float pause_time, Action callback)
+    {
+        float target_alpha = 0.7f;
+        Color color = doorFadeBackground.color;
+        float start_a = color.a;
+        float t = 0;
+        
+        while (t < fade_time)
+        {
+            t += Time.deltaTime;
+            float blend = Mathf.Clamp01(t / fade_time);
+
+            color.a = Mathf.Lerp(start_a, target_alpha, blend);
+            doorFadeBackground.color = color;
+            yield return null;
+        }
+        callback.Invoke();
+    }
+    public IEnumerator FadeOutDoorBackground(float fade_time, float pause_time, Action callback)
+    {
+        float target_alpha = 0f;
+        Color color = doorFadeBackground.color;
+        float start_a = color.a;
+        float t = 0;
+
+        while (t < fade_time)
+        {
+            t += Time.deltaTime;
+            float blend = Mathf.Clamp01(t / fade_time);
+
+            color.a = Mathf.Lerp(start_a, target_alpha, blend);
+            doorFadeBackground.color = color;
+            yield return null;
+        }
+        callback.Invoke();
+    }
+
+    public IEnumerator removeDoorsVirtual()
+    {
+        if (backgroundManager.currentWorldType == BackgroundManager.WorldType.Virtual)
+        {
+            player_controller.canMove = false;
+            AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+            src.PlayOneShot(doorOpenSound);
+            StartCoroutine(KillAudio(src));
+
+            yield return new WaitForSeconds(.6f);
+
+            DoorScript[] doors = FindObjectsOfType<DoorScript>();
+            foreach (DoorScript d in doors)
+            {
+                Destroy(d.gameObject);
+            }
+        }
     }
 
     IEnumerator KillAudio(AudioSource audioSource)
