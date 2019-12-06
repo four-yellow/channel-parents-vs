@@ -88,7 +88,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 ...are you up? #speaker: parent 
 
-    * [Yes.] #speaker: child 
+    * [Yes.]
     ~ independence_meter += 0.05
     Then why didn't you say so...? #speaker: parent 
     I was working. #speaker: child #pause: 3.0
@@ -105,7 +105,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = chilling_in_bed 
 
-    + [Ignore him. ] 
+    + [Ignore him. ]
       Come on, I know you can hear me.  #speaker: parent 
       ->chilling_in_bed2
     * [In a minute. ]
@@ -119,7 +119,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = chilling_in_bed2
 
-    + [Ignore him. ] 
+    + [Ignore him. ]
       Hello? Are you in there? #speaker: parent 
       ->chilling_in_bed3
     * [In a minute. ]
@@ -133,7 +133,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = chilling_in_bed3
 
-    + [Ignore him. ] 
+    + [Ignore him. ]
       C'mon, you really wanna do this? #speaker: parent 
       ->chilling_in_bed4
     * [In a minute. ]
@@ -147,7 +147,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
 
 = chilling_in_bed4
 
-    + [Ignore him. ] 
+    + [Ignore him. ]
       I'm coming in. #speaker: parent 
       -> intruder_alert
     * [In a minute. ]
@@ -223,7 +223,7 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room #ti
 (...) #speaker: child_chat
 {friend_user}: what's your name btw? #speaker: friend_chat
 
-* [Raphael Ambrosius Costeau.] 
+* [Raphael Ambrosius Costeau.]
     ~ raphael = true
     {kid_user}: raphael ambrosius costeau. i think its german? #speaker: child_chat
     {friend_user}: wow, that's a really weird name #speaker: friend_chat
@@ -294,13 +294,13 @@ Hey, you don't have to be short... #speaker: parent
 ... same as always. #speaker: child
 Sigh... alright. Well, how are your friends? #speaker: parent 
 
-* [Good.] #speaker: child
+* [Good.]
     What did I just say about being short? #speaker: parent 
     ... good as always. #speaker: child 
    Sigh... #speaker: parent
-* [Same.] #speaker: child
+* [Same.]
     I get it, I'll stop...
-* [We're meeting online today. ] #speaker: child
+* [We're meeting online today. ]
     ~mentioned_friends = true
     Oh, uh, I meant your school friends. #speaker: parent
     (...) #speaker: child 
@@ -423,7 +423,6 @@ Come on, get up, or we'll both be late. #speaker: parent
 -> sick_doors
 
 = sick_doors
-
  + [<i> Go back to sleep. </i>]
     Nope, don't even try. Let's go. #speaker: parent 
     -> sick_doors
@@ -482,9 +481,9 @@ Work. I guess. #speaker: child #timeline: 3
 {friend_user}: one more try #speaker: friend_chat
 {friend_user}: pleeeease #speaker: friend_chat
 (... should I?) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
- * [<i> Continue playing. </i>] 
+ * [<i> Continue playing. </i>]
     -> continue_playing
- * [<i> Head back to work. </i>] 
+ * [<i> Head back to work. </i>]
     -> quit_for_now
 
 = continue_playing 
@@ -528,10 +527,10 @@ Come on. After you. #speaker: parent
 -> too_much_doors
 
 = too_much_doors
- + [<i> Continue playing. </i>] 
+    + [Continue playing.]
     Don't even think about it. #speaker: parent
     -> too_much_doors
- * [<i> Head back to work. </i>] 
+    * [<i> Head back to work. </i>]
     -> dinner_three
 
 == dinner_three == 
@@ -555,28 +554,28 @@ You look pretty serious. What's on your mind? #speaker: parent
 Bit late, don't you think? #speaker: parent 
 Why this all of a sudden? #speaker: parent 
 
-* [I'm going to meet someone. ] #speaker: child
+* [I'm going to meet someone. ]
     Who? #speaker: parent 
     A friend. #speaker: child 
     Who? #speaker: parent 
     
-    ** [Joe. ]#speaker: child
+    ** [Joe. ]
         ~name_given = "Joe"
         Who's Joe? #speaker: parent 
         (... you're better than this. Don't say it, don't say it, don't say it...) #speaker: child 
         Well? #speaker: parent 
 
-    ** [{friend_name}] #speaker: child
+    ** [{friend_name}]
         ~name_given = friend_name
         Who's that? #speaker: parent 
         
-    ** [Max.] #speaker: child 
+    ** [Max.]
         ~name_given = "Max"
         Who's that? #speaker: parent 
         
     -- Just a friend. You don't know them. #speaker: child 
     
-* [I just wanna walk. ] #speaker: child
+* [I just wanna walk. ]
     Since when? Normally you'd just go up to your room. #speaker: parent 
     
 * [<i> Say nothing </i> ]
@@ -618,7 +617,7 @@ You never listen to me. I'm telling you not to go. This is a bad idea. #speaker:
 
  + [<i> Head out. </i>]
     -> park_night_end
- * [<i> Stay at home. </i>] 
+ * [<i> Stay at home. </i>]
     -> virtual_end
     
 = park_night_end
