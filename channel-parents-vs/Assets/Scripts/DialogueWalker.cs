@@ -6,8 +6,6 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using UnityEngine.Assertions;
 using UnityEngine.Playables;
-using UnityEditorInternal;
-using System.Diagnostics;
 
 [CreateAssetMenu(menuName = "dialogue config")]
 public class DiagloueConfig : ScriptableObject
@@ -23,6 +21,13 @@ public class DiagloueConfig : ScriptableObject
 
 public class DialogueWalker : MonoBehaviour
 {
+    [SerializeField] public float inter_spoken_wait_time = .1f;
+    [SerializeField] public float inter_char_time = .05f;
+    [SerializeField] public float scene_fade_duration = 1.5f;
+    [SerializeField] public float scene_fade_pause = 1f;
+    [SerializeField] public Color child_color = new Color(1f, 0.6704713f, 0.5424528f);
+    [SerializeField] public Color parent_color = new Color(1f, 0.9144362f, 0.8160377f);
+    [SerializeField] public Color friend_color = new Color(82f / 255f, 164f / 255f, 1f);
     [SerializeField] private TMPro.TMP_Text tmpTextPrefab;
 
     [SerializeField] private Level currentLevel;
@@ -114,7 +119,7 @@ public class DialogueWalker : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         state = new Dictionary<Flag, bool>();
 
         story = new Story(inkJSONAsset.text);
@@ -409,8 +414,6 @@ public class DialogueWalker : MonoBehaviour
                 text = story.Continue();
                 current_text = text;
                 string sceneTag = getTagWithKey("location");
-                UnityEngine.Debug.Log(current_text);
-                UnityEngine.Debug.Log(sceneTag);
                 if (sceneTag != null)
                 {
                     print(sceneTag);
@@ -421,7 +424,7 @@ public class DialogueWalker : MonoBehaviour
                     } else
                     {
                         print("started fade");
-                        StartCoroutine(backgroundManager.FadeScene(config.scene_fade_duration, config.scene_fade_pause, sceneTag, this.loadNewScene, this.RunStory));
+                        StartCoroutine(backgroundManager.FadeScene(scene_fade_duration, scene_fade_pause, sceneTag, this.loadNewScene, this.RunStory));
                     }
                     return;
                 }
@@ -766,13 +769,13 @@ public class DialogueWalker : MonoBehaviour
         text.text = "";
         if (speaker == Speaker.parent)
         {
-            text.color = config.parent_color;
+            text.color = parent_color;
         }else if (speaker == Speaker.friend)
         {
-            text.color = config.friend_color;
+            text.color = friend_color;
         } else
         {
-            text.color = config.child_color;
+            text.color = child_color;
         }
         text.maxVisibleCharacters = 0;
         string[] words = line.Split(' ');
@@ -804,7 +807,7 @@ public class DialogueWalker : MonoBehaviour
                 src.PlayOneShot(text_sounds[(int)speaker]);
                 StartCoroutine(KillAudio(src));
                 
-                yield return new WaitForSeconds(config.inter_char_time);
+                yield return new WaitForSeconds(inter_char_time);
             }
 
             text.maxVisibleCharacters++;
