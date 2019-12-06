@@ -531,7 +531,7 @@ Come on. After you. #speaker: parent
  + [<i> Continue playing. </i>]
     Don't even think about it. #speaker: parent
     -> too_much_doors
- * [<i> Head back to work. </i>]
+ * [<i> Head downstairs. </i>]
     -> dinner_three
 
 == dinner_three == 
@@ -570,10 +570,9 @@ Why this all of a sudden? #speaker: parent
         ~name_given = friend_name
         Who's that? #speaker: parent 
         
-    ** [Max.]
-        ~name_given = "Max"
-        Who's that? #speaker: parent 
-        
+    ** [Just a friend. ]
+        ~name_given = "this"
+
     -- Just a friend. You don't know them. #speaker: child 
     
 * [I just wanna walk. ]
@@ -629,7 +628,7 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 500:
+{ dice_roll >= 6:
     ->meet_friend
 - else:
     ->meet_icecream
@@ -640,6 +639,7 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 #setting: 17
 #switch: 9
 #timeline: 10
+#timeline_duration: 10
 ... #speaker: child 
 ... #speaker: friend 
 ... #speaker: child 
@@ -656,7 +656,6 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 #location: park_night_creepy
 #setting: 15
 #switch: 10
-
 #pause 
 Late... #speaker: child 
 Where...? #speaker: child 
@@ -685,6 +684,8 @@ Guess I'll wait a bit more. #speaker: child
 #setting: 18
 #switch: 11
 #timeline: 12 
+#timeline_duration: 12 
+#endgame: true 
 ->END
 
 == end_game_2 == 
@@ -692,7 +693,8 @@ Guess I'll wait a bit more. #speaker: child
 #setting: 19
 #switch: 12
 #timeline: 14
-
+#timeline_duration: 10
+#endgame: true 
 ->END
 
 == end_game_3 == 
@@ -700,6 +702,8 @@ Guess I'll wait a bit more. #speaker: child
 #setting: 20
 #switch: 13
 #timeline: 9
+#timeline_duration: 9
+#endgame: true 
 
 
 ->END
