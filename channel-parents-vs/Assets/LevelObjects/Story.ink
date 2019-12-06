@@ -629,7 +629,7 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 100:
+{ dice_roll >= 5:
     ->meet_friend
 - else:
     ->meet_icecream
