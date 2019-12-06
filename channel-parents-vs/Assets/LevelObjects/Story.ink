@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->virtual_one
+->icecream_scene
 
 == icecream_scene == 
 #knot: icecream_scene
