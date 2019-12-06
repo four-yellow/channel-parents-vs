@@ -190,4 +190,10 @@ public class BackgroundManager : MonoBehaviour
             VirtualDialogueBox.gameObject.SetActive(true);
         }
     }
+
+    public void removeDialogueBox()
+    {
+        RealDialogueBox.gameObject.SetActive(false);
+        VirtualDialogueBox.gameObject.SetActive(false);
+    }
 }
