@@ -618,7 +618,6 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 
  + [<i> Head out. </i>]
     I'm sorry... #speaker: child 
-    But I have to do this. #speaker: child 
     -> park_night_end
  * [<i> Stay at home. </i>]
     ... #speaker: parent 
@@ -630,7 +629,7 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 6:
+{ dice_roll >= 100:
     ->meet_friend
 - else:
     ->meet_icecream
@@ -668,9 +667,10 @@ Guess I'll wait a bit more. #speaker: child
 
 
 = virtual_end
-#location: virtual_three
+#location: virtual_four 
 #setting: 16
 //No music for this scene
+{kid_user}: ...
 {kid_user}: been a while since you last came online... #speaker: child_chat 
 {kid_user}: where did you go? #speaker: child_chat 
 {kid_user}: ... #speaker: child_chat 
@@ -684,7 +684,7 @@ Guess I'll wait a bit more. #speaker: child
 #location: park_day 
 #setting: 18
 #switch: 11
-#timeline: 14
+#timeline: 12 
 ->END
 
 == end_game_2 == 

@@ -33,6 +33,8 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private AudioClip[] sudden_shutdown;
 
+    [SerializeField] private AudioClip[] creepy;
+
     [SerializeField] private AudioSource audioPrefab;
 
     [SerializeField] private TextAsset inkJSONAsset;
@@ -56,6 +58,7 @@ public class DialogueWalker : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text enterIndicator;
 
     [SerializeField] private VerticalLayoutGroup VirtualChatBox;
+
     [SerializeField] private TMPro.TMP_Text VirtualTextPrefab;
 
     [SerializeField] private SpriteRenderer doorFadeBackground;
