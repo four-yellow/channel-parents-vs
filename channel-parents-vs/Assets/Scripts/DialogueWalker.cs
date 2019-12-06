@@ -425,17 +425,12 @@ public class DialogueWalker : MonoBehaviour
             string timeline_time = getTagWithKey("timeline:");
             string timeline_set = getTagWithKey("timelineset:");
             string switch_timeline = getTagWithKey("switch:");
-            string sound_name = getTagWithKey("sound:");
             string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
             string funblip = story.currentTags.Find(x => x.StartsWith("funblip", StringComparison.Ordinal));
             string interrupt = getTagWithKey("interrupt:");
             string timeline_duration_string = getTagWithKey("timeline_duration:");
-
-            if (sound_name != null)
-            {
-                playSounds(sound_name);
-            }
+            string endgame = getTagWithKey("endgame:");
 
             if(interrupt != null)
             {
@@ -448,7 +443,14 @@ public class DialogueWalker : MonoBehaviour
                 wait_for_timeline = true;
                 timeline_duration = int.Parse(timeline_duration_string);
                 enterIndicator.gameObject.SetActive(false);
-                StartCoroutine(finishWaitingForTimeline(timeline_duration));
+                if(endgame != null)
+                {
+                    backgroundManager.removeDialogueBox();
+                    StartCoroutine(finishWaitingForTimelineEnd(timeline_duration));
+                }else
+                {
+                    StartCoroutine(finishWaitingForTimeline(timeline_duration));
+                }
             }
 
             if (cblip != null)
@@ -517,13 +519,20 @@ public class DialogueWalker : MonoBehaviour
         }
     }
 
+    IEnumerator finishWaitingForTimelineEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        wait_for_timeline = false;
+        timeline_duration = 0f;
+        EndTheGame();
+    }
+
     IEnumerator finishWaitingForTimeline(float time)
     {
         yield return new WaitForSeconds(time);
         wait_for_timeline = false;
         timeline_duration = 0f;
         enterIndicator.gameObject.SetActive(true);
-        yield return null;
     }
 
     void OnClickChoiceButton(Choice choice)
