@@ -114,6 +114,7 @@ public class DialogueWalker : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         state = new Dictionary<Flag, bool>();
 
         story = new Story(inkJSONAsset.text);
