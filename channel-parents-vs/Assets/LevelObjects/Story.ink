@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->virtual_one   
+->icecream_scene
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -96,6 +96,7 @@ Hey, can you come here real quick? I wanna show you something. #speaker: parent 
     * [Ignore him.]
     Sigh... and I was looking forward to this. Sleep well, kid. We'll set up your computer later. #speaker: parent #animation: parent_walking_out
     I'm up. #speaker: child #animation: child_sits_up #animation: parent_stops_mid_walk #pause: 3.0
+    ... #speaker: parent 
     Well... there goes the surprise. #speaker: parent #animation: parent_turns_around 
     Sorry... #speaker: child 
     It's alright. Come help me set it up, yeah? #speaker: parent #off screen #sound: building #animation: child_walking_towards_door #fade_out
@@ -511,6 +512,7 @@ Work. I guess. #speaker: child #timeline: 3
 
 == too_much_game == 
 #location: bedroom_unplugged
+#setting: 13
 ~played_over_time = true
 So this is what you're busy with? #speaker: parent 
 (...) #speaker: child 
@@ -532,9 +534,8 @@ Come on. After you. #speaker: parent
 
 == dinner_three == 
 #location: dinner_three
-
+#setting: 14
 ~ temp name_given = ""
-
 //Both are sitting at the table, quietly eating. 
 ... #speaker: parent 
 (...) #speaker: child 
@@ -552,7 +553,7 @@ You look pretty serious. What's on your mind? #speaker: parent
 Bit late, don't you think? #speaker: parent 
 Why this all of a sudden? #speaker: parent 
 
-* [I'm going to meet someone at the park. ] #speaker: child
+* [I'm going to meet someone. ] #speaker: child
     Who? #speaker: parent 
     A friend. #speaker: child 
     Who? #speaker: parent 
@@ -602,7 +603,7 @@ You don't know anything about them. You don't know who they are. #speaker: paren
 I do. We've been friends for years now. #speaker: child 
 You're not friends. You play the same game. #speaker: parent 
 We are friends. #speaker: child 
-... they're my only friend. #speaker: child 
+... they're my only friend. #speaker: child #animation: child_stand_right
 //Kid stands up here 
 I'm telling you not to go. #speaker: parent 
 ... #speaker: child 
@@ -621,50 +622,46 @@ You never listen to me. I'm telling you not to go. This is a bad idea. #speaker:
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 5:
+{ dice_roll >= 100:
     ->meet_friend
 - else:
     ->meet_icecream
 }
 
 = meet_friend 
-Late... #speaker: child 
-Where are they? #speaker: child 
-Oh...! #speaker: child 
-//Friend walks in here from the right of the screen. 
+#location: park_night
+#setting: 17
+#switch: 9
+#timeline: 10
+... #speaker: child 
 ... #speaker: friend 
 ... #speaker: child 
-//While waving
-{raphael:
-    Raphael? #speaker: friend
-    (...Just go with it.)
-- else: 
-    Hey! #speaker: friend
-}
-Hey. #speaker: child 
-//What is wrong with me
 ... #speaker: friend 
-... #speaker: child
-->end_game
+... #speaker: child 
+{ raphael:
+    Raphael! #speaker: friend #animation: friend_wave
+- else: 
+    Hey! #speaker: friend #animation: friend_wave
+}
+->end_game_1
 
 = meet_icecream
 #location: park_night
-#setting: 6546
-#switch: 63
+#setting: 15
+#switch: 10
 
 #pause 
 Late... #speaker: child 
-Where are they? #speaker: child 
-... #speaker: child 
+Where...? #speaker: child 
+... #speaker: child #timeline: 7
 Guess I'll wait a bit more. #speaker: child
 //peek out and music around here
--> end_game
+-> end_game_2
 
 
 = virtual_end
 #location: virtual_three
-#setting: 14
-#cblip
+#setting: 16
 //No music for this scene
 {kid_user}: been a while since you last came online... #speaker: child_chat 
 {kid_user}: where did you go? #speaker: child_chat 
@@ -673,8 +670,28 @@ Guess I'll wait a bit more. #speaker: child
 {kid_user}: ... #speaker: child_chat 
 {kid_user}: ... #speaker: child_chat
 #cunblip
-->end_game
+->end_game_3
 
-== end_game == 
+== end_game_1 == 
+#location: park_day 
+#setting: 18
+#switch: 11
+#timeline: 14
+->END
+
+== end_game_2 == 
+#location: dinner_three 
+#setting: 19
+#switch: 12
+#timeline: 14
+
+->END
+
+== end_game_3 == 
+#location: Bedroom2
+#setting: 20
+#switch: 13
+#timeline: 9
+
 
 ->END

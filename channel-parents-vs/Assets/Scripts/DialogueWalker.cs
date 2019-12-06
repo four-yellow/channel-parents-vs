@@ -169,6 +169,26 @@ public class DialogueWalker : MonoBehaviour
             case 8:
                 timeline = GameObject.Find("TimelineVirtualTwo");
                 break;
+
+            case 9:
+                timeline = GameObject.Find("TimelineParkNightFriend");
+                break;
+
+            case 10:
+                timeline = GameObject.Find("TimelineParkNight");
+                break;
+
+            case 11:
+                timeline = GameObject.Find("TimelineEndOne");
+                break;
+
+            case 12:
+                timeline = GameObject.Find("TimelineEndTwo");
+                break;
+
+            case 13:
+                timeline = GameObject.Find("TimelineEndThree");
+                break;
         }
 
         timeline_director = timeline.GetComponent(typeof(PlayableDirector)) as PlayableDirector;
@@ -195,6 +215,13 @@ public class DialogueWalker : MonoBehaviour
                 player_animator.SetBool("is_sitting", false);
                 player_animator.SetBool("is_sleeping", false);
                 player_animator.SetBool("is_dining", false);
+                player_animator.SetBool("pointing_right", true);
+                Vector3 temp = new Vector3(0f, -0.5f, 0f);
+                player.transform.position += temp;
+                break;
+
+            case "animation: friend_wave":
+                friend_animator.SetBool("waving", true);
                 break;
         }
     }

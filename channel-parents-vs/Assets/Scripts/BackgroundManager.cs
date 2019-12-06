@@ -49,7 +49,7 @@ public class BackgroundManager : MonoBehaviour
                 playAudioForScene(ParkDaySounds);
                 setDialogueBox(WorldType.Real);
                 break;
-            case "IceCream2":
+            case "park_night":
                 ParkNight.enabled = true;
                 playAudioForScene(ParkNightSounds);
                 setDialogueBox(WorldType.Real);
