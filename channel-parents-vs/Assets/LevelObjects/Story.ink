@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->dinner_three
+->icecream_scene
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -537,7 +537,6 @@ Come on. After you. #speaker: parent
 #location: dinner_three
 #setting: 14
 ~ temp name_given = ""
-->park_night_end
 //Both are sitting at the table, quietly eating. 
 ... #speaker: parent 
 (...) #speaker: child 
@@ -628,7 +627,7 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 50:
+{ dice_roll >= 6:
     ->meet_friend
 - else:
     ->meet_icecream
