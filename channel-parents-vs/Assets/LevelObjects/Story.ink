@@ -629,7 +629,7 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 5:
+{ dice_roll >= 500:
     ->meet_friend
 - else:
     ->meet_icecream
@@ -653,14 +653,14 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 ->end_game_1
 
 = meet_icecream
-#location: park_night
+#location: park_night_creepy
 #setting: 15
 #switch: 10
 
 #pause 
 Late... #speaker: child 
 Where...? #speaker: child 
-... #speaker: child #timeline: 7
+... #speaker: child #timeline: 7 #sound: creepy_icecream
 Guess I'll wait a bit more. #speaker: child
 //peek out and music around here
 -> end_game_2

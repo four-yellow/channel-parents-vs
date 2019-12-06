@@ -425,11 +425,17 @@ public class DialogueWalker : MonoBehaviour
             string timeline_time = getTagWithKey("timeline:");
             string timeline_set = getTagWithKey("timelineset:");
             string switch_timeline = getTagWithKey("switch:");
+            string sound_name = getTagWithKey("sound:");
             string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
             string funblip = story.currentTags.Find(x => x.StartsWith("funblip", StringComparison.Ordinal));
             string interrupt = getTagWithKey("interrupt:");
             string timeline_duration_string = getTagWithKey("timeline_duration:");
+
+            if (sound_name != null)
+            {
+                playSounds(sound_name);
+            }
 
             if(interrupt != null)
             {
