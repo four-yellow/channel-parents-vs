@@ -11,6 +11,7 @@ public class BackgroundManager : MonoBehaviour
     public SpriteRenderer Bedroom1;
     public SpriteRenderer Bedroom2;
     public SpriteRenderer Bedroom3;
+    public SpriteRenderer Bedroom4;
     public SpriteRenderer ScreenFade;
     public SpriteRenderer BedroomNoPC;
     public SpriteRenderer Dinner1;
@@ -72,6 +73,11 @@ public class BackgroundManager : MonoBehaviour
             case "bedroom":
             case "bedroom_unplugged":
                 Bedroom3.enabled = true;
+                playAudioForScene(BedroomNoPCSounds);
+                setDialogueBox(WorldType.Real);
+                break;
+            case "bedroom_unplugged_dark":
+                Bedroom4.enabled = true;
                 playAudioForScene(BedroomNoPCSounds);
                 setDialogueBox(WorldType.Real);
                 break;

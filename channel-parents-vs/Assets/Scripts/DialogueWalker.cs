@@ -31,6 +31,8 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private AudioClip[] text_sounds;
 
+    [SerializeField] private AudioClip[] sudden_shutdown;
+
     [SerializeField] private AudioSource audioPrefab;
 
     [SerializeField] private TextAsset inkJSONAsset;
@@ -95,6 +97,8 @@ public class DialogueWalker : MonoBehaviour
     private bool doorsActive = false;
 
     private float interrupt_left = 0;
+
+    private bool interrupt_set = false;
 
     private void Start()
     {
@@ -205,6 +209,16 @@ public class DialogueWalker : MonoBehaviour
         //timeline_director.Evaluate();
     }
 
+    private void playSounds(string sound)
+    {
+        switch (sound)
+        {
+            default:
+                break;
+        }
+    }
+
+
     private void setPoses(string anim)
     {
         switch (anim)
@@ -247,8 +261,7 @@ public class DialogueWalker : MonoBehaviour
 
     private void Update()
     {
-        if(interrupt_left > 0) { interrupt_left -= Time.deltaTime; }
-        if(Input.GetKeyDown(KeyCode.Return) && enterUp)
+        if(Input.GetKeyDown(KeyCode.Return) && enterUp && !interrupt_set)
         {
             enterDown = true;
             enterUp = false;
@@ -260,9 +273,20 @@ public class DialogueWalker : MonoBehaviour
             enterUp = true;
         }
 
-        if ((enterDown && !printing && !scene_was_faded) || (interrupt_left < 0 && interrupt_left != -1))
+        if ((enterDown && !printing && !scene_was_faded) || (interrupt_set))
         {
-            interrupt_left = -1;
+            if(interrupt_left > 0)
+            {
+                interrupt_left -= Time.deltaTime;
+                return;
+            }
+            if (interrupt_set && interrupt_left < 0)
+            {
+                AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+                src.PlayOneShot(sudden_shutdown[0]);
+                interrupt_set = false;
+            }
+            
             enterDown = false;
             RunStory();
         }
@@ -371,7 +395,7 @@ public class DialogueWalker : MonoBehaviour
                     scene_was_faded = true;
                     if (sceneTag == "bedroom_unplugged")
                     {
-                        StartCoroutine(backgroundManager.FadeScene(0.1f, 6f, sceneTag, this.loadNewScene, this.RunStory));
+                        StartCoroutine(backgroundManager.FadeScene(0.1f, 5f, sceneTag, this.loadNewScene, this.RunStory));
                     } else
                     {
                         print("started fade");
@@ -396,6 +420,7 @@ public class DialogueWalker : MonoBehaviour
             if(interrupt != null)
             {
                 interrupt_left = int.Parse(interrupt.Substring(0, interrupt.Length));
+                interrupt_set = true;
             }
 
             if (cblip != null)

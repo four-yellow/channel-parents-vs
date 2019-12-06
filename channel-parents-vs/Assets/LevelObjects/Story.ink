@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->virtual_three
+->icecream_scene
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -454,6 +454,7 @@ Work. I guess. #speaker: child #timeline: 3
 #setting: 11
 #cblip
 //Kid blips into existence. Friend is already there. Both standing. 
+->continue_playing
 {friend_user}: you took your time #speaker: friend_chat
 {kid_user}: yeah sorry #speaker: child_chat 
 {kid_user}: got distracted by something #speaker: child_chat 
@@ -495,7 +496,7 @@ Work. I guess. #speaker: child #timeline: 3
 #setting: 10 
 {friend_user}: okay this really is the last try  #speaker: friend_chat
 {kid_user}: heard that one before  #speaker: child_chat
-{friend_user}: i think ive figured out how to beat the boss, for real this time  #speaker: friend_chat #interrupt: 2
+{friend_user}: i think ive figured out how to beat the boss, for real this time  #speaker: friend_chat #interrupt: 3
 //While the above sentence is typing, the screen should cut off suddenly
 ->too_much_game
 
@@ -510,7 +511,7 @@ Work. I guess. #speaker: child #timeline: 3
 -> dinner_three
 
 == too_much_game == 
-#location: bedroom_unplugged
+#location: bedroom_unplugged_dark
 #setting: 13
 ~played_over_time = true
 ... #speaker: child
@@ -519,7 +520,7 @@ So this is what you're busy with? #speaker: parent
 (...) #speaker: child 
 You'd rather game than spend some time with me? #speaker: parent 
 Ever since I got you that thing, we've just been... apart. And you've always been quiet, but now you barely even look at me. #speaker: parent 
-Every day, the same routine. I wish you'd stop playing your games. Or just play less, for fuck's sake. Do you know what time it is? #speaker: parent 
+Every day, it's the same thing. I wish you'd stop playing your games. Or just play less, for fuck's sake. Do you know what time it is? #speaker: parent 
 (... shit, it's late.) #speaker: child 
 Get up. We're gonna sit together downstairs. I don't care if we talk or not. And this is gonna be a daily thing, besides dinner. #speaker: parent 
 Come on. After you. #speaker: parent 
@@ -570,10 +571,10 @@ Why this all of a sudden? #speaker: parent
         Who's that? #speaker: parent 
         
     ** [Max.] #speaker: child 
-        ~name_given = "Sam"
+        ~name_given = "Max"
         Who's that? #speaker: parent 
         
-    -- Just, a friend. You don't know them. #speaker: child 
+    -- Just a friend. You don't know them. #speaker: child 
     
 * [I just wanna walk. ] #speaker: child
     Since when? Normally you'd just go up to your room. #speaker: parent 
@@ -623,7 +624,7 @@ You never listen to me. I'm telling you not to go. This is a bad idea. #speaker:
 = park_night_end
 
 ~ temp dice_roll = RANDOM(1, 100) 
-{ dice_roll >= 100:
+{ dice_roll >= 6:
     ->meet_friend
 - else:
     ->meet_icecream

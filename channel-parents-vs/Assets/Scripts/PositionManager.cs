@@ -195,6 +195,7 @@ public class PositionManager : MonoBehaviour
                 friend_pos = new Vector3(50f, 50f, 0f);
                 parent_animator.SetBool("pointing_left", true);
                 player_animator.SetBool("pointing_right", true);
+                player_animator.SetBool("night", true);
                 break;
 
             case 14: //Third Dinner
