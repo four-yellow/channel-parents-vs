@@ -98,6 +98,10 @@ public class BackgroundManager : MonoBehaviour
                 playAudioForScene(VirtualWorldSounds);
                 setDialogueBox(WorldType.Virtual);
                 break;
+            case "virtual_four":
+                VirtualWorld.enabled = true;
+                setDialogueBox(WorldType.Virtual);
+                break;
             default:
                 break;
         }

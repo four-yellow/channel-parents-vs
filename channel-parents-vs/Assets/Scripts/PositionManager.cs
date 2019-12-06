@@ -236,10 +236,11 @@ public class PositionManager : MonoBehaviour
 
             case 18: //Epilogue with friend
                 parent_pos = new Vector3(50f, 50f, 0f);
-                player_pos = new Vector3(2.66f, -2.66f, 0f);
-                friend_pos = new Vector3(5.32f, -2.66f, 0f);
-                player_animator.SetBool("pointing_right", true);
-                friend_animator.SetBool("pointing_left", true);
+                player_pos = new Vector3(50f, 50f, 0f);
+                friend_pos = new Vector3(-8.36f, -2.8f, 0f);
+                player_animator.SetBool("pointing_left", true);
+                friend_animator.SetBool("pointing_right", true);
+                parent_animator.SetBool("is_sitting", true);
                 break;
 
             case 19: //Sad dinner
