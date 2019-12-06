@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->icecream_scene
+->virtual_one
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -193,7 +193,6 @@ I'll be in my room if you need me. #speaker: parent #animation: exiting_room #ti
 #location: virtual_one
 #switch: 7
 #setting: 12
-#cblip
 //Kid-avatar should blip into existence, with a pop sound effect.
 
 (No one's in the lobby. Is this the wrong game?) #speaker: child

@@ -1533,8 +1533,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 15aa511e227ad4e91a9e58e10f3d8274, type: 3}
   sudden_shutdown:
   - {fileID: 8300000, guid: 112c8aa2e445a45b9af9f49c380526e5, type: 3}
-  creepy:
-  - {fileID: 8300000, guid: 90421aca5a5375f42abd4cc01aea92fd, type: 3}
+  blip:
+  - {fileID: 8300000, guid: 4898a8e0b9979ef489a4cd045eb677ae, type: 3}
   audioPrefab: {fileID: 1284174891}
   inkJSONAsset: {fileID: 4900000, guid: 4656a99f50b5b479b960a44f9dc2e00c, type: 3}
   buttonPrefab: {fileID: 4237662064734300535, guid: af30b3cfb0a4147f5be79f220714e726,

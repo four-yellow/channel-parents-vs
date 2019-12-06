@@ -33,7 +33,7 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private AudioClip[] sudden_shutdown;
 
-    [SerializeField] private AudioClip[] creepy;
+    [SerializeField] private AudioClip[] blip;
 
     [SerializeField] private AudioSource audioPrefab;
 
@@ -359,6 +359,9 @@ public class DialogueWalker : MonoBehaviour
         Vector3 player_pos = new Vector3(3.24f, -3.31f, 0);
         player.transform.position += player_pos;
         player.transform.localScale = (player_animator.GetInteger("grown_up") == 0) ? new Vector3(8, 8, 1) : new Vector3(5, 5, 1);
+        AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+        src.PlayOneShot(blip[0]);
+
     }
 
     void blipFriendIntoExistence()
@@ -371,6 +374,8 @@ public class DialogueWalker : MonoBehaviour
         Vector3 friend_pos = new Vector3(0.05f, -3.31f, 0);
         friend.transform.position += friend_pos;
         friend.transform.localScale = (friend_animator.GetInteger("grown_up") == 0) ? new Vector3(8, 8, 1) : new Vector3(4, 4, 1);
+        AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+        src.PlayOneShot(blip[0]);
     }
 
     void unblipFriendFromExistence()
@@ -378,6 +383,8 @@ public class DialogueWalker : MonoBehaviour
         Vector3 friend_pos = new Vector3(100f, 100f, 0);
         friend.transform.position += friend_pos;
         friend.transform.localScale = new Vector3(1, 1, 1);
+        AudioSource src = Instantiate(audioPrefab.gameObject).GetComponent<AudioSource>();
+        src.PlayOneShot(blip[0]);
     }
 
     public void RunStory()
