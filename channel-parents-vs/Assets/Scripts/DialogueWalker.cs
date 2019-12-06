@@ -524,6 +524,8 @@ public class DialogueWalker : MonoBehaviour
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)
         {
+            timeline_director.Stop(); //Kill the current timeline
+            seconds_left = 0;
             positionsManager.setTheScene(int.Parse(setting_number.Substring(0, setting_number.Length)));
         }
         tmpTextPrefab.text = "";
