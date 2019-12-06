@@ -1,12 +1,12 @@
 VAR independence_meter = 0.1
 VAR kid_user = "confused_rogue_6"
-VAR friend_user = "whatevr"
-VAR friend_name = "whattowrite"
+VAR friend_user = "udyrin_48"
+VAR friend_name = "Sam"
 VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->icecream_scene
+->dinner_three
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -544,7 +544,7 @@ Come on. After you. #speaker: parent
 (Park at night. Weird time, but whatever. ) #speaker: child
 (...) #speaker: child
 (Should I tell dad?) #speaker: child 
-{played_over_time: I think he's still mad. | I don't think he'll take it well. }
+({played_over_time: I think he's still mad. | I don't think he'll take it well. })
 (What do I do?) #speaker: child 
 Something on your mind? #speaker: parent 
 Hm? #speaker: child 
@@ -568,7 +568,7 @@ Why this all of a sudden? #speaker: parent
         ~name_given = friend_name
         Who's that? #speaker: parent 
         
-    ** [Sam.] #speaker: child 
+    ** [Max.] #speaker: child 
         ~name_given = "Sam"
         Who's that? #speaker: parent 
         
