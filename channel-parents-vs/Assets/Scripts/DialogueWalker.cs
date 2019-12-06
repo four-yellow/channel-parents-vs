@@ -106,6 +106,9 @@ public class DialogueWalker : MonoBehaviour
 
     private bool interrupt_set = false;
 
+    private float timeline_duration = 0f;
+    private bool wait_for_timeline = false;
+
     private void Start()
     {
         state = new Dictionary<Flag, bool>();
@@ -268,7 +271,7 @@ public class DialogueWalker : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && enterUp && !interrupt_set)
+        if(Input.GetKeyDown(KeyCode.Return) && enterUp && !interrupt_set && !wait_for_timeline)
         {
             enterDown = true;
             enterUp = false;
@@ -311,7 +314,6 @@ public class DialogueWalker : MonoBehaviour
             if (parameter.type == UnityEngine.AnimatorControllerParameterType.Bool){
                 player_animator.SetBool(parameter.name, false);
             }
-               
         }
 
         foreach (UnityEngine.AnimatorControllerParameter parameter in parent_animator.parameters)
@@ -423,11 +425,20 @@ public class DialogueWalker : MonoBehaviour
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
             string funblip = story.currentTags.Find(x => x.StartsWith("funblip", StringComparison.Ordinal));
             string interrupt = getTagWithKey("interrupt:");
+            string timeline_duration_string = getTagWithKey("timeline_duration:");
 
             if(interrupt != null)
             {
                 interrupt_left = int.Parse(interrupt.Substring(0, interrupt.Length));
                 interrupt_set = true;
+            }
+
+            if(timeline_duration_string != null)
+            {
+                wait_for_timeline = true;
+                timeline_duration = int.Parse(timeline_duration_string);
+                enterIndicator.gameObject.SetActive(false);
+                StartCoroutine(finishWaitingForTimeline(timeline_duration));
             }
 
             if (cblip != null)
@@ -494,6 +505,15 @@ public class DialogueWalker : MonoBehaviour
                 StartCoroutine(TypewriterText(newline, text, speaker));
             }
         }
+    }
+
+    IEnumerator finishWaitingForTimeline(float time)
+    {
+        yield return new WaitForSeconds(time);
+        wait_for_timeline = false;
+        timeline_duration = 0f;
+        enterIndicator.gameObject.SetActive(true);
+        yield return null;
     }
 
     void OnClickChoiceButton(Choice choice)
@@ -567,6 +587,8 @@ public class DialogueWalker : MonoBehaviour
         friend.transform.localScale = scale;
         */
         RemoveVirtualChat();
+        wait_for_timeline = false;
+        timeline_duration = 0f;
         resetParameters();
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)
