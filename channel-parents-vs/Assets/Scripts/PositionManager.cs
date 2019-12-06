@@ -138,7 +138,9 @@ public class PositionManager : MonoBehaviour
                 parent_animator.SetBool("pointing_left", true);
                 break;
 
-            case 8: //Timeskip. Second dinner. 
+            case 8: //Second dinner. 
+                player_animator.SetInteger("grown_up", 1);
+                friend_animator.SetInteger("grown_up", 1);
                 parent_pos = new Vector3(4.76f, -2.11f, 0f);
                 player_pos = new Vector3(-4.28f, -2.28f, 0f);
                 friend_pos = new Vector3(50f, 50f, 0f);

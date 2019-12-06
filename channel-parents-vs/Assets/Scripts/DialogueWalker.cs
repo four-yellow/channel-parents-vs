@@ -91,7 +91,10 @@ public class DialogueWalker : MonoBehaviour
     private bool printing = false;
 
     private bool choicesAvailable = false;
+
     private bool doorsActive = false;
+
+    private float interrupt_left = 0;
 
     private void Start()
     {
@@ -244,6 +247,7 @@ public class DialogueWalker : MonoBehaviour
 
     private void Update()
     {
+        if(interrupt_left > 0) { interrupt_left -= Time.deltaTime; }
         if(Input.GetKeyDown(KeyCode.Return) && enterUp)
         {
             enterDown = true;
@@ -256,8 +260,9 @@ public class DialogueWalker : MonoBehaviour
             enterUp = true;
         }
 
-        if (enterDown && !printing && !scene_was_faded)
+        if ((enterDown && !printing && !scene_was_faded) || (interrupt_left < 0 && interrupt_left != -1))
         {
+            interrupt_left = -1;
             enterDown = false;
             RunStory();
         }
@@ -364,9 +369,14 @@ public class DialogueWalker : MonoBehaviour
                 if (sceneTag != null)
                 {
                     scene_was_faded = true;
-                    // start of new scene
-                    print("started fade");
-                    StartCoroutine(backgroundManager.FadeScene(config.scene_fade_duration, config.scene_fade_pause, sceneTag, this.loadNewScene, this.RunStory));
+                    if (sceneTag == "bedroom_unplugged")
+                    {
+                        StartCoroutine(backgroundManager.FadeScene(0.1f, 6f, sceneTag, this.loadNewScene, this.RunStory));
+                    } else
+                    {
+                        print("started fade");
+                        StartCoroutine(backgroundManager.FadeScene(config.scene_fade_duration, config.scene_fade_pause, sceneTag, this.loadNewScene, this.RunStory));
+                    }
                     return;
                 }
             }
@@ -381,6 +391,12 @@ public class DialogueWalker : MonoBehaviour
             string cblip = story.currentTags.Find(x => x.StartsWith("cblip", StringComparison.Ordinal));
             string fblip = story.currentTags.Find(x => x.StartsWith("fblip", StringComparison.Ordinal));
             string funblip = story.currentTags.Find(x => x.StartsWith("funblip", StringComparison.Ordinal));
+            string interrupt = getTagWithKey("interrupt:");
+
+            if(interrupt != null)
+            {
+                interrupt_left = int.Parse(interrupt.Substring(0, interrupt.Length));
+            }
 
             if (cblip != null)
             {
@@ -522,7 +538,7 @@ public class DialogueWalker : MonoBehaviour
         string setting_number = getTagWithKey("setting:");
         if (setting_number != null)
         {
-            timeline_director.Stop(); //Kill the current timeline
+            timeline_director.Stop();
             seconds_left = 0;
             positionsManager.setTheScene(int.Parse(setting_number.Substring(0, setting_number.Length)));
         }
