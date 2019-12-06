@@ -413,10 +413,11 @@ public class DialogueWalker : MonoBehaviour
                 UnityEngine.Debug.Log(sceneTag);
                 if (sceneTag != null)
                 {
+                    print(sceneTag);
                     scene_was_faded = true;
-                    if (sceneTag == "bedroom_unplugged")
+                    if (sceneTag == "bedroom_unplugged_dark")
                     {
-                        StartCoroutine(backgroundManager.FadeScene(0.1f, 5f, sceneTag, this.loadNewScene, this.RunStory));
+                        StartCoroutine(backgroundManager.FadeScene(0.1f, 3f, sceneTag, this.loadNewScene, this.RunStory));
                     } else
                     {
                         print("started fade");
