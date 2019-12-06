@@ -439,21 +439,6 @@ public class DialogueWalker : MonoBehaviour
                 interrupt_set = true;
             }
 
-            if(timeline_duration_string != null)
-            {
-                wait_for_timeline = true;
-                timeline_duration = int.Parse(timeline_duration_string);
-                enterIndicator.gameObject.SetActive(false);
-                if(endgame != null)
-                {
-                    backgroundManager.removeDialogueBox();
-                    StartCoroutine(finishWaitingForTimelineEnd(timeline_duration));
-                }else
-                {
-                    StartCoroutine(finishWaitingForTimeline(timeline_duration));
-                }
-            }
-
             if (cblip != null)
             {
                 blipChildIntoExistence();
@@ -500,6 +485,22 @@ public class DialogueWalker : MonoBehaviour
             {
                 enterIndicator.gameObject.SetActive(true);
             }
+            if (timeline_duration_string != null)
+            {
+                wait_for_timeline = true;
+                timeline_duration = int.Parse(timeline_duration_string);
+                enterIndicator.gameObject.SetActive(false);
+                if (endgame != null)
+                {
+                    backgroundManager.removeDialogueBox();
+                    StartCoroutine(finishWaitingForTimelineEnd(timeline_duration));
+                }
+                else
+                {
+                    StartCoroutine(finishWaitingForTimeline(timeline_duration));
+                }
+            }
+
             var speakertag = story.currentTags.Find(x => x.StartsWith("speaker: ", StringComparison.Ordinal));
             Speaker speaker = speakertag == "speaker: parent" ? Speaker.parent :
                                 speakertag == "speaker: parent_thoughts" ? Speaker.parent :
@@ -607,6 +608,16 @@ public class DialogueWalker : MonoBehaviour
         friend.transform.localScale = scale;
         */
         RemoveVirtualChat();
+        string endgame = getTagWithKey("endgame:");
+        if (endgame != null)
+        {
+            backgroundManager.removeDialogueBox();
+        }
+        string timeline_duration_string = getTagWithKey("timeline_duration:");
+        if (timeline_duration_string != null)
+        {
+            enterIndicator.gameObject.SetActive(false);
+        }
         wait_for_timeline = false;
         timeline_duration = 0f;
         resetParameters();

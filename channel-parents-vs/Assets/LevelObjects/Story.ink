@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->dinner_three
+->icecream_scene
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -641,14 +641,13 @@ You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-
 #timeline: 10
 #timeline_duration: 10
 ... #speaker: child 
-... #speaker: friend 
+... #speaker: friend_chat
 ... #speaker: child 
-... #speaker: friend 
-... #speaker: child 
+... #speaker: friend_chat 
 { raphael:
-    Raphael! #speaker: friend #animation: friend_wave
+    Raphael! #speaker: friend_chat #animation: friend_wave
 - else: 
-    Hey! #speaker: friend #animation: friend_wave
+    Hey! #speaker: friend_chat #animation: friend_wave
 }
 ->end_game_1
 
