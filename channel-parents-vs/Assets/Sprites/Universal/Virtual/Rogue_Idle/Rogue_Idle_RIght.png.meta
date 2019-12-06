@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 884144cfe5e2b0a478b3740fab7e6ec7
+guid: b608de3d85f66b343a1c2d47f822d09f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7818645797657763535
-    second: kidRogue2_idle_0
+      213: -1149428543474931693
+    second: Rogue_Idle_RIght_0
   - first:
-      213: -2643189637002697947
-    second: kidRogue2_idle_1
+      213: 6076543952825477691
+    second: Rogue_Idle_RIght_1
   - first:
-      213: 5303532064856157610
-    second: kidRogue2_idle_2
+      213: -4706480939255565270
+    second: Rogue_Idle_RIght_2
   - first:
-      213: 3424981695294859215
-    second: kidRogue2_idle_3
+      213: 2454833894400379255
+    second: Rogue_Idle_RIght_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -134,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kidRogue2_idle_0
+      name: Rogue_Idle_RIght_0
       rect:
         serializedVersion: 2
         x: 4
-        y: 3
-        width: 57
-        height: 80
+        y: 4
+        width: 30
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5586e4705e4c6b34da0cfd925f7c1e25
-      internalID: 7818645797657763535
+      spriteID: 8d886ee8160b29b4d8777c54ad1a2e7c
+      internalID: -1149428543474931693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kidRogue2_idle_1
+      name: Rogue_Idle_RIght_1
       rect:
         serializedVersion: 2
-        x: 72
-        y: 3
-        width: 57
-        height: 80
+        x: 41
+        y: 4
+        width: 30
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b46e610e080f0049ad3a17ce771eaf6
-      internalID: -2643189637002697947
+      spriteID: fc2564a14dc12e741a6fe98963f27791
+      internalID: 6076543952825477691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kidRogue2_idle_2
+      name: Rogue_Idle_RIght_2
       rect:
         serializedVersion: 2
-        x: 140
-        y: 3
-        width: 52
-        height: 78
+        x: 79
+        y: 4
+        width: 29
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cce1559521212b42b2093f80a3151ff
-      internalID: 5303532064856157610
+      spriteID: a08597768a53cfb4daa4b3e3a995fb4c
+      internalID: -4706480939255565270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kidRogue2_idle_3
+      name: Rogue_Idle_RIght_3
       rect:
         serializedVersion: 2
-        x: 208
-        y: 3
-        width: 52
-        height: 78
+        x: 116
+        y: 4
+        width: 29
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,8 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f7a0f3bf2e287c46a851a080a3f2ff7
-      internalID: 3424981695294859215
+      spriteID: ae0ecf5fcc519954a9e2d285459f9cd3
+      internalID: 2454833894400379255
       vertices: []
       indices: 
       edges: []

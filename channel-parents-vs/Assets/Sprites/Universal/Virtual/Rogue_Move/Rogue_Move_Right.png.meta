@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: b38a5b5f64fcb2a40b73a3f9a7f4fa84
+guid: 125648c7245de10499e00e0ba31c0999
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 478505904862833922
-    second: kidRogue_move_0
+      213: 8049276789967916470
+    second: Rogue_Move_Right_0
   - first:
-      213: 602283178710199151
-    second: kidRogue_move_1
+      213: -4101193247036262918
+    second: Rogue_Move_Right_1
   - first:
-      213: -7901059362907570243
-    second: kidRogue_move_2
+      213: -8560603627294500174
+    second: Rogue_Move_Right_2
   - first:
-      213: -2610763614450578325
-    second: kidRogue_move_3
+      213: 7122908132113060009
+    second: Rogue_Move_Right_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -59,7 +59,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -134,52 +134,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kidRogue_move_0
+      name: Rogue_Move_Right_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 4
-        width: 29
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96a28a967dabac943ade4ee679a0de4c
-      internalID: 478505904862833922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kidRogue_move_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 4
-        width: 29
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95c7dcd51e418944ca802a07a49d826d
-      internalID: 602283178710199151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kidRogue_move_2
-      rect:
-        serializedVersion: 2
-        x: 77
+        x: 4
         y: 4
         width: 30
         height: 44
@@ -190,17 +148,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d814b367b843e874ab66eb15a33e0661
-      internalID: -7901059362907570243
+      spriteID: b52a283db7f973e4b9b9c70c9f6aa950
+      internalID: 8049276789967916470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kidRogue_move_3
+      name: Rogue_Move_Right_1
       rect:
         serializedVersion: 2
-        x: 114
+        x: 41
         y: 4
         width: 30
         height: 44
@@ -211,8 +169,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5144bde76bb8574a8e5af2cc805f81b
-      internalID: -2610763614450578325
+      spriteID: 8636b8b61ead73a44941039824581282
+      internalID: -4101193247036262918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rogue_Move_Right_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 4
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e44519e9b099748ba18225280d36a9
+      internalID: -8560603627294500174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rogue_Move_Right_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 4
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a678aa4856c48cc40bc5172061fcf844
+      internalID: 7122908132113060009
       vertices: []
       indices: 
       edges: []
