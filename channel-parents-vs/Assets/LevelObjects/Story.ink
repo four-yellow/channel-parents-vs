@@ -481,9 +481,9 @@ Work. I guess. #speaker: child #timeline: 3
 {friend_user}: one more try #speaker: friend_chat
 {friend_user}: pleeeease #speaker: friend_chat
 (... should I?) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
- * [<i> Continue playing. </i>] 
+ * [<i>Continue playing.</i>] 
     -> continue_playing
- * [<i> Head back to work. </i>] 
+ * [<i>Head back to work.</i>] 
     -> quit_for_now
 
 = continue_playing 

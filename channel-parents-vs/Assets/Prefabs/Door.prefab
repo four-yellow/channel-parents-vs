@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000047684, y: 0.5}
+  m_AnchoredPosition: {x: -0.14, y: 0.589}
   m_SizeDelta: {x: 8.35, y: 2.244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6626545453627868255
@@ -143,7 +143,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 38381065
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d9db370aa1efa4e7592eed86bac0c970, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -325,8 +325,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000047684, y: 0.22}
-  m_SizeDelta: {x: 52.655, y: 14.747}
+  m_AnchoredPosition: {x: -0.14, y: 0.67}
+  m_SizeDelta: {x: 36.194, y: 18.672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2355051980256834744
 CanvasRenderer:
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
