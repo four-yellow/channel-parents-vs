@@ -453,7 +453,6 @@ Work. I guess. #speaker: child #timeline: 3
 #location: virtual_three
 #setting: 11
 #cblip
-->continue_playing 
 //Kid blips into existence. Friend is already there. Both standing. 
 {friend_user}: you took your time #speaker: friend_chat
 {kid_user}: yeah sorry #speaker: child_chat 
