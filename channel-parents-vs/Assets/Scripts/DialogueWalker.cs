@@ -653,7 +653,7 @@ public class DialogueWalker : MonoBehaviour
             doorFadeBackground.color = color;
             yield return null;
         }
-        callback.Invoke();
+        //callback.Invoke();
     }
     public IEnumerator FadeOutDoorBackground(float fade_time, float pause_time, Action callback)
     {
@@ -671,7 +671,7 @@ public class DialogueWalker : MonoBehaviour
             doorFadeBackground.color = color;
             yield return null;
         }
-        callback.Invoke();
+        //callback.Invoke();
     }
 
     public IEnumerator removeDoorsVirtual()

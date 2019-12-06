@@ -190,11 +190,12 @@ public class PositionManager : MonoBehaviour
             case 13: //Too much game
                 player_animator.SetInteger("grown_up", 1);
                 friend_animator.SetInteger("grown_up", 1);
-                parent_pos = new Vector3(5.60f, -1.55f, 0f);
-                player_pos = new Vector3(0f, -2.7f, 0f);
+                parent_pos = new Vector3(5.60f, -2.2f, 0f);
+                player_pos = new Vector3(0f, -2.2f, 0f);
                 friend_pos = new Vector3(50f, 50f, 0f);
                 parent_animator.SetBool("pointing_left", true);
                 player_animator.SetBool("pointing_right", true);
+                parent_animator.SetBool("night", true);
                 player_animator.SetBool("night", true);
                 break;
 

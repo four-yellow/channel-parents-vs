@@ -1541,7 +1541,7 @@ MonoBehaviour:
     type: 3}
   virtualDoorPrefab: {fileID: 0}
   choicesBox: {fileID: 1518344977}
-  childAnimator: {fileID: 0}
+  childAnimator: {fileID: 1407054607}
   parentAnimator: {fileID: 1744691710}
   backgroundManager: {fileID: 778906539}
   positionsManager: {fileID: 720386565}
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   Bedroom1: {fileID: 1794141910}
   Bedroom2: {fileID: 207620694}
   Bedroom3: {fileID: 200798096}
-  Bedroom4: {fileID: 0}
+  Bedroom4: {fileID: 487593986}
   ScreenFade: {fileID: 82669139}
   BedroomNoPC: {fileID: 1317222866}
   Dinner1: {fileID: 45335812}
