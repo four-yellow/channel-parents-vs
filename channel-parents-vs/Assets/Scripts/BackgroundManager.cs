@@ -21,6 +21,7 @@ public class BackgroundManager : MonoBehaviour
 
     public AudioClip[] ParkDaySounds;
     public AudioClip[] ParkNightSounds;
+    public AudioClip[] ParkNightCreepySounds;
     public AudioClip[] Bedroom1Sounds;
     public AudioClip[] BedroomNoPCSounds;
     public AudioClip[] Dinner1Sounds;
@@ -53,6 +54,11 @@ public class BackgroundManager : MonoBehaviour
             case "park_night":
                 ParkNight.enabled = true;
                 playAudioForScene(ParkNightSounds);
+                setDialogueBox(WorldType.Real);
+                break;
+            case "park_night_creepy":
+                ParkNight.enabled = true;
+                playAudioForScene(ParkNightCreepySounds);
                 setDialogueBox(WorldType.Real);
                 break;
             case "bedroom_one_no_pc":

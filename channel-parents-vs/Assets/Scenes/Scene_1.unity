@@ -1533,6 +1533,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 15aa511e227ad4e91a9e58e10f3d8274, type: 3}
   sudden_shutdown:
   - {fileID: 8300000, guid: 112c8aa2e445a45b9af9f49c380526e5, type: 3}
+  creepy:
+  - {fileID: 8300000, guid: 90421aca5a5375f42abd4cc01aea92fd, type: 3}
   audioPrefab: {fileID: 1284174891}
   inkJSONAsset: {fileID: 4900000, guid: 4656a99f50b5b479b960a44f9dc2e00c, type: 3}
   buttonPrefab: {fileID: 4237662064734300535, guid: af30b3cfb0a4147f5be79f220714e726,
@@ -1599,6 +1601,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fcbac039e452a4eb4af0cc4168a450e9, type: 3}
   - {fileID: 8300000, guid: 23c17dde973b04fcaa93c2fc34f4e950, type: 3}
   ParkNightSounds:
+  - {fileID: 8300000, guid: e46143ec2601644bba8b1b48c8b55e79, type: 3}
+  ParkNightCreepySounds:
+  - {fileID: 8300000, guid: 90421aca5a5375f42abd4cc01aea92fd, type: 3}
   - {fileID: 8300000, guid: e46143ec2601644bba8b1b48c8b55e79, type: 3}
   Bedroom1Sounds:
   - {fileID: 8300000, guid: e31832b9780d0456895dbc96b9ce4a50, type: 3}

@@ -433,7 +433,7 @@ public class DialogueWalker : MonoBehaviour
             string timeline_duration_string = getTagWithKey("timeline_duration:");
             string endgame = getTagWithKey("endgame:");
 
-            if (interrupt != null)
+            if(interrupt != null)
             {
                 interrupt_left = int.Parse(interrupt.Substring(0, interrupt.Length));
                 interrupt_set = true;
