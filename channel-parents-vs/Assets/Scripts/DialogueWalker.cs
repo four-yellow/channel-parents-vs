@@ -39,6 +39,8 @@ public class DialogueWalker : MonoBehaviour
 
     [SerializeField] private GameObject doorPrefab;
 
+    [SerializeField] private GameObject virtualDoorPrefab;
+
     [SerializeField] private VerticalLayoutGroup choicesBox;
 
     [SerializeField] private Animator childAnimator;
@@ -526,7 +528,9 @@ public class DialogueWalker : MonoBehaviour
 
     GameObject CreateDoorObject(string text, float x, float y, int choiceIndex)
     {
-        GameObject door = Instantiate(doorPrefab);
+        GameObject door = (backgroundManager.currentWorldType == BackgroundManager.WorldType.Real) ?
+                            Instantiate(doorPrefab) :
+                            Instantiate(doorPrefab); //for virtual door here
         door.transform.position = new Vector3(x, y, 0);
         door.GetComponentInChildren<TMPro.TMP_Text>().text = text;
         door.GetComponent<DoorScript>().choiceIndex = choiceIndex;
