@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->dinner_three
+->virtual_three
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -450,7 +450,6 @@ Work. I guess. #speaker: child #timeline: 3
 -> virtual_three 
 
 == virtual_three == 
-
 #location: virtual_three
 #setting: 11
 #cblip
@@ -496,7 +495,7 @@ Work. I guess. #speaker: child #timeline: 3
 #setting: 10 
 {friend_user}: okay this really is the last try  #speaker: friend_chat
 {kid_user}: heard that one before  #speaker: child_chat
-{friend_user}: i think ive figured out how to beat the boss, for real this time  #speaker: friend_chat #sudden_out
+{friend_user}: i think ive figured out how to beat the boss, for real this time  #speaker: friend_chat #interrupt: 2
 //While the above sentence is typing, the screen should cut off suddenly
 ->too_much_game
 
@@ -514,6 +513,8 @@ Work. I guess. #speaker: child #timeline: 3
 #location: bedroom_unplugged
 #setting: 13
 ~played_over_time = true
+... #speaker: child
+(What? What happened?) #speaker: child
 So this is what you're busy with? #speaker: parent 
 (...) #speaker: child 
 You'd rather game than spend some time with me? #speaker: parent 
