@@ -236,6 +236,7 @@ public class DialogueWalker : MonoBehaviour
 
             case "animation: parent_stand":
                 parent_animator.SetBool("is_sitting", false);
+                parent_animator.SetBool("is_dining", false);
                 break;
 
             case "animation: child_stand_right":

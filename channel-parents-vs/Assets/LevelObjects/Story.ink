@@ -6,7 +6,7 @@ VAR raphael = false
 VAR computer_trial = false
 VAR played_over_time = false
 
-->too_much_game
+->dinner_three
 
 == icecream_scene == 
 #knot: icecream_scene
@@ -423,6 +423,7 @@ Come on, get up, or we'll both be late. #speaker: parent
 -> sick_doors
 
 = sick_doors
+
  + [<i> Go back to sleep. </i>]
     Nope, don't even try. Let's go. #speaker: parent 
     -> sick_doors
@@ -527,10 +528,10 @@ Come on. After you. #speaker: parent
 -> too_much_doors
 
 = too_much_doors
-    + [Continue playing.]
+ + [<i> Continue playing. </i>]
     Don't even think about it. #speaker: parent
     -> too_much_doors
-    * [<i> Head back to work. </i>]
+ * [<i> Head back to work. </i>]
     -> dinner_three
 
 == dinner_three == 
@@ -545,7 +546,7 @@ Come on. After you. #speaker: parent
 (Park at night. Weird time, but whatever. ) #speaker: child
 (...) #speaker: child
 (Should I tell dad?) #speaker: child 
-({played_over_time: I think he's still mad. | I don't think he'll take it well. })
+({played_over_time:I think he's still mad. |I don't think he'll take it well. })
 (What do I do?) #speaker: child 
 Something on your mind? #speaker: parent 
 Hm? #speaker: child 
@@ -559,7 +560,7 @@ Why this all of a sudden? #speaker: parent
     A friend. #speaker: child 
     Who? #speaker: parent 
     
-    ** [Joe. ]
+    ** [Joe. ]#speaker: child
         ~name_given = "Joe"
         Who's Joe? #speaker: parent 
         (... you're better than this. Don't say it, don't say it, don't say it...) #speaker: child 
@@ -606,9 +607,9 @@ You're not friends. You play the same game. #speaker: parent
 We are friends. #speaker: child 
 ... they're my only friend. #speaker: child #animation: child_stand_right
 //Kid stands up here 
-I'm telling you not to go. #speaker: parent 
+I'm telling you not to go. #speaker: parent  #animation: parent_stand
 ... #speaker: child 
-You never listen to me. I'm telling you not to go. This is a bad idea. #speaker: parent #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
+You never listen to me. This is a bad idea. #speaker: parent #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 
 //Lines to add as the player moves 
 //Don't you step outside the house, kid. 
@@ -616,8 +617,14 @@ You never listen to me. I'm telling you not to go. This is a bad idea. #speaker:
 //Blah blah blah 
 
  + [<i> Head out. </i>]
+    I'm sorry... #speaker: child 
+    But I have to do this. #speaker: child 
     -> park_night_end
  * [<i> Stay at home. </i>]
+    ... #speaker: parent 
+    ... #speaker: child 
+    I'm sorry, kid. #speaker: parent 
+    One day, you'll get it. #speaker: parent 
     -> virtual_end
     
 = park_night_end
