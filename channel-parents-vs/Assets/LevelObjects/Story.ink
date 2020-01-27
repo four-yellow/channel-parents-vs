@@ -453,7 +453,6 @@ Work. I guess. #speaker: child #timeline: 3
 #setting: 11
 #cblip
 //Kid blips into existence. Friend is already there. Both standing. 
-->continue_playing
 {friend_user}: you took your time #speaker: friend_chat
 {kid_user}: yeah sorry #speaker: child_chat 
 {kid_user}: got distracted by something #speaker: child_chat 
