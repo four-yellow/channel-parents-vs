@@ -1526,7 +1526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tmpTextPrefab: {fileID: 1267312157}
   currentLevel: {fileID: 11400000, guid: c9edd0350a43a43739342e2eec528440, type: 2}
-  config: {fileID: 11400000, guid: 0afdeecb608a847c08203e0f23003561, type: 2}
+  config: {fileID: 11400000, guid: a1fb2add25f6148da815a0cd261ac5c5, type: 2}
   text_sounds:
   - {fileID: 8300000, guid: 6ca9843e948354c6db1aa7fed0ed5982, type: 3}
   - {fileID: 8300000, guid: 4725831f39765423798d6f56720f4770, type: 3}

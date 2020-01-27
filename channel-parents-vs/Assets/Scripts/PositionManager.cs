@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
+﻿using UnityEngine;
+
 public class PositionManager : MonoBehaviour
 {
 
@@ -33,13 +30,6 @@ public class PositionManager : MonoBehaviour
 
         icecream = GameObject.Find("IcecreamMan");
 
-        Assert.IsNotNull(player);
-        Assert.IsNotNull(player_animator);
-        Assert.IsNotNull(parent);
-        Assert.IsNotNull(parent_animator);
-        Assert.IsNotNull(friend);
-        Assert.IsNotNull(friend_animator);
-        Assert.IsNotNull(icecream);
     }
 
     //In another world, I would have made scriptable objects for the 

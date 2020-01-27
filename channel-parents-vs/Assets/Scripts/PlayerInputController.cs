@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using UnityEditor.Animations;
 using UnityEngine.Assertions;
 
 public class PlayerInputController : MonoBehaviour

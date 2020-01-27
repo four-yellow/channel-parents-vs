@@ -378,10 +378,10 @@ And... talk to me, will you? #speaker: parent #fade_out
 
 (... what do I do? ) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
 
- * [<i> Try skipping school. </i>]
+ * [Try skipping school.]
     (Worth a shot. I don't wanna go to school anyways.) #speaker: child
     -> sick_day
- * [<i> Go to school tomorrow. </i>]
+ * [Go to school tomorrow.]
     (I better not skip. Dad would be mad. ) #speaker: child
     -> dinner_two
 
@@ -423,10 +423,10 @@ Come on, get up, or we'll both be late. #speaker: parent
 
 = sick_doors
 
- + [<i> Go back to sleep. </i>]
+ + [Go back to sleep.]
     Nope, don't even try. Let's go. #speaker: parent 
     -> sick_doors
- * [<i> Go to school. </i>]
+ * [Go to school.]
     -> dinner_two
 
 == dinner_two == 
@@ -480,9 +480,9 @@ Work. I guess. #speaker: child #timeline: 3
 {friend_user}: one more try #speaker: friend_chat
 {friend_user}: pleeeease #speaker: friend_chat
 (... should I?) #speaker: child #door #door1pos: (-7.48,-1.41) #door2pos: (7.29,-1.41)
- * [<i> Continue playing. </i>]
+ * [Continue playing.]
     -> continue_playing
- * [<i> Head back to work. </i>]
+ * [Head back to work.]
     -> quit_for_now
 
 = continue_playing 
@@ -526,10 +526,10 @@ Come on. After you. #speaker: parent
 -> too_much_doors
 
 = too_much_doors
- + [<i> Continue playing. </i>]
+ + [Continue playing.]
     Don't even think about it. #speaker: parent
     -> too_much_doors
- * [<i> Head downstairs. </i>]
+ * [Head downstairs.]
     -> dinner_three
 
 == dinner_three == 
